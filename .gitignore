@@ -1,0 +1,4 @@
+private.key
+yarn.lock
+node_modules
+firebase_key
