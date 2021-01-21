@@ -157,14 +157,14 @@ const getShopDetails = function (location, shopUID, callback)
     //TODO: get the location and compare the distance and send the result
     // if (location)
     // {        
-        // var geofire = new GeoFire(database.ref("Users").child("Drivers").child(shopUID));
-        // geofire.get("location").then(shoplocation => 
-        // {
-        //     if (distanceBetween(shoplocation, location) < 1)
-        //     {
-        //         //continue and send the user the appropriate response
-        //     }
-        // });
+    // var geofire = new GeoFire(database.ref("Users").child("Drivers").child(shopUID));
+    // geofire.get("location").then(shoplocation => 
+    // {
+    //     if (distanceBetween(shoplocation, location) < 1)
+    //     {
+    //         //continue and send the user the appropriate response
+    //     }
+    // });
     // }
 
     database.ref("Users").child("Drivers").child(shopUID).once('value', (snapshot) => 
@@ -180,4 +180,57 @@ const getShopDetails = function (location, shopUID, callback)
     });
 };
 
-module.exports = { registerUserToDatabase, addMenuItem, getUidFromToken, deleteMenuIten, getShopDetails };
+const getMenuItemDetails = function (shopUID, callback)
+{
+    database.ref("Users").child("Drivers").child(shopUID).child("menu").once('value', (snapshot) => 
+    {
+        if (snapshot.exists())
+        {
+            callback(snapshot.val())
+        }
+        else
+        {
+            callback(null);
+        }
+    });
+}
+
+const addOrderToRecord = function (orderDetails, callback)
+{
+    let userId = orderDetails.user;
+    let shopId = orderDetails.shopId;
+    checkUserExistsDatabase(userId, "Customers", function (result)
+    {
+        if (result.error)
+        {
+            callback(result);
+            return;
+        }
+
+        if (!result.exists)
+        {
+            callback({ error: true, success: false, message: "User does not exist" });
+            return;
+        }
+
+        database.ref("Users").child("Customers").child(userId).child("Orders").child("Current").set({ orderTime: Date().now(), item: orderDetails.name, price: orderDetails.price, location: orderDetails.location, shopId })
+            .then(value => 
+            {
+                database.ref("Users").child("Drivers").child(shopId).child("Orders").child("Current").child(userId).set({ orderTime: Date().now(), item: orderDetails.name, price: orderDetails.price, location: orderDetails.location, userId })
+                    .then(value => 
+                    {
+                        callback({ error: false, success: true, message: "Order Placed Successfully" });
+                    })
+                    .catch(error => 
+                    {
+                        callback({ error: true, success: false, message: error, data: null });
+                    });
+            })
+            .catch(error => 
+            {
+                callback({ error: true, success: false, message: error, data: null });
+            });
+    });
+};
+
+module.exports = { registerUserToDatabase, addMenuItem, getUidFromToken, deleteMenuIten, getShopDetails, addOrderToRecord, getMenuItemDetails };
