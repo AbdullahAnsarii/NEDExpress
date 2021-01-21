@@ -8,6 +8,11 @@ const { body, validationResult, header } = require("express-validator");
 
 const onlineShops = [];
 
+const timeToDeliver = 60 * 45; //45 minutes
+const timeToCancel = 60; //1 minute
+
+const orders = [];
+
 app.use(express.json());
 
 app.post("/shop/register", [header("token").isString(), body("name").isString(), body("profileImageUrl").isURL(), body("location").isLatLong(), body("phone").isMobilePhone()], (req, res) =>
@@ -98,7 +103,7 @@ app.get("/shop/menu", [header("token").isString()], (req, res) =>
     {
         if (result.error)
         {
-            return res.status(400).json({ error: true, success: false, message: result.message });            
+            return res.status(400).json({ error: true, success: false, message: result.message });
         }
         const uid = result.uid;
 
@@ -106,12 +111,12 @@ app.get("/shop/menu", [header("token").isString()], (req, res) =>
         {
             if (result.error)
             {
-                return res.status(400).json({ error: true, success: false, message: result.message });                
+                return res.status(400).json({ error: true, success: false, message: result.message });
             }
 
             result.uid = uid;
             return res.json({ error: false, success: true, data: result });
-            
+
         });
     });
 });
@@ -151,17 +156,23 @@ app.get("/user/menu", [header("token").isString(), body("location").isLatLong()]
     {
         return res.status(400).json({ error: true, message: errors.array(), success: false });
     }
+    if (onlineShops.length < 1)
+    {
+        res.json({ error: false, success: false, message: "No shops are available to take orders", data: null });
+    }
+
     var shops = [];
 
-    onlineShops.forEach(element =>    
+    firebase.getUidFromToken(req.headers.token, (result) => 
     {
-        firebase.getUidFromToken(req.headers.token, (result) => 
+        if (result.error)
         {
-            if (result.error)
-            {
-                callback({ error: true, success: false, message: result.message, data: null });
-                return;
-            }
+            res.status(400).json({ error: true, success: false, message: result.message });
+            return;
+        }
+
+        onlineShops.forEach(element =>    
+        {
 
             firebase.getShopDetails(req.body.location, element, (result) => 
             {
@@ -185,11 +196,58 @@ app.get("/user/menu", [header("token").isString(), body("location").isLatLong()]
             });
         });
     });
+});
 
-    if (onlineShops.length < 1)
+app.post("/user/menu/order", [header("token").isString(), body("location").isLatLong(), body("shopId").isIn(onlineShops).withMessage("The shopId is either invalid or the shop is not accepting orders!"), body("item").isString()], (req, res) => 
+{
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
     {
-        res.json({ error: false, success: false, message: "No shops available to take orders", data: null });
+        return res.status(400).json({ error: true, message: errors.array(), success: false });
     }
+
+    firebase.getMenuItemDetails(req.body.shopId, (result) => 
+    {
+        let orderItem;
+        if (result == null)
+        {
+            return res.status(400).json({ error: true, success: false, message: "Shop doesn't have any menu items!" });
+        }
+        // orderItem = result.find(e => e.title === req.body.item);
+        orderItem = result[req.body.item];
+
+        if (orderItem === undefined)
+        {
+            return res.status(400).json({ error: true, success: false, message: "Shop doesn't have the specified menu item!" });
+        }
+
+        firebase.getUidFromToken(req.headers.token, (result) => 
+        {
+            if (result.error)
+            {
+                res.status(400).json({ error: true, success: false, message: result.message });
+                return;
+            }
+
+            if (orders.some(e => e.user === result.uid))
+            {
+                return res.status(400).json({ error: true, success: false, message: "You have already placed an order, please wait for it to deliver!" });
+            }
+            order = { user: result.uid, timestamp: Date().now(), shopId: req.body.shopId, location: req.body.location, price: orderItem.price, name: orderItem.title };
+            orders.push(order);
+
+            firebase.addOrderToRecord(order, (result) => 
+            {
+                if (result.error)
+                {
+                    res.status(400).json({ error: true, success: false, message: result.message });
+                    return;
+                }
+
+                return res.json(result);
+            });
+        });
+    });
 });
 
 app.listen(port, () =>
