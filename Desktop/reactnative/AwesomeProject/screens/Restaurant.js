@@ -78,7 +78,7 @@ const Restaurant = ({ route, navigation }) => {
     function sumOrder() {
         let total = orderItems.reduce((a, b) => a + (b.total || 0), 0)
 
-        return total.toFixed(2)
+        return total
     }
 
     function renderHeader() {
@@ -234,7 +234,7 @@ const Restaurant = ({ route, navigation }) => {
                                     paddingHorizontal: SIZES.padding * 2
                                 }}
                             >
-                                <Text style={{ marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - {item.price.toFixed(2)}</Text>
+                                <Text style={{ marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - PKR {item.price}</Text>
                                 <Text style={{ ...FONTS.body3 }}>{item.description}</Text>
                             </View>
 
@@ -249,14 +249,14 @@ const Restaurant = ({ route, navigation }) => {
                                     source={icons.fire}
                                     style={{
                                         width: 20,
-                                        height: 20,
+                                        height: 22,
                                         marginRight: 10
                                     }}
                                 />
 
                                 <Text style={{
                                     ...FONTS.body3, color: COLORS.darygray
-                                }}>{item.calories.toFixed(2)} cal</Text>
+                                }}>{item.makeTime} minutes</Text>
                             </View>
                         </View>
                     ))
@@ -342,7 +342,7 @@ const Restaurant = ({ route, navigation }) => {
                         }}
                     >
                         <Text style={{ ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
-                        <Text style={{ ...FONTS.h3 }}>${sumOrder()}</Text>
+                        <Text style={{ ...FONTS.h3 }}>PKR {sumOrder()}</Text>
                     </View>
 
                     <View
@@ -373,10 +373,9 @@ const Restaurant = ({ route, navigation }) => {
                                 style={{
                                     width: 20,
                                     height: 20,
-                                    tintColor: COLORS.darkgray
                                 }}
                             />
-                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>8888</Text>
+                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>COD</Text>
                         </View>
                     </View>
 
@@ -401,7 +400,7 @@ const Restaurant = ({ route, navigation }) => {
                                 currentLocation: currentLocation
                             })}
                         >
-                            <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Order</Text>
+                            <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Place Order</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

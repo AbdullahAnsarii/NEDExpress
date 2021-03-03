@@ -16,65 +16,29 @@ const Home = ({ navigation }) => {
     // Dummy Datas
 
     const initialCurrentLocation = {
-        streetName: "Kuching",
+        streetName: "NEDUET",
         gps: {
-            latitude: 1.5496614931250685,
-            longitude: 110.36381866919922
+            latitude: 24.853492,
+            longitude: 67.014957
         }
     }
 
     const categoryData = [
         {
             id: 1,
-            name: "Rice",
-            icon: icons.rice_bowl,
-        },
-        {
-            id: 2,
-            name: "Noodles",
-            icon: icons.noodle,
-        },
-        {
-            id: 3,
-            name: "Hot Dogs",
-            icon: icons.hotdog,
-        },
-        {
-            id: 4,
-            name: "Salads",
-            icon: icons.salad,
-        },
-        {
-            id: 5,
-            name: "Burgers",
+            name: "Canteen",
             icon: icons.hamburger,
         },
         {
-            id: 6,
-            name: "Pizza",
-            icon: icons.pizza,
+            id: 2,
+            name: "Photocopy",
+            icon: icons.pen,
         },
         {
-            id: 7,
-            name: "Snacks",
-            icon: icons.fries,
-        },
-        {
-            id: 8,
-            name: "Sushi",
-            icon: icons.sushi,
-        },
-        {
-            id: 9,
-            name: "Desserts",
-            icon: icons.donut,
-        },
-        {
-            id: 10,
-            name: "Drinks",
-            icon: icons.drink,
-        },
-
+            id: 3,
+            name: "Library",
+            icon: icons.book,
+        }
     ]
 
     // price rating
@@ -85,9 +49,9 @@ const Home = ({ navigation }) => {
     const restaurantData = [
         {
             id: 1,
-            name: "ByProgrammers Burger",
+            name: "Staff Canteen",
             rating: 4.8,
-            categories: [5, 7],
+            categories: [1],
             priceRating: affordable,
             photo: images.burger_restaurant_1,
             duration: "30 - 45 min",
@@ -102,35 +66,75 @@ const Home = ({ navigation }) => {
             menu: [
                 {
                     menuId: 1,
-                    name: "Crispy Chicken Burger",
-                    photo: images.crispy_chicken_burger,
-                    description: "Burger with crispy chicken, cheese and lettuce",
-                    calories: 200,
-                    price: 10
+                    name: "Chicken Biryani",
+                    photo: images.biryani,
+                    description: "Biyani served hot with a chicken piece in a box with a spoon",
+                    makeTime: 10,
+                    price: 80
                 },
                 {
                     menuId: 2,
-                    name: "Crispy Chicken Burger with Honey Mustard",
-                    photo: images.honey_mustard_chicken_burger,
-                    description: "Crispy Chicken Burger with Honey Mustard Coleslaw",
-                    calories: 250,
-                    price: 15
+                    name: "Club Sandwich",
+                    photo: images.club,
+                    description: "Baked Sandwich served with fries and coleslaw",
+                    makeTime: 20,
+                    price: 110
                 },
                 {
                     menuId: 3,
-                    name: "Crispy Baked French Fries",
-                    photo: images.baked_fries,
-                    description: "Crispy Baked French Fries",
-                    calories: 194,
-                    price: 8
+                    name: "Shami Burger",
+                    photo: images.andashami,
+                    description: "Easy to go pocket friendly burger served with fries",
+                    makeTime: 15,
+                    price: 60
+                },
+                {
+                    menuId: 4,
+                    name: "Roll Paratha",
+                    photo: images.rollparatha,
+                    description: "Chicken roll served with options of different sauces",
+                    makeTime: 10,
+                    price: 60
+                },
+                {
+                    menuId: 5,
+                    name: "Fries",
+                    photo: images.fries,
+                    description: "French fries served in a paper plate with ketchup",
+                    makeTime: 10,
+                    price: 30
+                },
+                {
+                    menuId: 6,
+                    name: "Samosa",
+                    photo: images.samosa,
+                    description: "Potato based deep fried samosa",
+                    makeTime: 5,
+                    price: 10
+                },
+                {
+                    menuId: 7,
+                    name: "Tea",
+                    photo: images.tea,
+                    description: "delicious tea served hot",
+                    makeTime: 5,
+                    price: 20
+                },
+                {
+                    menuId: 8,
+                    name: "Soft Drink",
+                    photo: images.pepsi,
+                    description: "Soft drink can served chilled",
+                    makeTime: 1,
+                    price: 50
                 }
             ]
         },
         {
             id: 2,
-            name: "ByProgrammers Pizza",
-            rating: 4.8,
-            categories: [2, 4, 6],
+            name: "Enviro",
+            rating: 4.5,
+            categories: [1],
             priceRating: expensive,
             photo: images.pizza_restaurant,
             duration: "15 - 20 min",
@@ -144,46 +148,93 @@ const Home = ({ navigation }) => {
             },
             menu: [
                 {
+                    menuId: 1,
+                    name: "Gravy",
+                    photo: images.qorma,
+                    description: "Hot qorma served only at 1 pm",
+                    makeTime: 12,
+                    price: 50
+                },
+                {
+                    menuId: 2,
+                    name: "Milk Shake",
+                    photo: images.shakes,
+                    description: "Milk shakes with a variety of flavors",
+                    makeTime: 10,
+                    price: 60
+                },{
+                    menuId: 3,
+                    name: "Chicken Biryani",
+                    photo: images.biryani,
+                    description: "Biyani served hot with a chicken piece in a box with a spoon",
+                    makeTime: 10,
+                    price: 80
+                },
+                {
                     menuId: 4,
-                    name: "Hawaiian Pizza",
-                    photo: images.hawaiian_pizza,
-                    description: "Canadian bacon, homemade pizza crust, pizza sauce",
-                    calories: 250,
-                    price: 15
+                    name: "Club Sandwich",
+                    photo: images.club,
+                    description: "Baked Sandwich served with fries and coleslaw",
+                    makeTime: 20,
+                    price: 110
                 },
                 {
                     menuId: 5,
-                    name: "Tomato & Basil Pizza",
-                    photo: images.pizza,
-                    description: "Fresh tomatoes, aromatic basil pesto and melted bocconcini",
-                    calories: 250,
-                    price: 20
+                    name: "Shami Burger",
+                    photo: images.andashami,
+                    description: "Easy to go pocket friendly burger served with fries",
+                    makeTime: 15,
+                    price: 60
                 },
                 {
                     menuId: 6,
-                    name: "Tomato Pasta",
-                    photo: images.tomato_pasta,
-                    description: "Pasta with fresh tomatoes",
-                    calories: 100,
-                    price: 10
+                    name: "Roll Paratha",
+                    photo: images.rollparatha,
+                    description: "Chicken roll served with options of different sauces",
+                    makeTime: 10,
+                    price: 60
                 },
                 {
                     menuId: 7,
-                    name: "Mediterranean Chopped Salad ",
-                    photo: images.salad,
-                    description: "Finely chopped lettuce, tomatoes, cucumbers",
-                    calories: 100,
+                    name: "Fries",
+                    photo: images.fries,
+                    description: "French fries served in a paper plate with ketchup",
+                    makeTime: 10,
+                    price: 30
+                },
+                {
+                    menuId: 8,
+                    name: "Samosa",
+                    photo: images.samosa,
+                    description: "Potato based deep fried samosa",
+                    makeTime: 5,
                     price: 10
+                },
+                {
+                    menuId: 9,
+                    name: "Tea",
+                    photo: images.tea,
+                    description: "delicious tea served hot",
+                    makeTime: 5,
+                    price: 20
+                },
+                {
+                    menuId: 10,
+                    name: "Soft Drink",
+                    photo: images.pepsi,
+                    description: "Soft drink can served chilled",
+                    makeTime: 1,
+                    price: 50
                 }
             ]
         },
         {
             id: 3,
-            name: "ByProgrammers Hotdogs",
-            rating: 4.8,
-            categories: [3],
-            priceRating: expensive,
-            photo: images.hot_dog_restaurant,
+            name: "Mech Corner",
+            rating: 4.9,
+            categories: [1],
+            priceRating: fairPrice,
+            photo: images.mech,
             duration: "20 - 25 min",
             location: {
                 latitude: 1.5238753474714375,
@@ -195,21 +246,92 @@ const Home = ({ navigation }) => {
             },
             menu: [
                 {
+                    menuId: 2,
+                    name: "Gravy",
+                    photo: images.qorma,
+                    description: "Hot qorma served only at 1 pm",
+                    makeTime: 12,
+                    price: 50
+                },
+                {
+                    menuId: 3,
+                    name: "Milk Shake",
+                    photo: images.shakes,
+                    description: "Milk shakes with a variety of flavors",
+                    makeTime: 10,
+                    price: 60
+                },{
+                    menuId: 4,
+                    name: "Chicken Biryani",
+                    photo: images.biryani,
+                    description: "Biyani served hot with a chicken piece in a box with a spoon",
+                    makeTime: 10,
+                    price: 80
+                },
+                {
+                    menuId: 5,
+                    name: "Club Sandwich",
+                    photo: images.club,
+                    description: "Baked Sandwich served with fries and coleslaw",
+                    makeTime: 20,
+                    price: 110
+                },
+                {
+                    menuId: 6,
+                    name: "Shami Burger",
+                    photo: images.andashami,
+                    description: "Easy to go pocket friendly burger served with fries",
+                    makeTime: 15,
+                    price: 60
+                },
+                {
+                    menuId: 7,
+                    name: "Roll Paratha",
+                    photo: images.rollparatha,
+                    description: "Chicken roll served with options of different sauces",
+                    makeTime: 10,
+                    price: 60
+                },
+                {
                     menuId: 8,
-                    name: "Chicago Style Hot Dog",
-                    photo: images.chicago_hot_dog,
-                    description: "Fresh tomatoes, all beef hot dogs",
-                    calories: 100,
+                    name: "Fries",
+                    photo: images.fries,
+                    description: "French fries served in a paper plate with ketchup",
+                    makeTime: 10,
+                    price: 30
+                },
+                {
+                    menuId: 9,
+                    name: "Samosa",
+                    photo: images.samosa,
+                    description: "Potato based deep fried samosa",
+                    makeTime: 5,
+                    price: 10
+                },
+                {
+                    menuId: 10,
+                    name: "Tea",
+                    photo: images.tea,
+                    description: "delicious tea served hot",
+                    makeTime: 5,
                     price: 20
+                },
+                {
+                    menuId: 11,
+                    name: "Soft Drink",
+                    photo: images.pepsi,
+                    description: "Soft drink can served chilled",
+                    makeTime: 1,
+                    price: 50
                 }
             ]
         },
         {
             id: 4,
-            name: "ByProgrammers Sushi",
+            name: "Nizami Photostate",
             rating: 4.8,
-            categories: [8],
-            priceRating: expensive,
+            categories: [2],
+            priceRating: affordable,
             photo: images.japanese_restaurant,
             duration: "10 - 15 min",
             location: {
@@ -222,73 +344,21 @@ const Home = ({ navigation }) => {
             },
             menu: [
                 {
-                    menuId: 9,
-                    name: "Sushi sets",
-                    photo: images.sushi,
-                    description: "Fresh salmon, sushi rice, fresh juicy avocado",
-                    calories: 100,
-                    price: 50
+                    menuId: 1,
+                    name: "Photocopy",
+                    photo: images.photocopy,
+                    description: "Photocopy of docs, Rs. 3 per page",
+                    makeTime: 20,
+                    price: 3
                 }
             ]
         },
         {
+
             id: 5,
-            name: "ByProgrammers Cuisine",
-            rating: 4.8,
-            categories: [1, 2],
-            priceRating: affordable,
-            photo: images.noodle_shop,
-            duration: "15 - 20 min",
-            location: {
-                latitude: 1.558050496260768,
-                longitude: 110.34743759630511,
-            },
-            courier: {
-                avatar: images.avatar_4,
-                name: "Muthu"
-            },
-            menu: [
-                {
-                    menuId: 10,
-                    name: "Kolo Mee",
-                    photo: images.kolo_mee,
-                    description: "Noodles with char siu",
-                    calories: 200,
-                    price: 5
-                },
-                {
-                    menuId: 11,
-                    name: "Sarawak Laksa",
-                    photo: images.sarawak_laksa,
-                    description: "Vermicelli noodles, cooked prawns",
-                    calories: 300,
-                    price: 8
-                },
-                {
-                    menuId: 12,
-                    name: "Nasi Lemak",
-                    photo: images.nasi_lemak,
-                    description: "A traditional Malay rice dish",
-                    calories: 300,
-                    price: 8
-                },
-                {
-                    menuId: 13,
-                    name: "Nasi Briyani with Mutton",
-                    photo: images.nasi_briyani_mutton,
-                    description: "A traditional Indian rice dish with mutton",
-                    calories: 300,
-                    price: 8
-                },
-
-            ]
-        },
-        {
-
-            id: 6,
-            name: "ByProgrammers Dessets",
+            name: "Ali Photostate",
             rating: 4.9,
-            categories: [9, 10],
+            categories: [2],
             priceRating: affordable,
             photo: images.kek_lapis_shop,
             duration: "35 - 40 min",
@@ -302,27 +372,27 @@ const Home = ({ navigation }) => {
             },
             menu: [
                 {
-                    menuId: 12,
-                    name: "Teh C Peng",
-                    photo: images.teh_c_peng,
-                    description: "Three Layer Teh C Peng",
-                    calories: 100,
-                    price: 2
-                },
-                {
-                    menuId: 13,
-                    name: "ABC Ice Kacang",
-                    photo: images.ice_kacang,
-                    description: "Shaved Ice with red beans",
-                    calories: 100,
+                    menuId: 1,
+                    name: "Photocopy",
+                    photo: images.photocopy,
+                    description: "Photocopy of docs Rs. 3 per page",
+                    makeTime: 20,
                     price: 3
                 },
                 {
-                    menuId: 14,
-                    name: "Kek Lapis",
-                    photo: images.kek_lapis,
-                    description: "Layer cakes",
-                    calories: 300,
+                    menuId: 2,
+                    name: "Printout B&W",
+                    photo: images.printb,
+                    description: "Greyscale printout",
+                    makeTime: 20,
+                    price: 10
+                },
+                {
+                    menuId: 3,
+                    name: "Printout Color",
+                    photo: images.printc,
+                    description: "Color printout",
+                    makeTime: 30,
                     price: 20
                 }
             ]
@@ -380,7 +450,7 @@ const Home = ({ navigation }) => {
                     <View
                         style={{
                             width: '70%',
-                            height: "100%",
+                            height: "70%",
                             backgroundColor: COLORS.lightGray3,
                             alignItems: 'center',
                             justifyContent: 'center',
