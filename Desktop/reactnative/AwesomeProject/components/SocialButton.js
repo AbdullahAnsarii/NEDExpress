@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
+import { icons, COLORS, SIZES, FONTS } from '../constants'
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     height: windowHeight / 15,
     padding: 10,
     flexDirection: 'row',
-    borderRadius: 3,
+    borderRadius: SIZES.radius,
   },
   iconWrapper: {
     width: 30,
@@ -51,8 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
+    fontFamily: FONTS.body1.fontFamily,
     fontSize: 18,
     fontWeight: 'bold',
-    fontFamily: 'Lato-Regular',
   },
 });
