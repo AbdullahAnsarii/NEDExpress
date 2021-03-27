@@ -23,16 +23,16 @@ const LoginScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
-        source={icons.cutlery}
+        source={icons.car}
         style={styles.logo}
       />
-      <Text style={styles.text}>Abdullah App</Text>
+      <Text style={styles.text}>NED Express</Text>
 
       <FormInput
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
         placeholderText="Email"
-        iconType="user"
+        iconType="person"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
@@ -42,18 +42,17 @@ const LoginScreen = ({navigation}) => {
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
         placeholderText="Password"
-        iconType="lock"
+        autoCapitalize="none"
+        iconType="lock-closed"
         secureTextEntry={true}
       />
 
-      <FormButton
-        buttonTitle="Sign In"
+      <FormButton 
+        buttonTitle="Login"
         //onPress={() => login(email, password)}
       />
 
-      <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
-        <Text style={styles.navButtonText}>Forgot Password?</Text>
-      </TouchableOpacity>
+      
 
       {Platform.OS === 'android' ? (
         <View>
@@ -78,7 +77,7 @@ const LoginScreen = ({navigation}) => {
       <TouchableOpacity
         style={styles.forgotButton}
         /*onPress={() => navigation.navigate('Signup')}*/>
-        <Text style={styles.navButtonText}>
+        <Text style={{ color: COLORS.darkgray, ...FONTS.body3 }}>
           Don't have an acount? Create here
         </Text>
       </TouchableOpacity>
@@ -101,21 +100,16 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   text: {
-    fontFamily: 'Kufam-SemiBoldItalic',
-    fontSize: 28,
+    fontFamily: FONTS.h1.fontFamily,
+    fontSize: 32,
     marginBottom: 10,
     color: '#051d5f',
   },
   navButton: {
-    marginTop: 15,
+    marginTop: 10,
   },
   forgotButton: {
-    marginVertical: 35,
+    marginVertical: 19,
   },
-  navButtonText: {
-    fontSize: 18,
-    fontWeight: '500',
-    color: '#2e64e5',
-    fontFamily: 'Lato-Regular',
-  },
+  
 });
