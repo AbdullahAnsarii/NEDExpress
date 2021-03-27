@@ -32,7 +32,7 @@ const LoginScreen = ({navigation}) => {
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
         placeholderText="Email"
-        iconType="person"
+        iconType="at"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
@@ -41,14 +41,15 @@ const LoginScreen = ({navigation}) => {
       <FormInput
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Password"
+        placeholderText="Password."
         autoCapitalize="none"
-        iconType="lock-closed"
+        iconType="lock-closed-outline"
         secureTextEntry={true}
       />
 
       <FormButton 
         buttonTitle="Login"
+        onPress={()=> alert("Login button pressed")}
         //onPress={() => login(email, password)}
       />
 
@@ -76,7 +77,7 @@ const LoginScreen = ({navigation}) => {
 
       <TouchableOpacity
         style={styles.forgotButton}
-        /*onPress={() => navigation.navigate('Signup')}*/>
+        onPress={() => navigation.navigate('Signup')}>
         <Text style={{ color: COLORS.darkgray, ...FONTS.body3 }}>
           Don't have an acount? Create here
         </Text>
