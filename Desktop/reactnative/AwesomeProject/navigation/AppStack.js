@@ -9,7 +9,6 @@ const Stack = createStackNavigator();
 
 const AppStack = () => {
     return(
-        <NavigationContainer>
            <Stack.Navigator
                 screenOptions={{
                     headerShown: false
@@ -20,7 +19,6 @@ const AppStack = () => {
                 <Stack.Screen name="Restaurant" component={Restaurant} />
                 <Stack.Screen name="OrderDelivery" component={OrderDelivery} />
             </Stack.Navigator>
-        </NavigationContainer>
     )
 }
 

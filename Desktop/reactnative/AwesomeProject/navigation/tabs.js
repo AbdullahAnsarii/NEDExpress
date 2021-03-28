@@ -2,20 +2,25 @@ import React from 'react';
 
 import {
     View,
+    Text,
     Image,
     TouchableOpacity
 } from 'react-native';
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 import Svg, { Path } from 'react-native-svg';
 import { isIphoneX } from 'react-native-iphone-x-helper';
+import {AuthContext} from '../navigation/AuthProvider';
 
 import { Home } from "../screens"
 
-import { COLORS, icons } from "../constants"
+import { COLORS, icons } from "../constants";
+import { useContext } from 'react';
 
 const Tab = createBottomTabNavigator();
 
 const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
+    const { user, logout } = useContext(AuthContext);
+    //Welcome user.name krke bnaao home screen me
 
     var isSelected = accessibilityState.selected
 
@@ -47,7 +52,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
                         borderRadius: 25,
                         backgroundColor: COLORS.white
                     }}
-                    onPress={onPress}
+                    onPress={()=>logout()}
                 >
                     {children}
                 </TouchableOpacity>

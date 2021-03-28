@@ -11,7 +11,7 @@ import {
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
-//import {AuthContext} from '../navigation/AuthProvider';
+import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 
 const SignupScreen = ({navigation}) => {
@@ -22,7 +22,7 @@ const SignupScreen = ({navigation}) => {
     const [password, setPassword] = useState();
     const [contactno, setContactno] = useState();
 
-//   const {login, googleLogin, fbLogin} = useContext(AuthContext);
+const {register} = useContext(AuthContext);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -85,7 +85,7 @@ const SignupScreen = ({navigation}) => {
       <FormButton 
         buttonTitle="Register"
         onPress={()=> alert("Signup button pressed")}
-        //onPress={() => login(email, password)}
+        onPress={() => register(email, password)}
       />
       {Platform.OS === 'android' ? (
         <View>
