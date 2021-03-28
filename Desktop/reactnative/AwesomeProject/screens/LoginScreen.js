@@ -11,14 +11,14 @@ import {
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
-//import {AuthContext} from '../navigation/AuthProvider';
+import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-//   const {login, googleLogin, fbLogin} = useContext(AuthContext);
+const {login} = useContext(AuthContext);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -50,7 +50,7 @@ const LoginScreen = ({navigation}) => {
       <FormButton 
         buttonTitle="Login"
         onPress={()=> alert("Login button pressed")}
-        //onPress={() => login(email, password)}
+        onPress={() => login(email, password)}
       />
       {Platform.OS === 'android' ? (
         <View>
