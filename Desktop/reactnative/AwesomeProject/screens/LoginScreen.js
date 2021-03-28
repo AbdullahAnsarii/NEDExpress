@@ -23,10 +23,10 @@ const {login} = useContext(AuthContext);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
-        source={icons.car}
+        source={icons.nedexpressicon}
         style={styles.logo}
       />
-      <Text style={styles.text}>NED Express</Text>
+      <Text style={styles.text}>WELCOME</Text>
 
       <FormInput
         labelValue={email}
@@ -52,6 +52,7 @@ const {login} = useContext(AuthContext);
         onPress={()=> alert("Login button pressed")}
         onPress={() => login(email, password)}
       />
+      <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
@@ -75,7 +76,7 @@ const {login} = useContext(AuthContext);
       <TouchableOpacity
         style={styles.forgotButton}
         onPress={() => navigation.navigate('Signup')}>
-        <Text style={{ color: COLORS.darkgray, ...FONTS.body3 }}>
+        <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>
           Don't have an acount? Create here
         </Text>
       </TouchableOpacity>
@@ -90,24 +91,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    paddingTop: 50
+    paddingTop: 70
   },
   logo: {
-    height: 150,
-    width: 150,
+    height: 180,
+    width: 220,
     resizeMode: 'cover',
   },
   text: {
     fontFamily: FONTS.h1.fontFamily,
-    fontSize: 32,
+    fontSize: 29,
     marginBottom: 10,
     color: '#051d5f',
   },
   navButton: {
     marginTop: 10,
-  },
-  forgotButton: {
-    marginVertical: 19,
-  },
+  }
   
 });

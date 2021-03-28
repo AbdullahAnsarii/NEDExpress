@@ -84,7 +84,6 @@ const {register} = useContext(AuthContext);
 
       <FormButton 
         buttonTitle="Register"
-        onPress={()=> alert("Signup button pressed")}
         onPress={() => register(email, password)}
       />
       {Platform.OS === 'android' ? (
