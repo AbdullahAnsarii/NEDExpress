@@ -26,9 +26,11 @@ export const user = require("../assets/icons/user.png");
 export const pen = require("../assets/icons/pen.png");
 export const food = require("../assets/icons/food.png");
 export const book = require("../assets/icons/book.png");
+export const nedexpressicon = require("../assets/icons/nedexpresslogo.png");
 
 
 export default {
+    nedexpressicon,
     book,
     food,
     pen,
