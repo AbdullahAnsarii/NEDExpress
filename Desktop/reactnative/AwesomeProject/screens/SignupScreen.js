@@ -83,10 +83,29 @@ const SignupScreen = ({navigation}) => {
       />
 
       <FormButton 
-        buttonTitle="Signup"
+        buttonTitle="Register"
         onPress={()=> alert("Signup button pressed")}
         //onPress={() => login(email, password)}
       />
+      {Platform.OS === 'android' ? (
+        <View>
+          <SocialButton
+            buttonTitle="Sign Up with Facebook"
+            btnType="facebook"
+            color="#4867aa"
+            backgroundColor="#e6eaf4"
+            //onPress={() => fbLogin()}
+          />
+
+          <SocialButton
+            buttonTitle="Sign Up with Google"
+            btnType="google"
+            color="#de4d41"
+            backgroundColor="#f5e7ea"
+            //onPress={() => googleLogin()}
+          />
+        </View>
+      ) : null}
       <View style={styles.textPrivate}>
         <Text style={{ color: COLORS.darkgray, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily, marginTop: 14 }}>
           By registering, you confirm that you accept our{' '}

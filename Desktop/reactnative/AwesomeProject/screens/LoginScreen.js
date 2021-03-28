@@ -52,9 +52,6 @@ const LoginScreen = ({navigation}) => {
         onPress={()=> alert("Login button pressed")}
         //onPress={() => login(email, password)}
       />
-
-      
-
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
