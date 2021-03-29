@@ -6,7 +6,8 @@ import {
   Image,
   Platform,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -18,7 +19,7 @@ const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-const {login} = useContext(AuthContext);
+const {login, googleLogin} = useContext(AuthContext);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -60,6 +61,7 @@ const {login} = useContext(AuthContext);
             btnType="facebook"
             color="#4867aa"
             backgroundColor="#e6eaf4"
+            onPress={() => Alert.alert("NED Express", "This feature will be available soon!")}
             //onPress={() => fbLogin()}
           />
 
@@ -68,7 +70,7 @@ const {login} = useContext(AuthContext);
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            //onPress={() => googleLogin()}
+            onPress={() => googleLogin()}
           />
         </View>
       ) : null}
