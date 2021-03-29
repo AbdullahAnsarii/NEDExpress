@@ -107,7 +107,8 @@ const Restaurant = ({ route, navigation }) => {
                     style={{
                         flex: 1,
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        marginVertical: 5
                     }}
                 >
                     <View
