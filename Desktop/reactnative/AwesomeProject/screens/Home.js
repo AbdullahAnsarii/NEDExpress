@@ -578,7 +578,7 @@ const Home = ({ navigation }) => {
                             bottom: 0,
                             height: 50,
                             width: SIZES.width * 0.3,
-                            backgroundColor: COLORS.white,
+                            backgroundColor: "orange",
                             borderTopRightRadius: SIZES.radius,
                             borderBottomLeftRadius: SIZES.radius,
                             alignItems: 'center',
@@ -586,7 +586,7 @@ const Home = ({ navigation }) => {
                             ...styles.shadow
                         }}
                     >
-                        <Text style={{ ...FONTS.h4 }}>{item.duration}</Text>
+                        <Text style={{color: "white", ...FONTS.h4 }}>{item.duration}</Text>
                     </View>
                 </View>
 

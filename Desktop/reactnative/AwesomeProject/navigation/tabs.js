@@ -12,6 +12,8 @@ import { isIphoneX } from 'react-native-iphone-x-helper';
 import {AuthContext} from '../navigation/AuthProvider';
 
 import { Home } from "../screens"
+import ProfileScreen from "../screens/ProfileScreen"
+import EditProfileScreen from "../screens/EditProfileScreen"
 
 import { COLORS, icons } from "../constants";
 import { useContext } from 'react';
@@ -52,7 +54,6 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
                         borderRadius: 25,
                         backgroundColor: COLORS.white
                     }}
-                    onPress={()=>logout()}
                 >
                     {children}
                 </TouchableOpacity>
@@ -196,7 +197,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="User"
-                component={Home}
+                component={ProfileScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
