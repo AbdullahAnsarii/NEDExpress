@@ -42,7 +42,8 @@ export const AuthProvider = ({children}) => {
                     Email: auth().currentUser.email,
                     CreatedAt: firestore.Timestamp.fromDate(new Date()),
                     UserImg: auth().currentUser.photoURL,
-                    SignInMethod: "Gmail"
+                    SignInMethod: "Gmail",
+                    UserID: auth().currentUser.uid
                 })
                 //ensure we catch any errors at this stage to advise us if something does go wrong
                 .catch(error => {
@@ -72,7 +73,9 @@ export const AuthProvider = ({children}) => {
                     ContactNo: contactno,
                     CreatedAt: firestore.Timestamp.fromDate(new Date()),
                     UserImg: null,
-                    SignInMethod: "Email/Password"
+                    SignInMethod: "Email/Password",
+                    UserID: auth().currentUser.uid
+
                 })
                 //ensure we catch any errors at this stage to advise us if something does go wrong
                 .catch(error => {

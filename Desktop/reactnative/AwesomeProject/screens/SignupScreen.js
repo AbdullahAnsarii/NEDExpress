@@ -12,7 +12,9 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {AuthContext} from '../navigation/AuthProvider';
-import { icons, COLORS, SIZES, FONTS } from '../constants'
+import { icons, COLORS, SIZES, FONTS } from '../constants';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Icon from 'react-native-vector-icons/Feather';
 
 const SignupScreen = ({navigation}) => {
     const [name, setName] = useState();
@@ -86,25 +88,6 @@ const {register} = useContext(AuthContext);
         buttonTitle="Register"
         onPress={() => register( name,email, password,rollno, department, contactno)}
       />
-      {Platform.OS === 'android' ? (
-        <View>
-          <SocialButton
-            buttonTitle="Sign Up with Facebook"
-            btnType="facebook"
-            color="#4867aa"
-            backgroundColor="#e6eaf4"
-            //onPress={() => fbLogin()}
-          />
-
-          <SocialButton
-            buttonTitle="Sign Up with Google"
-            btnType="google"
-            color="#de4d41"
-            backgroundColor="#f5e7ea"
-            //onPress={() => googleLogin()}
-          />
-        </View>
-      ) : null}
       <View style={styles.textPrivate}>
         <Text style={{ color: COLORS.darkgray, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily, marginTop: 14 }}>
           By registering, you confirm that you accept our{' '}
