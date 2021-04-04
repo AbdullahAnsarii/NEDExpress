@@ -50,7 +50,6 @@ const {login, googleLogin} = useContext(AuthContext);
 
       <FormButton 
         buttonTitle="Login"
-        onPress={()=> alert("Login button pressed")}
         onPress={() => login(email, password)}
       />
       <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
