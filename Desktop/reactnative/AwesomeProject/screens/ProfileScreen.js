@@ -47,12 +47,12 @@ let ProfileScreen = () => {
         showsVerticalScrollIndicator={false}>
         <Image
           style={styles.userImg}
-          source={{uri: profile ? profile.UserImg || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
+          source={{uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
         />
-        <Text style={styles.userName}>{profile ? profile.Name || 'Test' : 'Test'}</Text>
+        <Text style={styles.userName}>{profile ? profile.Name || 'Loading..' : 'Loading..'}</Text>
         {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
         <Text style={styles.aboutUser}>
-        ko
+        add a bio
         </Text>
         <View style={styles.userBtnWrapper}>
             <TouchableOpacity style={styles.userBtn} onPress={()=>{}}>
@@ -63,7 +63,10 @@ let ProfileScreen = () => {
             </TouchableOpacity>
         </View>
         <View style={styles.userInfoWrapper}>
-        <Text></Text>
+        <Text style={styles.userDetail}>Department: {profile ? profile.Department || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}>Roll No: {profile ? profile.RollNo || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}>Email: {profile ? profile.Email || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}>Contact No: {profile ? profile.ContactNo || '---' : 'Loading..'}</Text>
         </View>
         </ScrollView>
         </SafeAreaView>
@@ -89,11 +92,19 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     ...FONTS.h2
   },
+  userDetail: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: 10,
+    color: "#FF8C00",
+    ...FONTS.h2
+  },
   aboutUser: {
     fontSize: 12,
     fontWeight: '600',
     color: '#666',
-    textAlign: 'center',
+    textAlign: 'auto',
     marginBottom: 10,
   },
   userBtnWrapper: {
@@ -125,7 +136,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     position: "relative",
     bottom: 0,
-    height: 350,
+    height: 250,
     width: 350,
     backgroundColor: "#FED8B1",
     borderTopRightRadius: SIZES.radius,
