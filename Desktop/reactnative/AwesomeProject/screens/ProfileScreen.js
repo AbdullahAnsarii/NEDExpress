@@ -13,7 +13,7 @@ import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 import firestore from '@react-native-firebase/firestore';
 
-let ProfileScreen = () => {
+let ProfileScreen = ({ navigation }) => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const {user, logout} = useContext(AuthContext);
@@ -55,7 +55,7 @@ let ProfileScreen = () => {
         add a bio
         </Text>
         <View style={styles.userBtnWrapper}>
-            <TouchableOpacity style={styles.userBtn} onPress={()=>{}}>
+            <TouchableOpacity style={styles.userBtn} onPress={()=>{navigation.navigate("EditProfileScreen");}}>
                 <Text style={styles.userBtnTxt}>Edit Profile</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.userBtn} onPress={()=>logout()}>
