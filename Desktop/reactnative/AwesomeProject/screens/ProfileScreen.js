@@ -11,42 +11,34 @@ import {
 import { windowHeight, windowWidth } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
-
-
 import firestore from '@react-native-firebase/firestore';
+
 let ProfileScreen = () => {
-
-    useEffect(()=>{
-        const fetchUserInfo = async() => {
-            try{
-                let list = [];
-                firestore()
-                .collection("users")
-                .get()
-                .then((querySnapshot)=>{
-                    querySnapshot.forEach(doc => {
-                        const {Name, Email, RollNo, Department, ContactNo, UserImg, UserID} = doc.data();
-                        list.push({
-                            ContactNo: ContactNo,
-                            Department: Department,
-                            Email: Email,
-                            Name: Name,
-                            RollNo: RollNo,
-                            UserID: UserID,
-                            UserImg: UserImg
-                        })
-                    })
-                })
-                console.log(list);
-            }catch(e){
-                console.log(e);
-            }
-        }
-        fetchUserInfo()
-    },[])
-
-    const {user, logout} = useContext(AuthContext);
-
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const {user, logout} = useContext(AuthContext);
+  const ID = user.uid;
+  const fetchUserInfo = async() => {
+    try{
+        const list = [];
+        await firestore()
+        .collection("users")
+        .doc(ID)
+        .get()
+        .then((documentSnapshot)=>{
+          if(documentSnapshot.exists){
+            console.log("User data",documentSnapshot.data());
+            setProfile(documentSnapshot.data());
+          }
+        }                 
+          )
+      }catch(e){
+          console.log(e);
+      }
+}
+  useEffect(()=>{
+    fetchUserInfo();
+  },[]) 
     return(
         <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <ScrollView
@@ -55,12 +47,12 @@ let ProfileScreen = () => {
         showsVerticalScrollIndicator={false}>
         <Image
           style={styles.userImg}
-          source={require("../assets/images/biryani.jpg")}
+          source={{uri: profile ? profile.UserImg || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
         />
-        <Text style={styles.userName}>Abdullah Ansari</Text>
+        <Text style={styles.userName}>{profile ? profile.Name || 'Test' : 'Test'}</Text>
         {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
         <Text style={styles.aboutUser}>
-        hustler
+        ko
         </Text>
         <View style={styles.userBtnWrapper}>
             <TouchableOpacity style={styles.userBtn} onPress={()=>{}}>
@@ -71,7 +63,7 @@ let ProfileScreen = () => {
             </TouchableOpacity>
         </View>
         <View style={styles.userInfoWrapper}>
-
+        <Text></Text>
         </View>
         </ScrollView>
         </SafeAreaView>
