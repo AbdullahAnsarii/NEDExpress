@@ -32,7 +32,7 @@ const {register} = useContext(AuthContext);
       <FormInput
         labelValue={name}
         onChangeText={(userName) => setName(userName)}
-        placeholderText="Name"
+        placeholderText="Name  "
         iconType="person-outline"
         autoCorrect={false}
       />
@@ -48,7 +48,7 @@ const {register} = useContext(AuthContext);
       <FormInput
       labelValue={contactno}
       onChangeText={(userContactno) => setContactno(userContactno)}
-      placeholderText="Contact no."
+      placeholderText="Contact no.  "
       iconType="call-outline"
       keyboardType="numeric"
       autoCorrect={false}
@@ -56,7 +56,7 @@ const {register} = useContext(AuthContext);
       <FormInput
       labelValue={rollno}
       onChangeText={(userRollno) => setRollno(userRollno)}
-      placeholderText="Roll no. (CS-XXXXX)."
+      placeholderText="Roll no. (CS-XXXXX)   "
       iconType="card-outline"
       autoCorrect={false}
     />
@@ -78,7 +78,7 @@ const {register} = useContext(AuthContext);
       <FormInput
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Confirm Password."
+        placeholderText="Confirm Password  "
         autoCapitalize="none"
         iconType="shield-outline"
         secureTextEntry={true}
