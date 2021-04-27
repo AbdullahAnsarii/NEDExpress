@@ -66,7 +66,7 @@ let routeName;
             <View style={{marginLeft: 10}}>
               <FontAwesome.Button 
                 name="arrow-circle-left"
-                size={27}
+                size={30}
                 backgroundColor="orange"
                 color="#ffff"
                 onPress={() => navigation.navigate('Login')}
