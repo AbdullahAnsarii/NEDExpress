@@ -12,14 +12,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Feather from 'react-native-vector-icons/Feather';
+import ProfileScreen from '../screens/ProfileScreen'
 
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 
 //import ImagePicker from 'react-native-image-crop-picker';
 
-const EditProfileScreen = () => {
+const EditProfileScreen = ({ navigation }) => {
   const [name, setName] = useState();
   const [department, setDepartment] = useState();
   const [rollno, setRollno] = useState();
@@ -61,17 +61,18 @@ const EditProfileScreen = () => {
         <Text style={styles.panelTitle}>Upload Photo</Text>
         <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
       </View>
-      <TouchableOpacity style={styles.panelButton} >
-        <Text style={styles.panelButtonTitle}>Take Photo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton} >
-        <Text style={styles.panelButtonTitle}>Choose From Library</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.panelButton}
-        onPress={() => bs.current.snapTo(1)}>
-        <Text style={styles.panelButtonTitle}>Cancel</Text>
-      </TouchableOpacity>
+      <FormButton
+        buttonTitle="Take Photo"
+      //onPress={() => register( name,email, password,rollno, department, contactno)}
+      />
+      <FormButton
+        buttonTitle="Choose From Device"
+      //onPress={() => register( name,email, password,rollno, department, contactno)}
+      />
+      <FormButton
+        buttonTitle="Cancel"
+        onPress={() => bs.current.snapTo(1)}
+      />
     </View>
   );
 
@@ -88,6 +89,15 @@ const EditProfileScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View style={{ marginLeft: -340, marginTop: -45, marginBottom: 10 }}>
+        <FontAwesome.Button
+          name="arrow-circle-left"
+          size={30}
+          backgroundColor="orange"
+          color="#ffff"
+          onPress={() => navigation.goBack()}
+        />
+      </View>
       <BottomSheet
         ref={bs}
         snapPoints={[330, 0]}
@@ -97,12 +107,15 @@ const EditProfileScreen = () => {
         callbackNode={fall}
         enabledGestureInteraction={true}
       />
-      <Text style={styles.text}>Edit Profile</Text>
-      <Animated.View style={{ alignItems: 'center' ,
-        opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),}}>
+
+      <Animated.View style={{
+        opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
+      }}>
+        <Text style={styles.text}>Edit Profile</Text>
         <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
           <View
             style={{
+              marginLeft: 140,
               height: 150,
               width: 100,
               borderRadius: 15,
@@ -138,47 +151,47 @@ const EditProfileScreen = () => {
             </ImageBackground>
           </View>
         </TouchableOpacity>
-        <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold' }}>
+        <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', marginLeft: 150 }}>
           John Doe
           </Text>
-      <FormInput
-        labelValue={name}
-        onChangeText={(userName) => setName(userName)}
-        placeholderText="Name "
-        iconType="person-outline"
-        autoCorrect={false}
-      />
-      <FormInput
-        labelValue={email}
-        onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholderText="Email     "
-        iconType="at"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-      <FormInput
-        labelValue={contactno}
-        onChangeText={(userContactno) => setContactno(userContactno)}
-        placeholderText="Contact no.     "
-        iconType="call-outline"
-        keyboardType="numeric"
-        autoCorrect={false}
-      />
-      <FormInput
-        labelValue={rollno}
-        onChangeText={(userRollno) => setRollno(userRollno)}
-        placeholderText="Roll no. (CS-XXXXX).   "
-        iconType="card-outline"
-        autoCorrect={false}
-      />
-      <FormInput
-        labelValue={department}
-        onChangeText={(userDepartment) => setDepartment(userDepartment)}
-        placeholderText="Department"
-        iconType="book-outline"
-        autoCorrect={false}
-      />
+        <FormInput
+          labelValue={name}
+          onChangeText={(userName) => setName(userName)}
+          placeholderText="Name "
+          iconType="person-outline"
+          autoCorrect={false}
+        />
+        <FormInput
+          labelValue={email}
+          onChangeText={(userEmail) => setEmail(userEmail)}
+          placeholderText="Email     "
+          iconType="at"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+        <FormInput
+          labelValue={contactno}
+          onChangeText={(userContactno) => setContactno(userContactno)}
+          placeholderText="Contact no.     "
+          iconType="call-outline"
+          keyboardType="numeric"
+          autoCorrect={false}
+        />
+        <FormInput
+          labelValue={rollno}
+          onChangeText={(userRollno) => setRollno(userRollno)}
+          placeholderText="Roll no. (CS-XXXXX).   "
+          iconType="card-outline"
+          autoCorrect={false}
+        />
+        <FormInput
+          labelValue={department}
+          onChangeText={(userDepartment) => setDepartment(userDepartment)}
+          placeholderText="Department"
+          iconType="book-outline"
+          autoCorrect={false}
+        />
       </Animated.View>
       <FormButton
         buttonTitle="Submit"
@@ -200,6 +213,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   text: {
+    marginLeft: 100,
     fontFamily: FONTS.h1.fontFamily,
     fontSize: 32,
     marginBottom: 10,
@@ -219,6 +233,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   header: {
+    margin: -10,
     backgroundColor: '#FFFFFF',
     shadowColor: '#333333',
     shadowOffset: { width: -1, height: -3 },
@@ -239,12 +254,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   panelTitle: {
-    fontSize: 27,
+    fontSize: SIZES.h2,
+    fontFamily: FONTS.h1.fontFamily,
     height: 35,
   },
   panelSubtitle: {
-    fontSize: 14,
+    fontSize: SIZES.body3,
     color: 'gray',
+    fontFamily: FONTS.h1.fontFamily,
     height: 30,
     marginBottom: 10,
   },
@@ -274,12 +291,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#FF0000',
     paddingBottom: 5,
-  },
-  textInput: {
-    flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : -12,
-    paddingLeft: 10,
-    color: '#333333',
   },
 });
 
