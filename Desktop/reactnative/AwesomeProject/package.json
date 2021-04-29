@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "start-max": "node --max-old-space-size=8192 node_modules/react-native/local-cli/cli.js start",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
@@ -24,8 +25,10 @@
     "react-native-dropdown-picker": "^4.0.2",
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "^1.10.2",
+    "react-native-image-crop-picker": "^0.36.0",
     "react-native-maps": "0.28.0",
     "react-native-onboarding-swiper": "^1.1.4",
+    "react-native-permissions": "^3.0.3",
     "react-native-reanimated": "^2.1.0",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^3.1.1",

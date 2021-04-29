@@ -6,28 +6,28 @@ import {
   ImageBackground,
   TextInput,
   StyleSheet,
+  Alert
 } from 'react-native';
 import { icons, COLORS, SIZES, FONTS } from '../constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import ProfileScreen from '../screens/ProfileScreen'
 
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 
-//import ImagePicker from 'react-native-image-crop-picker';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const EditProfileScreen = ({ navigation }) => {
   const [name, setName] = useState();
   const [department, setDepartment] = useState();
   const [rollno, setRollno] = useState();
   const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
   const [contactno, setContactno] = useState();
-  const [image, setImage] = useState('https://api.adorable.io/avatars/80/abott@adorable.png');
-  //const {colors} = useTheme();
+  const [image, setImage] = useState('https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg');
+  const bs = React.createRef();
+  const fall = new Animated.Value(1);
 
   // const takePhotoFromCamera = () => {
   //   ImagePicker.openCamera({
@@ -38,22 +38,22 @@ const EditProfileScreen = ({ navigation }) => {
   //   }).then(image => {
   //     console.log(image);
   //     setImage(image.path);
-  //     this.bs.current.snapTo(1);
+  //     bs.current.snapTo(1);
   //   });
   // }
 
-  // const choosePhotoFromLibrary = () => {
-  //   ImagePicker.openPicker({
-  //     width: 300,
-  //     height: 300,
-  //     cropping: true,
-  //     compressImageQuality: 0.7
-  //   }).then(image => {
-  //     console.log(image);
-  //     setImage(image.path);
-  //     this.bs.current.snapTo(1);
-  //   });
-  // }
+  const choosePhotoFromLibrary = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 300,
+      cropping: true,
+      compressImageQuality: 0.7
+    }).then(image => {
+      bs.current.snapTo(1)
+      console.log(image);
+      setImage(image.path)
+    })
+  }
 
   const renderInner = () => (
     <View style={styles.panel}>
@@ -63,11 +63,11 @@ const EditProfileScreen = ({ navigation }) => {
       </View>
       <FormButton
         buttonTitle="Take Photo"
-      //onPress={() => register( name,email, password,rollno, department, contactno)}
+        onPress={() => Alert.alert("NED Express", "This feature will be available soon!")}
       />
       <FormButton
         buttonTitle="Choose From Device"
-      //onPress={() => register( name,email, password,rollno, department, contactno)}
+        onPress={choosePhotoFromLibrary}
       />
       <FormButton
         buttonTitle="Cancel"
@@ -84,8 +84,6 @@ const EditProfileScreen = ({ navigation }) => {
     </View>
   );
 
-  const bs = React.createRef();
-  const fall = new Animated.Value(1);
 
   return (
     <View style={styles.container}>
@@ -124,7 +122,7 @@ const EditProfileScreen = ({ navigation }) => {
             }}>
             <ImageBackground
               source={{
-                uri: 'https://picsum.photos/200/300',
+                uri: image,
               }}
               style={{ height: 150, width: 150, }}
               imageStyle={{ borderRadius: 75 }}>
