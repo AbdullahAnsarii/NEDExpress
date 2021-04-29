@@ -12,6 +12,7 @@ import { windowHeight, windowWidth } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 import firestore from '@react-native-firebase/firestore';
+//import ImagePicker from 'react-native-image-crop-picker';
 
 let ProfileScreen = ({ navigation }) => {
   const [profile, setProfile] = useState(null);
