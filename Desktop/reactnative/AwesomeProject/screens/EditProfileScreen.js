@@ -149,8 +149,8 @@ const EditProfileScreen = ({ navigation }) => {
             </ImageBackground>
           </View>
         </TouchableOpacity>
-        <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', marginLeft: 150 }}>
-          John Doe
+        <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>
+          {name}
           </Text>
         <FormInput
           labelValue={name}
