@@ -9,7 +9,7 @@ import {
     Animated
 } from "react-native";
 import { isIphoneX } from 'react-native-iphone-x-helper'
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 
 const Restaurant = ({ route, navigation }) => {
@@ -86,19 +86,19 @@ const Restaurant = ({ route, navigation }) => {
             <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity
                     style={{
-                        width: 50,
+                        marginLeft: -15,
+                        width: 73,
                         paddingLeft: SIZES.padding * 2,
                         justifyContent: 'center'
                     }}
                     onPress={() => navigation.goBack()}
                 >
-                    <Image
-                        source={icons.back}
-                        resizeMode="contain"
-                        style={{
-                            width: 30,
-                            height: 30
-                        }}
+                    <FontAwesome.Button
+                        name="arrow-circle-left"
+                        size={30}
+                        backgroundColor="orange"
+                        color="#ffff"
+                        onPress={() => navigation.goBack()}
                     />
                 </TouchableOpacity>
 

@@ -406,9 +406,9 @@ const Home = ({ navigation }) => {
     const [selectedCategory, setSelectedCategory] = React.useState(null)
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
-
-
+    
     function onSelectCategory(category) {
+        
         //filter restaurant
         let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
 
@@ -480,7 +480,6 @@ const Home = ({ navigation }) => {
             </View>
         )
     }
-
     function renderMainCategories() {
         const renderItem = ({ item }) => {
             return (
