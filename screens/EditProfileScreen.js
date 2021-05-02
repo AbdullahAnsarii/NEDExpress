@@ -134,7 +134,7 @@ const handleUpdate = async() => {
 
   return (
     <View style={styles.container}>
-      <View style={{ marginLeft: -340, marginTop: 15, marginBottom: 10 }}>
+      <View style={{ marginLeft: 10,marginRight:350, marginTop: 5, marginBottom: 10 }}>
         <FontAwesome.Button
           name="arrow-circle-left"
           size={30}
