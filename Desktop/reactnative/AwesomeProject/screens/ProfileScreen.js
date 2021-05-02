@@ -37,7 +37,8 @@ let ProfileScreen = ({ navigation }) => {
 }
   useEffect(()=>{
     fetchUserInfo();
-  },[]) 
+    navigation.addListener("focus", () => setLoading(!loading));
+  },[navigation, loading]) 
     return(
         <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <ScrollView
