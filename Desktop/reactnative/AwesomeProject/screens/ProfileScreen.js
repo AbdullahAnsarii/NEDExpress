@@ -12,7 +12,6 @@ import { windowHeight, windowWidth } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 import firestore from '@react-native-firebase/firestore';
-//import ImagePicker from 'react-native-image-crop-picker';
 
 let ProfileScreen = ({ navigation }) => {
   const [profile, setProfile] = useState(null);
@@ -21,7 +20,6 @@ let ProfileScreen = ({ navigation }) => {
   const ID = user.uid;
   const fetchUserInfo = async() => {
     try{
-        const list = [];
         await firestore()
         .collection("users")
         .doc(ID)

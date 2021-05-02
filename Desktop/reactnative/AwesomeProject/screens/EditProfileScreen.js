@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   ImageBackground,
-  TextInput,
   StyleSheet,
   Alert
 } from 'react-native';
-import { icons, COLORS, SIZES, FONTS } from '../constants';
+import { SIZES, FONTS } from '../constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
-
 import ImagePicker from 'react-native-image-crop-picker';
+import {AuthContext} from '../navigation/AuthProvider';
+import firestore from '@react-native-firebase/firestore';
+//import storage from '@react-native-firebase/storage';
 
 const EditProfileScreen = ({ navigation }) => {
-  const [name, setName] = useState();
-  const [department, setDepartment] = useState();
-  const [rollno, setRollno] = useState();
-  const [email, setEmail] = useState();
-  const [contactno, setContactno] = useState();
   const [image, setImage] = useState('https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg');
+  const [uploading, setUploading] = useState(false);
+  const [transferred, setTransferred] = useState(0);
+  const {user, logout} = useContext(AuthContext);
+  const [profile, setProfile] = useState(null);
+  const ID = user.uid;
   const bs = React.createRef();
   const fall = new Animated.Value(1);
 
@@ -41,6 +41,53 @@ const EditProfileScreen = ({ navigation }) => {
   //     bs.current.snapTo(1);
   //   });
   // }
+  const fetchUserInfo = async() => {
+    try{
+        const currenUser = await firestore()
+        .collection("users")
+        .doc(ID)
+        .get()
+        .then((documentSnapshot)=>{
+          if(documentSnapshot.exists){
+            console.log("User data:",documentSnapshot.data());
+            setProfile(documentSnapshot.data());
+          }
+        }                 
+          )
+      }catch(e){
+          console.log(e);
+      }
+}
+useEffect(()=>{
+  fetchUserInfo();
+},[]) 
+const handleUpdate = async() => {
+  // let imgUrl = await uploadImage();
+
+  // if( imgUrl == null && userData.userImg ) {
+  //   imgUrl = userData.userImg;
+  // }
+
+  firestore()
+  .collection('users')
+  .doc(ID)
+  .update({
+    Name: profile.Name,
+    Email: profile.Email,
+    RollNo: profile.RollNo,
+    Department: profile.Department,
+    ContactNo: profile.ContactNo,
+    //userImg: imgUrl,
+  })
+  .then(() => {
+    console.log('User Updated!');
+    Alert.alert(
+      'NED Express',
+      'Your profile has been updated successfully.'
+    );
+  })
+}
+
 
   const choosePhotoFromLibrary = () => {
     ImagePicker.openPicker({
@@ -51,8 +98,8 @@ const EditProfileScreen = ({ navigation }) => {
     }).then(image => {
       bs.current.snapTo(1)
       console.log(image);
-      setImage(image.path)
-    })
+      setImage(image.path);
+    }).catch((err) => { console.log("photoupload catch" + err.toString()) });
   }
 
   const renderInner = () => (
@@ -150,18 +197,18 @@ const EditProfileScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
         <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>
-          {name}
+        {profile ? profile.Name || 'Loading..' : 'Loading..'}
           </Text>
         <FormInput
-          labelValue={name}
-          onChangeText={(userName) => setName(userName)}
-          placeholderText="Name "
+          placeholder="Name "
+          labelValue={profile ? profile.Name : ''}
           iconType="person-outline"
           autoCorrect={false}
+          onChangeText={(txt) => setProfile({...profile, Name: txt})}
         />
         <FormInput
-          labelValue={email}
-          onChangeText={(userEmail) => setEmail(userEmail)}
+          labelValue={profile ? profile.Email : ''}
+          onChangeText={(txt) => setProfile({...profile, Email: txt})}
           placeholderText="Email     "
           iconType="at"
           keyboardType="email-address"
@@ -169,23 +216,23 @@ const EditProfileScreen = ({ navigation }) => {
           autoCorrect={false}
         />
         <FormInput
-          labelValue={contactno}
-          onChangeText={(userContactno) => setContactno(userContactno)}
+          labelValue={profile ? profile.ContactNo : ''}
+          onChangeText={(txt) => setProfile({...profile, Contact: txt})}
           placeholderText="Contact no.     "
           iconType="call-outline"
           keyboardType="numeric"
           autoCorrect={false}
         />
         <FormInput
-          labelValue={rollno}
-          onChangeText={(userRollno) => setRollno(userRollno)}
+          labelValue={profile ? profile.RollNo : ''}
+          onChangeText={(txt) => setProfile({...profile, RollNo: txt})}
           placeholderText="Roll no. (CS-XXXXX).   "
           iconType="card-outline"
           autoCorrect={false}
         />
         <FormInput
-          labelValue={department}
-          onChangeText={(userDepartment) => setDepartment(userDepartment)}
+          labelValue={profile ? profile.Department : ''}
+          onChangeText={(txt) => setProfile({...profile, Department: txt})}
           placeholderText="Department"
           iconType="book-outline"
           autoCorrect={false}
@@ -193,7 +240,7 @@ const EditProfileScreen = ({ navigation }) => {
       </Animated.View>
       <FormButton
         buttonTitle="Submit"
-      //onPress={() => register( name,email, password,rollno, department, contactno)}
+      onPress={() => handleUpdate()}
       />
     </View>
   );
