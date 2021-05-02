@@ -17,7 +17,7 @@ import Animated from 'react-native-reanimated';
 import ImagePicker from 'react-native-image-crop-picker';
 import {AuthContext} from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
-//import storage from '@react-native-firebase/storage';
+import storage from '@react-native-firebase/storage';
 
 const EditProfileScreen = ({ navigation }) => {
   const [image, setImage] = useState('https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg');
@@ -43,7 +43,7 @@ const EditProfileScreen = ({ navigation }) => {
   // }
   const fetchUserInfo = async() => {
     try{
-        const currenUser = await firestore()
+        await firestore()
         .collection("users")
         .doc(ID)
         .get()
@@ -73,7 +73,6 @@ const handleUpdate = async() => {
   .doc(ID)
   .update({
     Name: profile.Name,
-    Email: profile.Email,
     RollNo: profile.RollNo,
     Department: profile.Department,
     ContactNo: profile.ContactNo,
@@ -83,7 +82,7 @@ const handleUpdate = async() => {
     console.log('User Updated!');
     Alert.alert(
       'NED Express',
-      'Your profile has been updated successfully.'
+      '1)Your profile has been updated successfully. \n2)Update Image feature will be available soon.'
     );
   })
 }
@@ -205,15 +204,6 @@ const handleUpdate = async() => {
           iconType="person-outline"
           autoCorrect={false}
           onChangeText={(txt) => setProfile({...profile, Name: txt})}
-        />
-        <FormInput
-          labelValue={profile ? profile.Email : ''}
-          onChangeText={(txt) => setProfile({...profile, Email: txt})}
-          placeholderText="Email     "
-          iconType="at"
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoCorrect={false}
         />
         <FormInput
           labelValue={profile ? profile.ContactNo : ''}
