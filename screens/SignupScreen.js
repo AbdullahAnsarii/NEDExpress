@@ -33,7 +33,7 @@ const SignupScreen = ({ navigation }) => {
     isValidContactNo: true,
     isValidRollNo: true
   });
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState(null);
   const handleValidName = (val) => {
     if( val.trim().length >= 4 ) {
         setUser({
@@ -46,7 +46,7 @@ const SignupScreen = ({ navigation }) => {
             ...user,
             isValidName: false
         });
-        setErrors(false)
+        setErrors(null)
     }
 }
 const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -56,13 +56,13 @@ const handleValidEmail = (val) => {
           ...user,
           isValidEmail: true
       });
-      setErrors(true)
+      setErrors(null)
   } else {
       setUser({
           ...user,
           isValidEmail: false
       });
-      setErrors(false)
+      setErrors(true)
   }
 }
 const handleValidContactNo = (val) => {
@@ -71,13 +71,13 @@ const handleValidContactNo = (val) => {
           ...user,
           isValidContactNo: true
       });
-      setErrors(true)
+      setErrors(null)
   } else {
       setUser({
           ...user,
           isValidContactNo: false
       });
-      setErrors(false)
+      setErrors(true)
   }
 }
 const handleValidRollNo = (val) => {
@@ -86,13 +86,13 @@ const handleValidRollNo = (val) => {
           ...user,
           isValidRollNo: true
       });
-      setErrors(true)
+      setErrors(null)
   } else {
       setUser({
           ...user,
           isValidRollNo: false
       });
-      setErrors(false)
+      setErrors(true)
   }
 }
 const handleValidPassword = (val) => {
@@ -101,13 +101,13 @@ const handleValidPassword = (val) => {
           ...user,
           isValidPassword: true
       });
-      setErrors(false)
+      setErrors(null)
   } else {
       setUser({
           ...user,
           isValidPassword: false
       });
-      setErrors(false)
+      setErrors(true)
   }
 }
 
@@ -207,7 +207,7 @@ const handleValidPassword = (val) => {
 
       <FormButton
         buttonTitle="Register"
-        onPress={errors ? () => Alert.alert("Invalid Credentials") : () => register(user.name, user.email, user.password, user.rollno, user.department, user.contactno) }
+        onPress={errors ? () => Alert.alert("NED Express", "Please provide valid credential!") : () => register(user.name, user.email, user.password, user.rollno, user.department, user.contactno) }
       />
       <View style={styles.textPrivate}>
         <Text style={{ color: COLORS.darkgray, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily, marginTop: 14 }}>
