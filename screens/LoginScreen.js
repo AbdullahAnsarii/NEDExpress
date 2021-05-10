@@ -16,10 +16,20 @@ import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 
 const LoginScreen = ({navigation}) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  const {login, googleLogin} = useContext(AuthContext);
+  const loginHandle = (email, password) => {
 
-const {login, googleLogin} = useContext(AuthContext);
+    if ( email.length == 0 || password.length == 0 ) {
+        Alert.alert('NED Express', 'Email address or password field cannot be empty.');
+        return;
+    }
+    
+    login(email, password);
+}
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -30,8 +40,8 @@ const {login, googleLogin} = useContext(AuthContext);
       <Text style={styles.text}>WELCOME</Text>
 
       <FormInput
-        labelValue={email}
-        onChangeText={(userEmail) => setEmail(userEmail)}
+        labelValue={user.email}
+        onChangeText={(userEmail) => setUser({ ...user, email: userEmail })}
         placeholderText="Email"
         iconType="at"
         keyboardType="email-address"
@@ -39,8 +49,8 @@ const {login, googleLogin} = useContext(AuthContext);
         autoCorrect={false}
       />
       <FormInput
-        labelValue={password}
-        onChangeText={(userPassword) => setPassword(userPassword)}
+        labelValue={user.password}
+        onChangeText={(userPassword) => setUser({ ...user, password: userPassword })}
         placeholderText="Password   "
         autoCapitalize="none"
         iconType="lock-closed-outline"
@@ -49,7 +59,7 @@ const {login, googleLogin} = useContext(AuthContext);
 
       <FormButton 
         buttonTitle="Login"
-        onPress={() => login(email, password)}
+        onPress={() => loginHandle(user.email, user.password)}
       />
       <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
       {Platform.OS === 'android' ? (
