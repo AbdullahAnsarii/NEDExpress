@@ -28,7 +28,6 @@ const sarawak_laksa = require("../assets/images/sarawak-laksa.jpg");
 const sushi = require("../assets/images/sushi.jpg");
 const teh_c_peng = require("../assets/images/teh-c-peng.jpg");
 const tomato_pasta = require("../assets/images/tomato-pasta.jpg");
-const image = require("../assets/images/image.jpg");
 const club = require("../assets/images/club.jpg");
 const pepsi = require("../assets/images/pepsi.jpg");
 const photocopy = require("../assets/images/photocopy.jpg");
@@ -53,7 +52,6 @@ export default {
     printc,
     mech,
     qorma,
-    image,
     club,
     pepsi,
     photocopy,

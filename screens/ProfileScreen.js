@@ -67,6 +67,7 @@ let ProfileScreen = ({ navigation }) => {
         <Text style={styles.userDetail}>Roll No: {profile ? profile.RollNo || '---' : 'Loading..'}</Text>
         <Text style={styles.userDetail}>Email: {profile ? profile.Email || '---' : 'Loading..'}</Text>
         <Text style={styles.userDetail}>Contact No: {profile ? profile.ContactNo || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}>Verified ID: {profile ? profile.Verified || "---" : 'Loading..'}</Text>
         </View>
         </ScrollView>
         </SafeAreaView>
