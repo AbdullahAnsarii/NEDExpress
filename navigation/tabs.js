@@ -135,8 +135,8 @@ const Tabs = () => {
                             source={icons.cutlery}
                             resizeMode="contain"
                             style={{
-                                width: 25,
-                                height: 25,
+                                width: 45,
+                                height: 45,
                                 tintColor: focused ? COLORS.primary : COLORS.secondary
                             }}
                         />

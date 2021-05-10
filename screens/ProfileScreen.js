@@ -49,7 +49,7 @@ let ProfileScreen = ({ navigation }) => {
           style={styles.userImg}
           source={{uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
         />
-        <Text style={styles.userName}>{profile ? profile.Name || 'Loading..' : 'Loading..'}</Text>
+        <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}</Text>
         {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
         <Text style={styles.aboutUser}>
         add a bio
