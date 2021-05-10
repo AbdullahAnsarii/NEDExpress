@@ -14,7 +14,7 @@ const FormInput = ({labelValue, placeholderText, iconType, ...rest}) => {
       </View>
       <TextInput
         value={labelValue}
-        style={{ color: COLORS.black, fontSize: 12, fontFamily: FONTS.body1.fontFamily }}
+        style={{ color: COLORS.black, fontSize: 15, fontFamily: FONTS.body1.fontFamily }}
         numberOfLines={1}
         placeholder={placeholderText}
         placeholderTextColor={COLORS.darkgray}
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     borderWidth: 1,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#fff',
   },
   iconStyle: {

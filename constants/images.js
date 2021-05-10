@@ -45,8 +45,10 @@ const qorma = require("../assets/images/qorma.jpg");
 const mech = require("../assets/images/mech.jpg");
 const printb = require("../assets/images/printerb.jpg");
 const printc = require("../assets/images/printerc.jpg");
+const imagena = require("../assets/images/imagena.jpg");
 
 export default {
+    imagena,
     printb,
     printc,
     mech,

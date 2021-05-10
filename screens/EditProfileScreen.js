@@ -134,7 +134,7 @@ const handleUpdate = async() => {
 
   return (
     <View style={styles.container}>
-      <View style={{ marginLeft: 10,marginRight:350, marginTop: 5, marginBottom: -25 }}>
+      <View style={{ marginLeft: 10,marginRight:345, marginTop: 8, marginBottom: -20 }}>
         <FontAwesome.Button
           name="arrow-circle-left"
           size={30}
@@ -168,9 +168,9 @@ const handleUpdate = async() => {
               alignItems: 'center',
             }}>
             <ImageBackground
-              source={{
-                uri: image,
-              }}
+              source={
+                {uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : image}
+              }
               style={{ height: 150, width: 150, }}
               imageStyle={{ borderRadius: 75 }}>
               <View

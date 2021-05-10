@@ -38,11 +38,10 @@ const {login, googleLogin} = useContext(AuthContext);
         autoCapitalize="none"
         autoCorrect={false}
       />
-
       <FormInput
         labelValue={password}
         onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Password."
+        placeholderText="Password   "
         autoCapitalize="none"
         iconType="lock-closed-outline"
         secureTextEntry={true}
