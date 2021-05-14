@@ -9,10 +9,18 @@ import {
 // import MapViewDirections from "react-native-maps-directions";
 
 // import { COLORS, FONTS, icons, SIZES, GOOGLE_API_KEY } from "../constants"
-const OrderDelivery = () => {
+const OrderDelivery = ({route, navigation}) => {
+    const [restaurant, setRestaurant] = React.useState(null)
+    const [currentLocation, setCurrentLocation] = React.useState("")
+    React.useEffect(() => {
+        let { restaurant, currentLocation } = route.params;
+        setRestaurant(restaurant)
+        setCurrentLocation(currentLocation)
+
+    }, [])
     return(
     <View>
-        <Text>OrderDelivery</Text>
+        <Text>{restaurant?.name}</Text>
     </View>
     )
 }
