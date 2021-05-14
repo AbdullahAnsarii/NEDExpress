@@ -242,7 +242,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    paddingTop: 50
+    paddingTop: 50,
+    backgroundColor: "#fff",
+    paddingBottom: 45
   },
   text: {
     fontFamily: FONTS.h1.fontFamily,

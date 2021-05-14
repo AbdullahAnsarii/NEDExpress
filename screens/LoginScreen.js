@@ -100,8 +100,10 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
     padding: 20,
-    paddingTop: 70
+    paddingTop: 70,
+    paddingBottom: 118
   },
   logo: {
     height: 180,
