@@ -24,7 +24,7 @@ const EditProfileScreen = ({ navigation }) => {
   const [image, setImage] = useState('https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg');
   const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
-  const {user, logout} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
   const ID = user.uid;
   const bs = React.createRef();
