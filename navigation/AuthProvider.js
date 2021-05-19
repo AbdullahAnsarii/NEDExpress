@@ -27,6 +27,10 @@ export const AuthProvider = ({ children }) => {
               case 'auth/invalid-email':
                 Alert.alert("NED Express", `The email address is badly formatted`);
                 break;
+              case 'auth/network-request-failed':
+                Alert.alert("NED Express", "Please make sure you are connected to internet and try again");
+              case 'auth/unknown':
+                Alert.alert("NED Express", "An unknown error occured, please try again")
               default:
                 Alert.alert("NED Express",e.message);
                 break;

@@ -403,18 +403,19 @@ const Home = ({ navigation }) => {
     ]
 
     const [categories, setCategories] = React.useState(categoryData)
-    const [selectedCategory, setSelectedCategory] = React.useState(null)
+    //yahaan se zero hataao bug will be removed
+    const [selectedCategory, setSelectedCategory] = React.useState(categoryData[0])
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
-    
+    //setSelectedCategory()
     function onSelectCategory(category) {
         
         //filter restaurant
         let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
 
         setRestaurants(restaurantList)
-
         setSelectedCategory(category)
+        
     }
 
     function getCategoryNameById(id) {
@@ -577,7 +578,7 @@ const Home = ({ navigation }) => {
                             bottom: 0,
                             height: 50,
                             width: SIZES.width * 0.3,
-                            backgroundColor: "orange",
+                            backgroundColor: COLORS.primary,
                             borderTopRightRadius: SIZES.radius,
                             borderBottomLeftRadius: SIZES.radius,
                             alignItems: 'center',

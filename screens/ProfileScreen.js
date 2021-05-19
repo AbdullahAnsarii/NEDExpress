@@ -5,8 +5,7 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
-  SafeAreaView,
+  ScrollView
 } from 'react-native';
 import { windowHeight, windowWidth } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';
@@ -40,7 +39,7 @@ let ProfileScreen = ({ navigation }) => {
     navigation.addListener("focus", () => setLoading(!loading));
   },[navigation, loading]) 
     return(
-        <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+        
       <ScrollView
         style={styles.container}
         contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
@@ -70,7 +69,7 @@ let ProfileScreen = ({ navigation }) => {
         <Text style={styles.userDetail}>Verified ID: {profile ? profile.Verified || "---" : 'Loading..'}</Text>
         </View>
         </ScrollView>
-        </SafeAreaView>
+        
     )
 }
 export default ProfileScreen;

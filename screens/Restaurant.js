@@ -26,7 +26,7 @@ const Restaurant = ({ route, navigation }) => {
         setCurrentLocation(currentLocation)
     })
 
-    function editOrder(action, menuId, price) {
+    function editOrder(action,name, menuId, price) {
         let orderList = orderItems.slice()
         let item = orderList.filter(a => a.menuId == menuId)
 
@@ -40,12 +40,16 @@ const Restaurant = ({ route, navigation }) => {
                     menuId: menuId,
                     qty: 1,
                     price: price,
-                    total: price
+                    total: price,
+                    name: name
                 }
                 orderList.push(newItem)
             }
-
+            //restaurant?.menu.filter(a => console.log(a[0]))
+            
+            //console.log(orderList.filter(a => console.log(a.total)))
             setOrderItems(orderList)
+            console.log(orderItems)
         } else {
             if (item.length > 0) {
                 if (item[0]?.qty > 0) {
@@ -194,7 +198,7 @@ const Restaurant = ({ route, navigation }) => {
                                             borderTopLeftRadius: 25,
                                             borderBottomLeftRadius: 25
                                         }}
-                                        onPress={() => editOrder("-", item.menuId, item.price)}
+                                        onPress={() => editOrder("-",item.name, item.menuId, item.price)}
                                     >
                                         <Text style={{ ...FONTS.body1 }}>-</Text>
                                     </TouchableOpacity>
@@ -219,7 +223,7 @@ const Restaurant = ({ route, navigation }) => {
                                             borderTopRightRadius: 25,
                                             borderBottomRightRadius: 25
                                         }}
-                                        onPress={() => editOrder("+", item.menuId, item.price)}
+                                        onPress={() => editOrder("+",item.name, item.menuId, item.price)}
                                     >
                                         <Text style={{ ...FONTS.body1 }}>+</Text>
                                     </TouchableOpacity>
@@ -398,7 +402,8 @@ const Restaurant = ({ route, navigation }) => {
                             }}
                             onPress={() => navigation.navigate("OrderDelivery", {
                                 restaurant: restaurant,
-                                currentLocation: currentLocation
+                                currentLocation: currentLocation,
+                                orderItems: orderItems
                             })}
                         >
                             <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Place Order</Text>
