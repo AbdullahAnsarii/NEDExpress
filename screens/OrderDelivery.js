@@ -1,30 +1,106 @@
 import React from "react";
 import {
+    ScrollView,
     View,
     Text,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    StyleSheet
 } from "react-native";
-// import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-// import MapViewDirections from "react-native-maps-directions";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-// import { COLORS, FONTS, icons, SIZES, GOOGLE_API_KEY } from "../constants"
-const OrderDelivery = ({route, navigation}) => {
+import { COLORS, FONTS, icons, SIZES } from "../constants"
+const OrderDelivery = ({ route, navigation }) => {
     const [restaurant, setRestaurant] = React.useState(null)
     const [currentLocation, setCurrentLocation] = React.useState("")
+    const [orderItems, setOrderItems] = React.useState([]);
     React.useEffect(() => {
-        let { restaurant, currentLocation } = route.params;
+        let { restaurant, currentLocation, orderItems } = route.params;
         setRestaurant(restaurant)
         setCurrentLocation(currentLocation)
-
+        setOrderItems(orderItems)
     }, [])
-    return(
-    <View>
-        <Text>{restaurant?.name}</Text>
-    </View>
+    function renderHeader() {
+        return (
+            <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity
+                    style={{
+                        marginTop: -85,
+                        marginLeft: -221,
+                        width: 73,
+                        paddingLeft: SIZES.padding * 2,
+                        justifyContent: 'center'
+                    }}
+                    onPress={() => navigation.goBack()}
+                >
+                    <FontAwesome.Button
+                        name="arrow-circle-left"
+                        size={30}
+                        backgroundColor="orange"
+                        color="#ffff"
+                        onPress={() => navigation.goBack()}
+                    />
+                </TouchableOpacity>
+                </View>
+        )
+    }
+
+    return (
+        <ScrollView contentContainerStyle={styles.container}>
+            {renderHeader()}
+            <Image
+                source={icons.nedexpressicon}
+                style={styles.logo}
+            />
+            <View>
+                <Text style={styles.userName}>Your Order has been placed</Text>
+                <Text>{orderItems[0]?.name}</Text>
+            </View>
+            <View style={styles.userInfoWrapper}>
+                <Text style={styles.userDetail}></Text>
+                <Text style={styles.userDetail}></Text>
+                <Text style={styles.userDetail}></Text>
+                <Text style={styles.userDetail}></Text>
+                <Text style={styles.userDetail}></Text>
+            </View>
+        </ScrollView>
     )
 }
-
+export default OrderDelivery;
+const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        padding: 20,
+        paddingTop: 70,
+        paddingBottom: 605
+    },
+    userInfoWrapper: {
+        flex: 1,
+        marginTop: 40,
+        padding: 10,
+        position: "relative",
+        bottom: 0,
+        height: 350,
+        width: 350,
+        backgroundColor: "#FED9B1",
+        borderTopRightRadius: SIZES.radius,
+        borderTopLeftRadius: SIZES.radius,
+        borderBottomLeftRadius: SIZES.radius,
+        borderBottomRightRadius: SIZES.radius,
+        borderWidth: 5,
+        borderColor: "orange",
+        justifyContent: 'center'
+    },
+    userName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginTop: 10,
+        marginBottom: 10,
+        ...FONTS.h2
+    },
+})
 
 // const OrderDelivery = ({ route, navigation }) => {
 
@@ -396,4 +472,3 @@ const OrderDelivery = ({route, navigation}) => {
 //     )
 // }
 
-export default OrderDelivery;
