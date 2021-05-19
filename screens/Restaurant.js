@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
     StyleSheet,
     SafeAreaView,
@@ -11,6 +11,8 @@ import {
 import { isIphoneX } from 'react-native-iphone-x-helper'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
+import {AuthContext} from '../navigation/AuthProvider';
+import firestore from '@react-native-firebase/firestore';
 
 const Restaurant = ({ route, navigation }) => {
     let total = 0;
@@ -18,6 +20,54 @@ const Restaurant = ({ route, navigation }) => {
     const [restaurant, setRestaurant] = React.useState(null);
     const [currentLocation, setCurrentLocation] = React.useState(null);
     const [orderItems, setOrderItems] = React.useState([]);
+    const {user} = useContext(AuthContext);
+    const [profile, setProfile] = useState(null);
+    const ID = user.uid;
+    const fetchUserInfo = async() => {
+        try{
+            await firestore()
+            .collection("users")
+            .doc(ID)
+            .get()
+            .then((documentSnapshot)=>{
+              if(documentSnapshot.exists){
+                console.log("User data:",documentSnapshot.data());
+                setProfile(documentSnapshot.data());
+              }
+            }                 
+              )
+          }catch(e){
+              console.log(e);
+          }
+    }
+    useEffect(()=>{
+      fetchUserInfo();
+    },[]) 
+    const handleUpdate = async() => {
+      await firestore()
+      .collection('orders')
+      .doc(profile.Name)
+      .set({
+        Name: profile.Name,
+        RollNo: profile.RollNo,
+        Department: profile.Department,
+        ContactNo: profile.ContactNo,
+        Email: profile.Email,
+        Order: orderItems,
+        Total: total,
+        OrderTime: firestore.Timestamp.fromDate(new Date()),
+        OrderStatus: "OrderPlaced"
+        
+      })
+      .then(() => {
+            navigation.navigate("OrderDelivery", {
+            restaurant: restaurant,
+            currentLocation: currentLocation,
+            orderItems: orderItems,
+            total: total,
+        })
+      })
+    }
 
     React.useEffect(() => {
         let { item, currentLocation } = route.params;
@@ -398,12 +448,7 @@ const Restaurant = ({ route, navigation }) => {
                                 alignItems: 'center',
                                 borderRadius: SIZES.radius
                             }}
-                            onPress={() => navigation.navigate("OrderDelivery", {
-                                restaurant: restaurant,
-                                currentLocation: currentLocation,
-                                orderItems: orderItems,
-                                total: total,
-                            })}
+                            onPress={()=>handleUpdate()}
                         >
                             <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Place Order</Text>
                         </TouchableOpacity>

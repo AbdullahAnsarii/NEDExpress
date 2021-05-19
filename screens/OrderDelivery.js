@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {
     ScrollView,
     View,
@@ -8,13 +8,38 @@ import {
     StyleSheet
 } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import {AuthContext} from '../navigation/AuthProvider';
 import { COLORS, FONTS, icons, SIZES } from "../constants"
+import firestore from '@react-native-firebase/firestore';
 const OrderDelivery = ({ route, navigation }) => {
-    const [restaurant, setRestaurant] = React.useState(null)
-    const [total, setTotal] = React.useState(null)
-    const [orderItems, setOrderItems] = React.useState([]);
-    React.useEffect(() => {
+    const {user} = useContext(AuthContext);
+    const [profile, setProfile] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [restaurant, setRestaurant] = useState(null)
+    const [total, setTotal] = useState(null)
+    const [orderItems, setOrderItems] = useState([]);
+    const fetchUserInfo = async() => {
+        try{
+            await firestore()
+            .collection("users")
+            .doc(user.uid)
+            .get()
+            .then((documentSnapshot)=>{
+              if(documentSnapshot.exists){
+                console.log("User data",documentSnapshot.data());
+                setProfile(documentSnapshot.data());
+              }
+            }                 
+              )
+          }catch(e){
+              console.log(e);
+          }
+    }
+        
+      useEffect(()=>{
+        fetchUserInfo();
+      },[ loading]) 
+    useEffect(() => {
         let { restaurant, orderItems, total } = route.params;
         setRestaurant(restaurant)
         setTotal(total)
@@ -62,7 +87,8 @@ const OrderDelivery = ({ route, navigation }) => {
                 style={styles.logo}
             />
             <View>
-                <Text style={styles.userName}>Your Order has been placed at {restaurant?.name}</Text>
+                
+                <Text style={styles.userName}>{profile ? profile.Name|| '---' : 'Loading..'}, your order has been placed at {restaurant?.name}</Text>
             </View>
             {orderedItem()}
             <View style={styles.totalInfoWrapper}>
@@ -122,7 +148,6 @@ const styles = StyleSheet.create({
     },
     userName: {
         textAlign: "center",
-        fontSize: 18,
         fontWeight: 'bold',
         marginTop: 10,
         marginBottom: 10,

@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     position: "relative",
     bottom: 0,
-    height: 76,
+    height: 70,
     width: 350,
     backgroundColor: "#FED9B1",
     borderTopRightRadius: SIZES.radius,
