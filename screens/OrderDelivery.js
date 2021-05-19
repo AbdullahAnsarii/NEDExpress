@@ -44,7 +44,12 @@ const OrderDelivery = ({ route, navigation }) => {
                 </View>
         )
     }
-
+    function testFunc(){
+        return orderItems.map((data) => {
+            return(<Text style={styles.userDetail}>{data?.name} : {data?.price}</Text>)
+        })
+        
+    }
     return (
         <ScrollView contentContainerStyle={styles.container}>
             {renderHeader()}
@@ -54,14 +59,9 @@ const OrderDelivery = ({ route, navigation }) => {
             />
             <View>
                 <Text style={styles.userName}>Your Order has been placed</Text>
-                <Text>{orderItems[0]?.name}</Text>
             </View>
             <View style={styles.userInfoWrapper}>
-                <Text style={styles.userDetail}></Text>
-                <Text style={styles.userDetail}></Text>
-                <Text style={styles.userDetail}></Text>
-                <Text style={styles.userDetail}></Text>
-                <Text style={styles.userDetail}></Text>
+            {testFunc()}
             </View>
         </ScrollView>
     )
@@ -79,10 +79,10 @@ const styles = StyleSheet.create({
     userInfoWrapper: {
         flex: 1,
         marginTop: 40,
-        padding: 10,
+        padding: 20,
         position: "relative",
         bottom: 0,
-        height: 350,
+        height: 360,
         width: 350,
         backgroundColor: "#FED9B1",
         borderTopRightRadius: SIZES.radius,
@@ -100,6 +100,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         ...FONTS.h2
     },
+    userDetail: {
+        fontWeight: "bold",
+        marginTop: 10,
+        marginBottom: 0,
+        textAlign: "left",
+        color: "black",
+        ...FONTS.h3
+      },
 })
 
 // const OrderDelivery = ({ route, navigation }) => {

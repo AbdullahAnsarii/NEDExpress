@@ -49,10 +49,6 @@ let ProfileScreen = ({ navigation }) => {
           source={{uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
         />
         <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}</Text>
-        {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
-        <Text style={styles.aboutUser}>
-        add a bio
-        </Text>
         <View style={styles.userBtnWrapper}>
             <TouchableOpacity style={styles.userBtn} onPress={()=>{navigation.navigate("EditProfileScreen");}}>
                 <Text style={styles.userBtnTxt}>Edit Profile</Text>
@@ -63,9 +59,17 @@ let ProfileScreen = ({ navigation }) => {
         </View>
         <View style={styles.userInfoWrapper}>
         <Text style={styles.userDetail}>Department: {profile ? profile.Department || '---' : 'Loading..'}</Text>
+        </View>
+        <View style={styles.userInfoWrapper}>
         <Text style={styles.userDetail}>Roll No: {profile ? profile.RollNo || '---' : 'Loading..'}</Text>
+        </View>
+        <View style={styles.userInfoWrapper}>
         <Text style={styles.userDetail}>Email: {profile ? profile.Email || '---' : 'Loading..'}</Text>
+        </View>
+        <View style={styles.userInfoWrapper}>
         <Text style={styles.userDetail}>Contact No: {profile ? profile.ContactNo || '---' : 'Loading..'}</Text>
+        </View>
+        <View style={styles.userInfoWrapper}>
         <Text style={styles.userDetail}>Verified ID: {profile ? profile.Verified || "---" : 'Loading..'}</Text>
         </View>
         </ScrollView>
@@ -101,13 +105,6 @@ const styles = StyleSheet.create({
     color: "black",
     ...FONTS.h3
   },
-  aboutUser: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#666',
-    textAlign: 'auto',
-    marginBottom: 10,
-  },
   userBtnWrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -134,18 +131,18 @@ const styles = StyleSheet.create({
   },
   userInfoWrapper: {
     flex:1,
-    marginTop: 40,
-    padding: 10,
+    marginTop: 10,
+    paddingHorizontal: 10,
     position: "relative",
     bottom: 0,
-    height: 250,
+    height: 76,
     width: 350,
     backgroundColor: "#FED9B1",
     borderTopRightRadius: SIZES.radius,
     borderTopLeftRadius: SIZES.radius,
     borderBottomLeftRadius: SIZES.radius,
     borderBottomRightRadius: SIZES.radius,
-    borderWidth: 5,
+    borderWidth: 2,
     borderColor: "orange",
     justifyContent: 'center'
   },
