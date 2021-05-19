@@ -13,7 +13,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 
 const Restaurant = ({ route, navigation }) => {
-
+    let total = 0;
     const scrollX = new Animated.Value(0);
     const [restaurant, setRestaurant] = React.useState(null);
     const [currentLocation, setCurrentLocation] = React.useState(null);
@@ -49,7 +49,6 @@ const Restaurant = ({ route, navigation }) => {
             
             //console.log(orderList.filter(a => console.log(a.total)))
             setOrderItems(orderList)
-            console.log(orderItems)
         } else {
             if (item.length > 0) {
                 if (item[0]?.qty > 0) {
@@ -80,8 +79,7 @@ const Restaurant = ({ route, navigation }) => {
     }
 
     function sumOrder() {
-        let total = orderItems.reduce((a, b) => a + (b.total || 0), 0)
-
+        total = orderItems.reduce((a, b) => a + (b.total || 0), 0)
         return total
     }
 
@@ -239,7 +237,7 @@ const Restaurant = ({ route, navigation }) => {
                                     paddingHorizontal: SIZES.padding * 2
                                 }}
                             >
-                                <Text style={{ marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - PKR {item.price}</Text>
+                                <Text style={{ marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - Rs. {item.price}</Text>
                                 <Text style={{ ...FONTS.body3 }}>{item.description}</Text>
                             </View>
 
@@ -347,7 +345,7 @@ const Restaurant = ({ route, navigation }) => {
                         }}
                     >
                         <Text style={{ ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
-                        <Text style={{ ...FONTS.h3 }}>PKR {sumOrder()}</Text>
+                        <Text style={{ ...FONTS.h3 }}>Rs. {sumOrder()}</Text>
                     </View>
 
                     <View
@@ -403,7 +401,8 @@ const Restaurant = ({ route, navigation }) => {
                             onPress={() => navigation.navigate("OrderDelivery", {
                                 restaurant: restaurant,
                                 currentLocation: currentLocation,
-                                orderItems: orderItems
+                                orderItems: orderItems,
+                                total: total,
                             })}
                         >
                             <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Place Order</Text>
