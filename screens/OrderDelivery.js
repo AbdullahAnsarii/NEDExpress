@@ -88,7 +88,7 @@ const OrderDelivery = ({ route, navigation }) => {
             />
             <View>
 
-                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}</Text>
+                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}. Order time is {profile ? Date(profile.OrderTime) || '---' : 'Loading..'}</Text>
             </View>
             {orderedItem()}
             <View style={styles.totalInfoWrapper}>
