@@ -46,7 +46,7 @@ const Restaurant = ({ route, navigation }) => {
     const handleUpdate = async() => {
       await firestore()
       .collection('orders')
-      .doc(profile.Name)
+      .doc(profile.UserID)
       .set({
         Name: profile.Name,
         RollNo: profile.RollNo,

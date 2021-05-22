@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
     ScrollView,
     View,
@@ -7,38 +7,39 @@ import {
     TouchableOpacity,
     StyleSheet
 } from "react-native";
+import FormButton from '../components/FormButton';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {AuthContext} from '../navigation/AuthProvider';
+import { AuthContext } from '../navigation/AuthProvider';
 import { COLORS, FONTS, icons, SIZES } from "../constants"
 import firestore from '@react-native-firebase/firestore';
 const OrderDelivery = ({ route, navigation }) => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [restaurant, setRestaurant] = useState(null)
     const [total, setTotal] = useState(null)
     const [orderItems, setOrderItems] = useState([]);
-    const fetchUserInfo = async() => {
-        try{
+    const fetchUserInfo = async () => {
+        try {
             await firestore()
-            .collection("users")
-            .doc(user.uid)
-            .get()
-            .then((documentSnapshot)=>{
-              if(documentSnapshot.exists){
-                console.log("User data",documentSnapshot.data());
-                setProfile(documentSnapshot.data());
-              }
-            }                 
-              )
-          }catch(e){
-              console.log(e);
-          }
+                .collection("orders")
+                .doc(user.uid)
+                .get()
+                .then((documentSnapshot) => {
+                    if (documentSnapshot.exists) {
+                        console.log("User data", documentSnapshot.data());
+                        setProfile(documentSnapshot.data());
+                    }
+                }
+                )
+        } catch (e) {
+            console.log(e);
+        }
     }
-        
-      useEffect(()=>{
+
+    useEffect(() => {
         fetchUserInfo();
-      },[ loading]) 
+    }, [loading])
     useEffect(() => {
         let { restaurant, orderItems, total } = route.params;
         setRestaurant(restaurant)
@@ -56,14 +57,13 @@ const OrderDelivery = ({ route, navigation }) => {
                         paddingLeft: SIZES.padding * 2,
                         justifyContent: 'center'
                     }}
-                    onPress={() => navigation.goBack()}
                 >
                     <FontAwesome.Button
                         name="arrow-circle-left"
                         size={30}
                         backgroundColor="orange"
                         color="#ffff"
-                        onPress={() => navigation.goBack()}
+                        onPress={() => navigation.navigate("Home")}
                     />
                 </TouchableOpacity>
             </View>
@@ -87,13 +87,21 @@ const OrderDelivery = ({ route, navigation }) => {
                 style={styles.logo}
             />
             <View>
-                
-                <Text style={styles.userName}>{profile ? profile.Name|| '---' : 'Loading..'}, your order has been placed at {restaurant?.name}</Text>
+
+                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}</Text>
             </View>
             {orderedItem()}
             <View style={styles.totalInfoWrapper}>
                 <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
             </View>
+            <View style={styles.totalInfoWrapper}>
+                <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Order Status: {profile ? profile.OrderStatus || '---' : 'Loading..'}</Text></Text>
+            </View>
+            <FormButton
+                buttonTitle="Refresh"
+                onPress={ ()=> fetchUserInfo()}
+            />
+
         </ScrollView>
     )
 }

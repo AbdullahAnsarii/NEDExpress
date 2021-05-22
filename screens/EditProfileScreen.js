@@ -16,7 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import ImagePicker from 'react-native-image-crop-picker';
-import {AuthContext} from '../navigation/AuthProvider';
+import { AuthContext } from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 
@@ -24,7 +24,7 @@ const EditProfileScreen = ({ navigation }) => {
   const [image, setImage] = useState('https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg');
   const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
   const ID = user.uid;
   const bs = React.createRef();
@@ -42,51 +42,51 @@ const EditProfileScreen = ({ navigation }) => {
   //     bs.current.snapTo(1);
   //   });
   // }
-  const fetchUserInfo = async() => {
-    try{
-        await firestore()
+  const fetchUserInfo = async () => {
+    try {
+      await firestore()
         .collection("users")
         .doc(ID)
         .get()
-        .then((documentSnapshot)=>{
-          if(documentSnapshot.exists){
-            console.log("User data:",documentSnapshot.data());
+        .then((documentSnapshot) => {
+          if (documentSnapshot.exists) {
+            console.log("User data:", documentSnapshot.data());
             setProfile(documentSnapshot.data());
           }
-        }                 
-          )
-      }catch(e){
-          console.log(e);
-      }
-}
-useEffect(()=>{
-  fetchUserInfo();
-},[]) 
-const handleUpdate = async() => {
-  // let imgUrl = await uploadImage();
+        }
+        )
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  useEffect(() => {
+    fetchUserInfo();
+  }, [])
+  const handleUpdate = async () => {
+    // let imgUrl = await uploadImage();
 
-  // if( imgUrl == null && userData.userImg ) {
-  //   imgUrl = userData.userImg;
-  // }
+    // if( imgUrl == null && userData.userImg ) {
+    //   imgUrl = userData.userImg;
+    // }
 
-  firestore()
-  .collection('users')
-  .doc(ID)
-  .update({
-    Name: profile.Name,
-    RollNo: profile.RollNo,
-    Department: profile.Department,
-    ContactNo: profile.ContactNo,
-    //userImg: imgUrl,
-  })
-  .then(() => {
-    console.log('User Updated!');
-    Alert.alert(
-      'NED Express',
-      '1)Your profile has been updated successfully. \n2)Update Image feature will be available soon.'
-    );
-  })
-}
+    firestore()
+      .collection('users')
+      .doc(ID)
+      .update({
+        Name: profile.Name,
+        RollNo: profile.RollNo,
+        Department: profile.Department,
+        ContactNo: profile.ContactNo,
+        //userImg: imgUrl,
+      })
+      .then(() => {
+        console.log('User Updated!');
+        Alert.alert(
+          'NED Express',
+          '1)Your profile has been updated successfully. \n2)Update Image feature will be available soon.'
+        );
+      })
+  }
 
 
   const choosePhotoFromLibrary = () => {
@@ -134,7 +134,7 @@ const handleUpdate = async() => {
 
   return (
     <View style={styles.container}>
-      <View style={{ marginLeft: 10,marginRight:345, marginTop: 8, marginBottom: -20 }}>
+      <View style={{ marginLeft: 10, marginRight: 345, marginTop: 8, marginBottom: -20 }}>
         <FontAwesome.Button
           name="arrow-circle-left"
           size={30}
@@ -152,89 +152,89 @@ const handleUpdate = async() => {
         callbackNode={fall}
         enabledGestureInteraction={true}
       />
-  <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <Animated.View style={{
-        opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
-      }}>
-        <Text style={styles.text}>Edit Profile</Text>
-        <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
-          <View
-            style={{
-              marginLeft: 140,
-              height: 150,
-              width: 100,
-              borderRadius: 15,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <ImageBackground
-              source={
-                {uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : image}
-              }
-              style={{ height: 150, width: 150, }}
-              imageStyle={{ borderRadius: 75 }}>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Icon
-                  name="camera"
-                  size={35}
-                  color="#fff"
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Animated.View style={{
+          opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
+        }}>
+          <Text style={styles.text}>Edit Profile</Text>
+          <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
+            <View
+              style={{
+                marginLeft: 140,
+                height: 150,
+                width: 100,
+                borderRadius: 15,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <ImageBackground
+                source={
+                  { uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : image }
+                }
+                style={{ height: 150, width: 150, }}
+                imageStyle={{ borderRadius: 75 }}>
+                <View
                   style={{
-                    opacity: 0.7,
-                    alignItems: 'center',
+                    flex: 1,
                     justifyContent: 'center',
-                    borderWidth: 1,
-                    borderColor: '#fff',
-                    borderRadius: 10,
-                  }}
-                />
-              </View>
-            </ImageBackground>
-          </View>
-        </TouchableOpacity>
-        <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>
-        {profile ? profile.Name || 'Loading..' : 'Loading..'}
+                    alignItems: 'center',
+                  }}>
+                  <Icon
+                    name="camera"
+                    size={35}
+                    color="#fff"
+                    style={{
+                      opacity: 0.7,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderWidth: 1,
+                      borderColor: '#fff',
+                      borderRadius: 10,
+                    }}
+                  />
+                </View>
+              </ImageBackground>
+            </View>
+          </TouchableOpacity>
+          <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>
+            {profile ? profile.Name || 'Loading..' : 'Loading..'}
           </Text>
-          
-        <FormInput
-          placeholder="Name "
-          labelValue={profile ? profile.Name : ''}
-          iconType="person-outline"
-          autoCorrect={false}
-          onChangeText={(txt) => setProfile({...profile, Name: txt})}
+
+          <FormInput
+            placeholder="Name "
+            labelValue={profile ? profile.Name : ''}
+            iconType="person-outline"
+            autoCorrect={false}
+            onChangeText={(txt) => setProfile({ ...profile, Name: txt })}
+          />
+          <FormInput
+            labelValue={profile ? profile.ContactNo : ''}
+            onChangeText={(txt) => setProfile({ ...profile, ContactNo: txt })}
+            placeholderText="Contact no.     "
+            iconType="call-outline"
+            keyboardType="numeric"
+            autoCorrect={false}
+          />
+          <FormInput
+            labelValue={profile ? profile.RollNo : ''}
+            onChangeText={(txt) => setProfile({ ...profile, RollNo: txt })}
+            placeholderText="Roll no. (CS-XXXXX).   "
+            iconType="card-outline"
+            autoCorrect={false}
+          />
+          <FormInput
+            labelValue={profile ? profile.Department : ''}
+            onChangeText={(txt) => setProfile({ ...profile, Department: txt })}
+            placeholderText="Department"
+            iconType="book-outline"
+            autoCorrect={false}
+          />
+        </Animated.View>
+
+        <FormButton
+          buttonTitle="Submit"
+          onPress={() => handleUpdate()}
         />
-        <FormInput
-          labelValue={profile ? profile.ContactNo : ''}
-          onChangeText={(txt) => setProfile({...profile, ContactNo: txt})}
-          placeholderText="Contact no.     "
-          iconType="call-outline"
-          keyboardType="numeric"
-          autoCorrect={false}
-        />
-        <FormInput
-          labelValue={profile ? profile.RollNo : ''}
-          onChangeText={(txt) => setProfile({...profile, RollNo: txt})}
-          placeholderText="Roll no. (CS-XXXXX).   "
-          iconType="card-outline"
-          autoCorrect={false}
-        />
-        <FormInput
-          labelValue={profile ? profile.Department : ''}
-          onChangeText={(txt) => setProfile({...profile, Department: txt})}
-          placeholderText="Department"
-          iconType="book-outline"
-          autoCorrect={false}
-        />
-      </Animated.View>
-      
-      <FormButton
-        buttonTitle="Submit"
-      onPress={() => handleUpdate()}
-      />
       </ScrollView>
     </View>
   );
@@ -246,10 +246,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-   
+
   },
   scrollContainer: {
-   justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
     paddingTop: 50
