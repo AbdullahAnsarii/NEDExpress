@@ -1,0 +1,43 @@
+.container{
+    max-width: 600px;
+  }
+  .btn{
+    background: rgb(23, 93, 160);
+    color: white;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .btn:focus{
+    outline: none !important;
+  }
+  .username{
+    font-weight: bold;
+    font-size: larger;
+  }
+  .time{
+    font-size: small;
+    color: gray;
+    font-style: italic;
+  }
+  .list-group-items{
+    border: 2px ridge #ccc;
+  }
+  .update-msg{
+    text-align: center;
+    margin: 20px auto;
+  }
+  .room-identifier{
+    padding: 5px;
+    font-size: 16px;
+    border-width: 0px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 14px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+ }
+  .room-identifier:focus {
+    outline:none;
+ }
