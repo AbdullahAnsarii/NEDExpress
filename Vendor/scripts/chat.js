@@ -1,7 +1,9 @@
 const ID = "TnVGBZWrtVVrEdLdNFBXzFQAtp13";
 class chatRoom {
-    constructor(){
+    constructor(room){
         this.chats = db.collection('orders');
+        this.room = room;
+        this.unsub;
     }
     async addChat(message){
         //let now = new Date();
@@ -17,8 +19,8 @@ class chatRoom {
         return response
     }
     getOrders(callback){
-        db.collection('orders')
-        .where('OrderStatus', '==', 'OrderPlaced')
+        this.unsub = db.collection('orders')
+        .where('OrderStatus', '==', this.room)
         .orderBy("OrderTime")
         .onSnapshot(snapshot =>{
             snapshot.docChanges().forEach(change => {
@@ -28,11 +30,20 @@ class chatRoom {
             })
         })
     }
+    updateRoom(room){
+        this.room = room;
+        console.log("room updated");
+        if(this.unsub){
+            this.unsub();
+        }
+
+    }
+    
 }
-const chatroom = new chatRoom();
-chatroom.getOrders((data)=>{
-    console.log(data)
-})
-chatroom.addChat('Approved')
-.then(()=> console.log("chat added"))
-.catch(err => console.log(err))
+// const chatroom = new chatRoom("OrderPlaced");
+// chatroom.getOrders((data)=>{
+//     console.log(data)
+// })
+// chatroom.addChat('Approved')
+// .then(()=> console.log("chat added"))
+// .catch(err => console.log(err))
