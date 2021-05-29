@@ -18,12 +18,22 @@ body{
     font-size: larger;
   }
   .time{
-    font-size: small;
-    color: gray;
+    font-size: medium;
+    color: rgb(255, 43, 43);
     font-style: italic;
   }
+  .order{
+    background-color: yellow;
+    font-weight: bold;
+  }
   .list-group-items{
-    border: 2px ridge #ccc;
+    background-color: wheat;
+    border: 2px solid rgb(0, 0, 0);
+  }
+  .input-group-append{
+    margin-left: 200px;
+    margin-top: 2px;
+    margin-bottom: 20px;
   }
   .update-msg{
     text-align: center;
