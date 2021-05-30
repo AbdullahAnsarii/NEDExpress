@@ -2,17 +2,6 @@ class UIClass {
     constructor(list) {
         this.list = list
     }
-    // orderItem(order){
-    //     order.map(item => {
-    //         this.list.innerHTML += 
-    //         `
-    //         <li class = "list-group-items">
-    //         <span class="message">${item.name}</span>
-    //         </li>
-    //         `
-    //     })
-    //     //console.log(order)
-    // }
     clear() {
         this.list.innerHTML = '';
     }
@@ -32,7 +21,8 @@ class UIClass {
             <span class="message">Roll No: ${data.RollNo}</span>
         </li>
         <li class = "list-group-items">
-            <span class="order">Order: ${data.Order.map(item => item.name)}</span>
+            <span class="order">Order: ${data.Order.map(item => item.qty)}</span>
+            <span class="order">${data.Order.map(item => item.name)}</span>
         </li>
         <li class = "list-group-items">
             <span class="message">Amount Recievable: Rs. ${data.Total}</span>
@@ -49,8 +39,8 @@ class UIClass {
         <li class = "list-group-items">
             <div class="time">${when}</div>
         </li>
-        <div class="input-group-append">
-            <input type="submit" class="btn" value="            Approve            ">
+        <div class="proceed text-center">
+            <button data-action="proceed" data-objectid=${data.UserID} class="btn" id="OrderPlaced">Proceed</button>
         </div>
         `
         this.list.innerHTML += html;

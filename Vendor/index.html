@@ -10,25 +10,26 @@
     <title>NED Express</title>
 </head>
 
+
 <body>
 
     <!-- container & title -->
     <div class="container my-4">
         <h1 class="my-4 text-center">NED Express</h1>
-        <!-- buttons for chatrooms -->
-        <div class="chat-rooms mb-3 text-center">
-            <button class="btn" id="placed">Placed</button>
-            <button class="btn" id="approved">Approved</button>
-            <button class="btn" id="shipped">Shipped</button>
-            <button class="btn" id="completed">Completed</button>
+        <!-- buttons for orderrooms -->
+        <div class="order-rooms mb-3 text-center">
+            <button class="btn" id="OrderPlaced">Placed</button>
+            <button class="btn" id="Approved">Approved</button>
+            <button class="btn" id="Shipped">Shipped</button>
+            <button class="btn" id="Completed">Completed</button>
         </div>
         <!-- room identifier -->
         <div class="container my-3">
-            <h4 class="my-2 text-center room-identifier">DASHBOARD</h4>
+            <h4 class="my-2 text-center room-identifier">Placed</h4>
         </div>
-        <!-- chat list / window -->
-        <div class="chat-window">
-            <ul class="chat-list list-group"></ul>
+        <!-- order list / window -->
+        <div class="order-window">
+            <ul class="order-list list-group"></ul>
         </div>
     </div>
     <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
@@ -55,7 +56,7 @@
         const db = firebase.firestore();
     </script>
 
-    <script src="scripts/chat.js"></script>
+    <script src="scripts/order.js"></script>
     <script src="scripts/ui.js"></script>
     <script src="scripts/app.js"></script>
 </body>

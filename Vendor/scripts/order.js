@@ -1,30 +1,22 @@
-const ID = "TnVGBZWrtVVrEdLdNFBXzFQAtp13";
-class chatRoom {
+class orderRoom {
     constructor(room){
         this.chats = db.collection('orders');
         this.room = room;
         this.unsub;
     }
-    async addChat(message){
-        //let now = new Date();
-        // let chat = {
-        //     message: message,
-        //     username: this.username,
-        //     room: this.room,
-        //     created_at: firebase.firestore.Timestamp.fromDate(now) 
-        // }
+    async changeOrderStatus(status, ID){
         let response = await this.chats.doc(ID).update({
-            OrderStatus: message
+            OrderStatus: status
         });
         return response
     }
-    getOrders(callback){
-        this.unsub = db.collection('orders')
+    async getOrders(callback){
+        this.unsub = await this.chats
         .where('OrderStatus', '==', this.room)
         .orderBy("OrderTime")
         .onSnapshot(snapshot =>{
             snapshot.docChanges().forEach(change => {
-                if(change.type === "added"){
+                if(change.type === "added" || change.type === "modified"){
                     callback(change.doc.data())
                 }
             })
@@ -40,10 +32,10 @@ class chatRoom {
     }
     
 }
-// const chatroom = new chatRoom("OrderPlaced");
-// chatroom.getOrders((data)=>{
-//     console.log(data)
-// })
-// chatroom.addChat('Approved')
+// const chatroom2 = new chatRoom("OrderPlaced");
+// // chatroom.getOrders((data)=>{
+// //     console.log(data)
+// // })
+// chatroom2.changeOrderStatus('Approved')
 // .then(()=> console.log("chat added"))
 // .catch(err => console.log(err))

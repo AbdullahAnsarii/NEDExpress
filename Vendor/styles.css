@@ -1,5 +1,5 @@
 body{
-  background: #86f3df;
+  background: rgb(250, 168, 92);
 }
 .container{
     max-width: 600px;
@@ -30,8 +30,10 @@ body{
     background-color: wheat;
     border: 2px solid rgb(0, 0, 0);
   }
-  .input-group-append{
-    margin-left: 200px;
+  .order-list{
+    list-style-type:none;
+  }
+  .proceed{
     margin-top: 2px;
     margin-bottom: 20px;
   }
