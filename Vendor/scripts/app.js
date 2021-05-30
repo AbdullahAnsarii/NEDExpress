@@ -22,14 +22,17 @@ orderList.addEventListener("click", function (event) {
     if (event.target.tagName === 'BUTTON') {
       console.log(event.target.dataset.objectid)
       if(orderroom.room === "OrderPlaced"){
-        orderroom.changeOrderStatus("Approved", event.target.dataset.objectid)
+        orderroom.changeOrderStatus("Approved", event.target.dataset.objectid);
+      }
+      else if(orderroom.room === "Approved"){
+        orderroom.changeOrderStatus("Shipped", event.target.dataset.objectid);
+      }
+      else if(orderroom.room === "Shipped"){
+        orderroom.changeOrderStatus("Completed", event.target.dataset.objectid);
+      }
+      else if(orderroom.room === "Completed"){
+        //orderroom.storeOrder(event.target.dataset.objectid, data);
       }
     }
   }
 });
-
-// proceed.addEventListener('click', e => {
-//     if(e.target.tagName === 'BUTTON'){
-//         console.log("proceed")
-//     }
-// })

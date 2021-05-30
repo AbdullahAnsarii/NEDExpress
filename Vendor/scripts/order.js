@@ -10,6 +10,23 @@ class orderRoom {
         });
         return response
     }
+    // async storeOrder(ID, data){
+    //     await firestore()
+    //         .collection('history')
+    //         .doc(ID)
+    //         .set({
+    //             Order: data.Order,
+    //             UserID: data.UserID,
+    //             Name: data.Name,
+    //             RollNo: data.RollNo,
+    //             Department: data.Department,
+    //             ContactNo: data.ContactNo,
+    //             Email: data.Email,
+    //             Total: data.total,
+    //             OrderTime: data.OrderTime,
+
+    //         })
+    // }
     async getOrders(callback){
         this.unsub = await this.chats
         .where('OrderStatus', '==', this.room)
@@ -32,10 +49,3 @@ class orderRoom {
     }
     
 }
-// const chatroom2 = new chatRoom("OrderPlaced");
-// // chatroom.getOrders((data)=>{
-// //     console.log(data)
-// // })
-// chatroom2.changeOrderStatus('Approved')
-// .then(()=> console.log("chat added"))
-// .catch(err => console.log(err))
