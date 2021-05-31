@@ -149,7 +149,7 @@ const Restaurant = ({ route, navigation }) => {
                     <FontAwesome.Button
                         name="arrow-circle-left"
                         size={30}
-                        backgroundColor="orange"
+                        backgroundColor={COLORS.primary}
                         color="#ffff"
                         onPress={() => navigation.goBack()}
                     />
@@ -241,7 +241,7 @@ const Restaurant = ({ route, navigation }) => {
                                     <TouchableOpacity
                                         style={{
                                             width: 50,
-                                            backgroundColor: COLORS.white,
+                                            backgroundColor: COLORS.secondary,
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             borderTopLeftRadius: 25,
@@ -255,7 +255,7 @@ const Restaurant = ({ route, navigation }) => {
                                     <View
                                         style={{
                                             width: 50,
-                                            backgroundColor: COLORS.white,
+                                            backgroundColor: COLORS.secondary,
                                             alignItems: 'center',
                                             justifyContent: 'center'
                                         }}
@@ -266,7 +266,7 @@ const Restaurant = ({ route, navigation }) => {
                                     <TouchableOpacity
                                         style={{
                                             width: 50,
-                                            backgroundColor: COLORS.white,
+                                            backgroundColor: COLORS.secondary,
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                             borderTopRightRadius: 25,
@@ -300,7 +300,7 @@ const Restaurant = ({ route, navigation }) => {
                                 }}
                             >
                                 <Image
-                                    source={icons.fire}
+                                    source={icons.clock}
                                     style={{
                                         width: 20,
                                         height: 22,
@@ -414,7 +414,7 @@ const Restaurant = ({ route, navigation }) => {
                                 style={{
                                     width: 20,
                                     height: 20,
-                                    tintColor: COLORS.darkgray
+                                    tintColor: COLORS.secondary //darkgrey krdo
                                 }}
                             />
                             <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>CIS Department</Text>
@@ -422,11 +422,12 @@ const Restaurant = ({ route, navigation }) => {
 
                         <View style={{ flexDirection: 'row' }}>
                             <Image
-                                source={icons.master_card}
+                                source={icons.delivery_boy}
                                 resizeMode="contain"
                                 style={{
                                     width: 20,
                                     height: 20,
+                                    tintColor: COLORS.secondary
                                 }}
                             />
                             <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>COD</Text>

@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
 
           }
         },
-        googleLogin: async () => {
+        googleSignup: async () => {
           try {
             // Get the users ID token
             const { idToken } = await GoogleSignin.signIn();
@@ -75,6 +75,20 @@ export const AuthProvider = ({ children }) => {
               .catch(error => {
                 console.log('Something went wrong with sign up: ', error);
               });
+          } catch (error) {
+            console.log({ error });
+          }
+        },
+        googleLogin: async () => {
+          try {
+            // Get the users ID token
+            const { idToken } = await GoogleSignin.signIn();
+
+            // Create a Google credential with the token
+            const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+            // Sign-in the user with the credential
+            await auth().signInWithCredential(googleCredential)
           } catch (error) {
             console.log({ error });
           }

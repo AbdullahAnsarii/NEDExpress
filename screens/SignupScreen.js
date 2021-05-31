@@ -110,8 +110,16 @@ const handleValidPassword = (val) => {
       setErrors(true)
   }
 }
+const { register, googleSignup } = useContext(AuthContext);
+const registerHandle = (name, email, password, rollno, department, contactno) => {
 
-  const { register } = useContext(AuthContext);
+  if ( name.length == 0 || email.length == 0 || password.length == 0 || rollno.length == 0 || department.length == 0 || contactno.length == 0 ) {
+      Alert.alert('NED Express', 'You cannot leave any field empty.');
+      return;
+  }
+  
+  register(email, password);
+}
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -207,18 +215,38 @@ const handleValidPassword = (val) => {
 
       <FormButton
         buttonTitle="Register"
-        onPress={errors ? () => Alert.alert("NED Express", "Please provide valid credential!") : () => register(user.name, user.email, user.password, user.rollno, user.department, user.contactno) }
+        onPress={errors ? () => Alert.alert("NED Express", "Please provide valid credential!") : () => registerHandle(user.name, user.email, user.password, user.rollno, user.department, user.contactno) }
       />
       <View style={styles.textPrivate}>
         <Text style={{ color: COLORS.darkgray, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily, marginTop: 14 }}>
           By registering, you confirm that you accept our{' '}
         </Text>
         <TouchableOpacity onPress={() => alert('Terms Clicked!')}>
-          <Text style={{ color: COLORS.orange, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily }}>
+          <Text style={{ color: COLORS.primary, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily }}>
             Terms of service
           </Text>
         </TouchableOpacity>
       </View>
+      <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
+      {Platform.OS === 'android' ? (
+        <View>
+          <SocialButton
+            buttonTitle="Sign Up with Google"
+            btnType="google"
+            color="#de4d41"
+            backgroundColor="#f5e7ea"
+            onPress={() => googleSignup()}
+          />
+          <SocialButton
+            buttonTitle="Sign Up with Facebook"
+            btnType="facebook"
+            color="#4867aa"
+            backgroundColor="#e6eaf4"
+            onPress={() => Alert.alert("NED Express", "This feature will be available soon!")}
+            //onPress={() => fbLogin()}
+          />
+        </View>
+      ) : null}
     </ScrollView>
   );
 };
@@ -247,6 +275,7 @@ const styles = StyleSheet.create({
     paddingBottom: 45
   },
   text: {
+    marginTop: -55,
     fontFamily: FONTS.h1.fontFamily,
     fontSize: 32,
     marginBottom: 10,
@@ -264,5 +293,6 @@ const styles = StyleSheet.create({
   errorMsg: {
     color: '#FF0000',
     fontSize: 14,
+    fontFamily: FONTS.body1.fontFamily
 },
 });

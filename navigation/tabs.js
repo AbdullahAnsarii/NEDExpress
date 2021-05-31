@@ -132,7 +132,7 @@ const Tabs = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.cutlery}
+                            source={icons.home}
                             resizeMode="contain"
                             style={{
                                 width: 45,
