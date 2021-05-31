@@ -137,13 +137,13 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: 70,
     width: 350,
-    backgroundColor: "#FED9B1",
+    backgroundColor: COLORS.secondary,
     borderTopRightRadius: SIZES.radius,
     borderTopLeftRadius: SIZES.radius,
     borderBottomLeftRadius: SIZES.radius,
     borderBottomRightRadius: SIZES.radius,
     borderWidth: 2,
-    borderColor: "orange",
+    borderColor: COLORS.primary,
     justifyContent: 'center'
   },
   userInfoItem: {

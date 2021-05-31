@@ -32,11 +32,6 @@ const Home = ({ navigation }) => {
         {
             id: 2,
             name: "Photocopy",
-            icon: icons.pen,
-        },
-        {
-            id: 3,
-            name: "Library",
             icon: icons.book,
         }
     ]
@@ -53,15 +48,11 @@ const Home = ({ navigation }) => {
             rating: 4.8,
             categories: [1],
             priceRating: affordable,
-            photo: images.burger_restaurant_1,
+            photo: images.staff,
             duration: "30 - 45 min",
             location: {
                 latitude: 1.5347282806345879,
                 longitude: 110.35632207358996,
-            },
-            courier: {
-                avatar: images.avatar_1,
-                name: "Amy"
             },
             menu: [
                 {
@@ -136,15 +127,11 @@ const Home = ({ navigation }) => {
             rating: 4.5,
             categories: [1],
             priceRating: expensive,
-            photo: images.pizza_restaurant,
+            photo: images.enviro,
             duration: "15 - 20 min",
             location: {
                 latitude: 1.556306570595712,
                 longitude: 110.35504616746915,
-            },
-            courier: {
-                avatar: images.avatar_2,
-                name: "Jackson"
             },
             menu: [
                 {
@@ -240,10 +227,6 @@ const Home = ({ navigation }) => {
                 latitude: 1.5238753474714375,
                 longitude: 110.34261833833622,
             },
-            courier: {
-                avatar: images.avatar_3,
-                name: "James"
-            },
             menu: [
                 {
                     menuId: 2,
@@ -332,15 +315,11 @@ const Home = ({ navigation }) => {
             rating: 4.8,
             categories: [2],
             priceRating: affordable,
-            photo: images.japanese_restaurant,
+            photo: images.nizami,
             duration: "10 - 15 min",
             location: {
                 latitude: 1.5578068150528928,
                 longitude: 110.35482523764315,
-            },
-            courier: {
-                avatar: images.avatar_4,
-                name: "Ahmad"
             },
             menu: [
                 {
@@ -360,15 +339,11 @@ const Home = ({ navigation }) => {
             rating: 4.9,
             categories: [2],
             priceRating: affordable,
-            photo: images.kek_lapis_shop,
+            photo: images.alips,
             duration: "35 - 40 min",
             location: {
                 latitude: 1.5573478487252896,
                 longitude: 110.35568783282145,
-            },
-            courier: {
-                avatar: images.avatar_1,
-                name: "Jessie"
             },
             menu: [
                 {
@@ -567,7 +542,7 @@ const Home = ({ navigation }) => {
                         resizeMode="cover"
                         style={{
                             width: "100%",
-                            height: 200,
+                            height: 220,
                             borderRadius: SIZES.radius
                         }}
                     />
@@ -578,7 +553,7 @@ const Home = ({ navigation }) => {
                             bottom: 0,
                             height: 50,
                             width: SIZES.width * 0.3,
-                            backgroundColor: COLORS.primary,
+                            backgroundColor: COLORS.secondary,
                             borderTopRightRadius: SIZES.radius,
                             borderBottomLeftRadius: SIZES.radius,
                             alignItems: 'center',
@@ -605,7 +580,7 @@ const Home = ({ navigation }) => {
                         style={{
                             height: 20,
                             width: 20,
-                            tintColor: COLORS.primary,
+                            tintColor: COLORS.secondary,
                             marginRight: 10
                         }}
                     />

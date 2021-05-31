@@ -8,7 +8,7 @@ import {
   Alert,
   ScrollView
 } from 'react-native';
-import { SIZES, FONTS } from '../constants';
+import { SIZES, FONTS, COLORS } from '../constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -138,7 +138,7 @@ const EditProfileScreen = ({ navigation }) => {
         <FontAwesome.Button
           name="arrow-circle-left"
           size={30}
-          backgroundColor="orange"
+          backgroundColor={COLORS.primary}
           color="#ffff"
           onPress={() => navigation.goBack()}
         />

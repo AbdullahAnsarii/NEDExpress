@@ -65,20 +65,19 @@ const LoginScreen = ({navigation}) => {
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
+            buttonTitle="Sign In with Google"
+            btnType="google"
+            color="#de4d41"
+            backgroundColor="#f5e7ea"
+            onPress={() => googleLogin()}
+          />
+          <SocialButton
             buttonTitle="Sign In with Facebook"
             btnType="facebook"
             color="#4867aa"
             backgroundColor="#e6eaf4"
             onPress={() => Alert.alert("NED Express", "This feature will be available soon!")}
             //onPress={() => fbLogin()}
-          />
-
-          <SocialButton
-            buttonTitle="Sign In with Google"
-            btnType="google"
-            color="#de4d41"
-            backgroundColor="#f5e7ea"
-            onPress={() => googleLogin()}
           />
         </View>
       ) : null}

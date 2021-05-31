@@ -61,7 +61,7 @@ const OrderDelivery = ({ route, navigation }) => {
                     <FontAwesome.Button
                         name="arrow-circle-left"
                         size={30}
-                        backgroundColor="orange"
+                        backgroundColor={COLORS.primary}
                         color="#ffff"
                         onPress={() => navigation.navigate("Home")}
                     />
@@ -128,13 +128,13 @@ const styles = StyleSheet.create({
         bottom: 0,
         height: 60,
         width: 350,
-        backgroundColor: "#FED9B1",
+        backgroundColor: COLORS.secondary,
         borderTopRightRadius: SIZES.radius,
         borderTopLeftRadius: SIZES.radius,
         borderBottomLeftRadius: SIZES.radius,
         borderBottomRightRadius: SIZES.radius,
         borderWidth: 2,
-        borderColor: "orange",
+        borderColor: COLORS.primary,
         justifyContent: 'center'
     },
     totalInfoWrapper: {
