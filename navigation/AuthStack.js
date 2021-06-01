@@ -9,6 +9,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 //import AsyncStorage from '@react-native-community/async-storage';
 import { GoogleSignin } from '@react-native-community/google-signin';
+import { COLORS } from '../constants';
 
 const Stack = createStackNavigator();
 
@@ -67,7 +68,7 @@ let routeName;
               <FontAwesome.Button 
                 name="arrow-circle-left"
                 size={30}
-                backgroundColor="orange"
+                backgroundColor={COLORS.primary}
                 color="#ffff"
                 onPress={() => navigation.navigate('Login')}
               />

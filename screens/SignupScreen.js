@@ -6,15 +6,14 @@ import {
   Platform,
   StyleSheet,
   ScrollView,
-  Picker,
   Alert
 } from 'react-native';
+import {Picker} from '@react-native-picker/picker';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import { AuthContext } from '../navigation/AuthProvider';
-import { icons, COLORS, SIZES, FONTS } from '../constants';
-import DropDownPicker from 'react-native-dropdown-picker';
+import { COLORS, SIZES, FONTS } from '../constants';
 import {windowHeight} from '../utils/Dimensions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -117,7 +116,7 @@ const registerHandle = (name, email, password, rollno, department, contactno) =>
       return;
   }
   
-  register(email, password);
+  register(name, email, password, rollno, department, contactno);
 }
 
   return (
@@ -178,16 +177,18 @@ const registerHandle = (name, email, password, rollno, department, contactno) =>
         <Ionicons name={"book-outline"} size={25} color="#666" />
       </View>
       <Picker
-        selectedValue={"Department"}
-        style={{ height: 30, width: 320,color: COLORS.darkgray,   }}
-        onValueChange={(itemValue, itemIndex) => setUser({ ...user, department: itemValue })}
+        //selectedValue={"Department"}
+        style={{ height: 20, width: 320, color: COLORS.darkgray}}
+        onValueChange={(itemValue) => setUser({ ...user, department: itemValue })}
+        dropdownIconColor={COLORS.secondary}
+        mode={"dropdown"}
         
       >
-        <Picker.Item label="Department" value="" />
-        <Picker.Item label="Computer Systems Engineering" value="CIS" />
-        <Picker.Item label="Electrical Engineering" value="EE" />
-        <Picker.Item label="Mechanical Engineering" value="ME" />
-        <Picker.Item label="Civil Engineering" value="CE" />
+        <Picker.name label="Department" value="" style={{color: COLORS.secondary}}/>
+        <Picker.Item label="Computer Systems Engineering" value="CIS"style={{color: COLORS.black}} />
+        <Picker.Item label="Electrical Engineering" value="EE"style={{color: COLORS.black}} />
+        <Picker.Item label="Mechanical Engineering" value="ME"style={{color: COLORS.black}} />
+        <Picker.Item label="Civil Engineering" value="CE"style={{color: COLORS.black}} />
       </Picker>
       </View>
       <FormInput
