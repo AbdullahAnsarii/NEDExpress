@@ -46,7 +46,7 @@ let ProfileScreen = ({ navigation }) => {
         showsVerticalScrollIndicator={false}>
         <Image
           style={styles.userImg}
-          source={{uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
+          source={{uri: profile ? profile.UserImg || 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/blank-user.png' : 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/user-default.png'}}
         />
         <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}</Text>
         <View style={styles.userBtnWrapper}>
