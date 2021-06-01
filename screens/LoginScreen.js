@@ -71,14 +71,6 @@ const LoginScreen = ({navigation}) => {
             backgroundColor="#f5e7ea"
             onPress={() => googleLogin()}
           />
-          <SocialButton
-            buttonTitle="Sign In with Facebook"
-            btnType="facebook"
-            color="#4867aa"
-            backgroundColor="#e6eaf4"
-            onPress={() => Alert.alert("NED Express", "This feature will be available soon!")}
-            //onPress={() => fbLogin()}
-          />
         </View>
       ) : null}
 
@@ -102,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
     paddingTop: 70,
-    paddingBottom: 118
+    paddingBottom: 184
   },
   logo: {
     height: 180,

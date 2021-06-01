@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Image,
   Platform,
   StyleSheet,
   ScrollView,
@@ -16,7 +15,7 @@ import SocialButton from '../components/SocialButton';
 import { AuthContext } from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS } from '../constants';
 import DropDownPicker from 'react-native-dropdown-picker';
-import {windowHeight, windowWidth} from '../utils/Dimensions';
+import {windowHeight} from '../utils/Dimensions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const SignupScreen = ({ navigation }) => {
@@ -218,7 +217,7 @@ const registerHandle = (name, email, password, rollno, department, contactno) =>
         onPress={errors ? () => Alert.alert("NED Express", "Please provide valid credential!") : () => registerHandle(user.name, user.email, user.password, user.rollno, user.department, user.contactno) }
       />
       <View style={styles.textPrivate}>
-        <Text style={{ color: COLORS.darkgray, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily, marginTop: 14 }}>
+        <Text style={{ color: COLORS.darkgray, fontSize: 13.5, fontFamily: FONTS.body1.fontFamily, marginTop: 3 }}>
           By registering, you confirm that you accept our{' '}
         </Text>
         <TouchableOpacity onPress={() => alert('Terms Clicked!')}>
@@ -227,7 +226,7 @@ const registerHandle = (name, email, password, rollno, department, contactno) =>
           </Text>
         </TouchableOpacity>
       </View>
-      <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
+      <Text style={{color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
@@ -236,14 +235,6 @@ const registerHandle = (name, email, password, rollno, department, contactno) =>
             color="#de4d41"
             backgroundColor="#f5e7ea"
             onPress={() => googleSignup()}
-          />
-          <SocialButton
-            buttonTitle="Sign Up with Facebook"
-            btnType="facebook"
-            color="#4867aa"
-            backgroundColor="#e6eaf4"
-            onPress={() => Alert.alert("NED Express", "This feature will be available soon!")}
-            //onPress={() => fbLogin()}
           />
         </View>
       ) : null}
@@ -272,7 +263,7 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 50,
     backgroundColor: "#fff",
-    paddingBottom: 45
+    paddingBottom: 23
   },
   text: {
     marginTop: -55,

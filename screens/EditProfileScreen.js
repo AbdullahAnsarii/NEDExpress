@@ -21,9 +21,7 @@ import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 
 const EditProfileScreen = ({ navigation }) => {
-  const [image, setImage] = useState('https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg');
-  const [uploading, setUploading] = useState(false);
-  const [transferred, setTransferred] = useState(0);
+  const [image, setImage] = useState('https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/user-default.png');
   const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
   const ID = user.uid;
@@ -169,7 +167,7 @@ const EditProfileScreen = ({ navigation }) => {
               }}>
               <ImageBackground
                 source={
-                  { uri: profile ? profile.UserImg || 'https://picsum.photos/200/300' : image }
+                  { uri: profile ? profile.UserImg || 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/blank-user.png' :  image}
                 }
                 style={{ height: 150, width: 150, }}
                 imageStyle={{ borderRadius: 75 }}>
