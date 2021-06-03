@@ -180,7 +180,7 @@ const registerHandle = (name, email, password, rollno, department, contactno) =>
         //selectedValue={"Department"}
         style={{ height: 20, width: 320, color: COLORS.darkgray}}
         onValueChange={(itemValue) => setUser({ ...user, department: itemValue })}
-        dropdownIconColor={COLORS.secondary}
+        dropdownIconColor={COLORS.primary}
         mode={"dropdown"}
         
       >

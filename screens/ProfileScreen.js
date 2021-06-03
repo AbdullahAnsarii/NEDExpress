@@ -70,7 +70,7 @@ let ProfileScreen = ({ navigation }) => {
         <Text style={styles.userDetail}>Contact No: {profile ? profile.ContactNo || '---' : 'Loading..'}</Text>
         </View>
         <View style={styles.userInfoWrapper}>
-        <Text style={styles.userDetail}>Verified ID: {profile ? profile.Verified || "---" : 'Loading..'}</Text>
+        <Text style={styles.userDetail}>Verified ID: {profile ? profile.Verified || "No" : 'Loading..'}</Text>
         </View>
         </ScrollView>
         

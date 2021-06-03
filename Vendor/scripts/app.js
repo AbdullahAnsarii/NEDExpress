@@ -13,7 +13,7 @@ rooms.addEventListener('click', e => {
 });
 
 const uiClass = new UIClass(orderList);
-const orderroom = new orderRoom("OrderPlaced");
+const orderroom = new orderRoom("Placed");
 
 orderroom.getOrders(data => uiClass.render(data));
 
@@ -21,7 +21,7 @@ orderList.addEventListener("click", function (event) {
   if (event.target.dataset.action === "proceed") {
     if (event.target.tagName === 'BUTTON') {
       console.log(event.target.dataset.objectid)
-      if(orderroom.room === "OrderPlaced"){
+      if(orderroom.room === "Placed"){
         orderroom.changeOrderStatus("Approved", event.target.dataset.objectid);
       }
       else if(orderroom.room === "Approved"){

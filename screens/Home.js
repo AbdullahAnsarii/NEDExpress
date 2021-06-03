@@ -507,8 +507,8 @@ const Home = ({ navigation }) => {
 
         return (
             <View style={{ padding: SIZES.padding * 2 }}>
-                <Text style={{ ...FONTS.h1 }}>Main</Text>
-                <Text style={{ ...FONTS.h1 }}>Categories</Text>
+                <Text style={{ ...FONTS.h1 , color: "#051d5f"}}>Main</Text>
+                <Text style={{ ...FONTS.h1 , color: "#051d5f"}}>Categories</Text>
 
                 <FlatList
                     data={categories}
@@ -580,7 +580,7 @@ const Home = ({ navigation }) => {
                         style={{
                             height: 20,
                             width: 20,
-                            tintColor: COLORS.secondary,
+                            tintColor: "#FEBE10",
                             marginRight: 10
                         }}
                     />

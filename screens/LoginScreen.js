@@ -13,7 +13,7 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {AuthContext} from '../navigation/AuthProvider';
-import { icons, COLORS, SIZES, FONTS } from '../constants'
+import { icons, COLORS, SIZES, FONTS, images } from '../constants'
 
 const LoginScreen = ({navigation}) => {
   const [user, setUser] = useState({
@@ -34,8 +34,9 @@ const LoginScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
-        source={icons.nedexpressicon}
+        source={images.nedexpressicon}
         style={styles.logo}
+        resizeMethod={'scale'}
       />
       <Text style={styles.text}>WELCOME</Text>
 
@@ -94,12 +95,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
     paddingTop: 70,
-    paddingBottom: 184
+    paddingBottom: 213
   },
   logo: {
-    height: 180,
-    width: 220,
-    resizeMode: 'cover',
+    width: 300,
+    height: 150,
+    resizeMode: 'stretch',
   },
   text: {
     fontFamily: FONTS.h1.fontFamily,

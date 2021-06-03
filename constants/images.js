@@ -16,9 +16,10 @@ const qorma = require("../assets/images/qorma.jpg");
 const mech = require("../assets/images/mech.jpg");
 const printb = require("../assets/images/printerb.jpg");
 const printc = require("../assets/images/printerc.jpg");
-
+export const nedexpressicon = require("../assets/images/nedexpresslogo.png");
 export default {
     alips,
+    nedexpressicon,
     staff,
     nizami,
     printb,
