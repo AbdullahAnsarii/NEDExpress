@@ -10,7 +10,7 @@ import {
 import FormButton from '../components/FormButton';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { AuthContext } from '../navigation/AuthProvider';
-import { COLORS, FONTS, icons, SIZES } from "../constants"
+import { COLORS, FONTS, icons, images, SIZES } from "../constants"
 import firestore from '@react-native-firebase/firestore';
 const OrderDelivery = ({ route, navigation }) => {
     const { user } = useContext(AuthContext);
@@ -73,36 +73,37 @@ const OrderDelivery = ({ route, navigation }) => {
         return orderItems.map((data) => {
             return (
                 <View style={styles.orderInfoWrapper}>
-                    <Text style={styles.userDetail}>{data?.qty} <Text style={{ fontWeight: "bold", fontSize: 17 }}>X</Text> {data?.name} <Text style={{ fontWeight: "bold", fontSize: 20 }}> : </Text>Rs. {data?.total}</Text>
+                    <Text key={data?.UserID} style={styles.userDetail}>{data?.qty} <Text style={{ fontWeight: "bold", fontSize: 17 }}>X</Text> {data?.name} <Text style={{ fontWeight: "bold", fontSize: 20 }}> : </Text>Rs. {data?.total}</Text>
                 </View>
             )
         })
     }
     return (
-        <ScrollView contentContainerStyle={styles.container}
-            showsVerticalScrollIndicator={true}>
+        <View style={styles.container}>
             {renderHeader()}
             <Image
-                source={icons.nedexpressicon}
+                source={images.nedexpressicon}
                 style={styles.logo}
             />
             <View>
-
-                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}. Order time is {profile ? Date(profile.OrderTime) || '---' : 'Loading..'}</Text>
+                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
             </View>
-            {orderedItem()}
-            <View style={styles.totalInfoWrapper}>
-                <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
-            </View>
-            <View style={styles.totalInfoWrapper}>
-                <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Order Status: {profile ? profile.OrderStatus || '---' : 'Loading..'}</Text></Text>
-            </View>
+            <ScrollView contentContainerStyle={styles.scrollContainer}
+                showsVerticalScrollIndicator={true}
+                >
+                <View style={styles.totalInfoWrapper}>
+                    <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Order Status: {profile ? profile.OrderStatus || '---' : 'Loading..'}</Text></Text>
+                </View>
+                <View style={styles.totalInfoWrapper}>
+                    <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
+                </View>
+                {orderedItem()}
+            </ScrollView>
             <FormButton
                 buttonTitle="Refresh"
-                onPress={ ()=> fetchUserInfo()}
+                onPress={() => fetchUserInfo()}
             />
-
-        </ScrollView>
+        </View>
     )
 }
 export default OrderDelivery;
@@ -113,7 +114,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         padding: 20,
         paddingTop: 70,
-        paddingBottom: 60
+        paddingBottom: 90
+    },
+    scrollContainer: {
+        marginTop: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: "#fff",
+        padding: 5,
+        paddingBottom: 20
     },
     logo: {
         height: 90,
@@ -139,13 +148,13 @@ const styles = StyleSheet.create({
     },
     totalInfoWrapper: {
         flex: 1,
-        marginTop: 20,
+        marginTop: 4,
         paddingHorizontal: 10,
         position: "relative",
         bottom: 0,
         height: 60,
         width: 350,
-        backgroundColor: "#f8ba37",
+        backgroundColor: "#00ffaa",
         borderTopRightRadius: SIZES.radius,
         borderTopLeftRadius: SIZES.radius,
         borderBottomLeftRadius: SIZES.radius,

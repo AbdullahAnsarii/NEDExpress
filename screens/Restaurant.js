@@ -6,7 +6,8 @@ import {
     Text,
     TouchableOpacity,
     Image,
-    Animated
+    Animated,
+    Alert
 } from "react-native";
 import { isIphoneX } from 'react-native-iphone-x-helper'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -57,16 +58,21 @@ const Restaurant = ({ route, navigation }) => {
                 Email: profile.Email,
                 Total: total,
                 OrderTime: firestore.Timestamp.fromDate(new Date()),
-                OrderStatus: "OrderPlaced"
+                OrderStatus: "Placed"
 
             })
             .then(() => {
-                navigation.navigate("OrderDelivery", {
-                    restaurant: restaurant,
-                    currentLocation: currentLocation,
-                    orderItems: orderItems,
-                    total: total,
-                })
+                if (total === 0) {
+                    Alert.alert("NED Express", "Your cart is empty")
+                }
+                else {
+                    navigation.navigate("OrderDelivery", {
+                        restaurant: restaurant,
+                        currentLocation: currentLocation,
+                        orderItems: orderItems,
+                        total: total,
+                    })
+                }
             })
     }
 
@@ -417,7 +423,7 @@ const Restaurant = ({ route, navigation }) => {
                                     tintColor: COLORS.secondary //darkgrey krdo
                                 }}
                             />
-                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>CIS Department</Text>
+                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>{profile ? profile.Department || '---' : 'Loading'} Department</Text>
                         </View>
 
                         <View style={{ flexDirection: 'row' }}>

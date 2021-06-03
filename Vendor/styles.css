@@ -1,5 +1,10 @@
 body{
-  background: rgb(250, 168, 92);
+  background: #FFFFFF;
+}
+.logo{
+  margin-left: 180px;
+  width:200px;
+  height: 150;
 }
 .container{
     max-width: 600px;

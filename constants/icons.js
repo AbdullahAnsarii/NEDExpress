@@ -11,11 +11,12 @@ export const basket = require("../assets/icons/shopping-basket.png");
 export const star = require("../assets/icons/star.png");
 export const user = require("../assets/icons/user.png");
 export const book = require("../assets/icons/book.png");
-export const nedexpressicon = require("../assets/icons/nedexpresslogo.png");
+export const google = require("../assets/icons/google.png");
+
 
 
 export default {
-    nedexpressicon,
+    google,
     book,
     home,
     clock,
