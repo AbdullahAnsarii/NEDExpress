@@ -379,11 +379,7 @@ const Home = ({ navigation }) => {
 
     const [categories, setCategories] = React.useState(categoryData)
     //yahaan se zero hataao bug will be removed
-<<<<<<< HEAD
     const [selectedCategory, setSelectedCategory] = React.useState(categoryData)
-=======
-    const [selectedCategory, setSelectedCategory] = React.useState(categoryData[0])
->>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
     //setSelectedCategory()
