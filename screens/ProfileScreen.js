@@ -5,8 +5,12 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
+<<<<<<< HEAD
   ScrollView,
   Alert
+=======
+  ScrollView
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
 } from 'react-native';
 import { windowHeight, windowWidth } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';

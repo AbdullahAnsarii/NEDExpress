@@ -92,7 +92,11 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+<<<<<<< HEAD
     backgroundColor: '#fdfdfd',
+=======
+    backgroundColor: '#fff',
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
     padding: 20,
     paddingTop: 70,
     paddingBottom: 213

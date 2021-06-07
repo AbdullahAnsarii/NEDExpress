@@ -48,12 +48,20 @@ const EditProfileScreen = ({ navigation }) => {
         .get()
         .then((documentSnapshot) => {
           if (documentSnapshot.exists) {
+<<<<<<< HEAD
+=======
+            console.log("User data:", documentSnapshot.data());
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
             setProfile(documentSnapshot.data());
           }
         }
         )
     } catch (e) {
+<<<<<<< HEAD
       Alert.alert(e);
+=======
+      console.log(e);
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
     }
   }
   useEffect(() => {
@@ -77,6 +85,10 @@ const EditProfileScreen = ({ navigation }) => {
         //userImg: imgUrl,
       })
       .then(() => {
+<<<<<<< HEAD
+=======
+        console.log('User Updated!');
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
         Alert.alert(
           'NED Express',
           '1)Your profile has been updated successfully. \n2)Update Image feature will be available soon.'
@@ -165,7 +177,11 @@ const EditProfileScreen = ({ navigation }) => {
               }}>
               <ImageBackground
                 source={
+<<<<<<< HEAD
                   { uri: profile ? profile.UserImg || image :  image}
+=======
+                  { uri: profile ? profile.UserImg || 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/blank-user.png' :  image}
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
                 }
                 style={{ height: 150, width: 150, }}
                 imageStyle={{ borderRadius: 75 }}>
@@ -192,7 +208,11 @@ const EditProfileScreen = ({ navigation }) => {
               </ImageBackground>
             </View>
           </TouchableOpacity>
+<<<<<<< HEAD
           <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center', color: COLORS.black }}>
+=======
+          <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
             {profile ? profile.Name || 'Loading..' : 'Loading..'}
           </Text>
 

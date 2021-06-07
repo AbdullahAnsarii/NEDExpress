@@ -63,5 +63,8 @@ private.key
 yarn.lock
 node_modules
 firebase_key
+<<<<<<< HEAD
 *.hprof
+=======
+>>>>>>> 448de9a3db609f0a6bce23973ce2fbc979b6f7e9
 >>>>>>> 5f09c2ece3e1a869f00e8e6363d842dba0c474bd
