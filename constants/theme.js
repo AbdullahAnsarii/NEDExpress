@@ -7,7 +7,7 @@ export const COLORS = {
     secondary: "#21de9f",
 
     // colors
-    black: "#1E1F20",
+    black: "#000000",
     white: "#FFFFFF",
     orange: "#FF8C00",
     gray: "#a6a6a6",
@@ -46,7 +46,7 @@ export const SIZES = {
 };
 
 export const FONTS = {
-    largeTitle: { fontFamily: "Roboto-regular", fontSize: SIZES.largeTitle, lineHeight: 55 },
+    largeTitle: { fontFamily: "Roboto-regular", fontSize: SIZES.largeTitle, lineHeight: 55, },
     h1: { fontFamily: "Roboto-Black", fontSize: SIZES.h1, lineHeight: 36 },
     h2: { fontFamily: "Roboto-Bold", fontSize: SIZES.h2, lineHeight: 30 },
     h3: { fontFamily: "Roboto-Bold", fontSize: SIZES.h3, lineHeight: 22 },

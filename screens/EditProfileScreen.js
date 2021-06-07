@@ -48,13 +48,12 @@ const EditProfileScreen = ({ navigation }) => {
         .get()
         .then((documentSnapshot) => {
           if (documentSnapshot.exists) {
-            console.log("User data:", documentSnapshot.data());
             setProfile(documentSnapshot.data());
           }
         }
         )
     } catch (e) {
-      console.log(e);
+      Alert.alert(e);
     }
   }
   useEffect(() => {
@@ -78,7 +77,6 @@ const EditProfileScreen = ({ navigation }) => {
         //userImg: imgUrl,
       })
       .then(() => {
-        console.log('User Updated!');
         Alert.alert(
           'NED Express',
           '1)Your profile has been updated successfully. \n2)Update Image feature will be available soon.'
@@ -95,7 +93,7 @@ const EditProfileScreen = ({ navigation }) => {
       compressImageQuality: 0.7
     }).then(image => {
       bs.current.snapTo(1)
-      console.log(image);
+      // console.log(image);
       setImage(image.path);
     }).catch((err) => { console.log("photoupload catch" + err.toString()) });
   }
@@ -167,7 +165,7 @@ const EditProfileScreen = ({ navigation }) => {
               }}>
               <ImageBackground
                 source={
-                  { uri: profile ? profile.UserImg || 'https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/blank-user.png' :  image}
+                  { uri: profile ? profile.UserImg || image :  image}
                 }
                 style={{ height: 150, width: 150, }}
                 imageStyle={{ borderRadius: 75 }}>
@@ -194,7 +192,7 @@ const EditProfileScreen = ({ navigation }) => {
               </ImageBackground>
             </View>
           </TouchableOpacity>
-          <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>
+          <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center', color: COLORS.black }}>
             {profile ? profile.Name || 'Loading..' : 'Loading..'}
           </Text>
 
@@ -295,6 +293,7 @@ const styles = StyleSheet.create({
   },
   panelTitle: {
     fontSize: SIZES.h2,
+    color: COLORS.black,
     fontFamily: FONTS.h1.fontFamily,
     height: 35,
   },

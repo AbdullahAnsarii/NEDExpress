@@ -32,13 +32,12 @@ const Restaurant = ({ route, navigation }) => {
                 .get()
                 .then((documentSnapshot) => {
                     if (documentSnapshot.exists) {
-                        console.log("User data:", documentSnapshot.data());
                         setProfile(documentSnapshot.data());
                     }
                 }
                 )
         } catch (e) {
-            console.log(e);
+            Alert.alert(e);
         }
     }
     useEffect(() => {
@@ -102,9 +101,6 @@ const Restaurant = ({ route, navigation }) => {
                 }
                 orderList.push(newItem)
             }
-            //restaurant?.menu.filter(a => console.log(a[0]))
-
-            //console.log(orderList.filter(a => console.log(a.total)))
             setOrderItems(orderList)
         } else {
             if (item.length > 0) {
@@ -180,7 +176,7 @@ const Restaurant = ({ route, navigation }) => {
                             backgroundColor: COLORS.lightGray3
                         }}
                     >
-                        <Text style={{ ...FONTS.h3 }}>{restaurant?.name}</Text>
+                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>{restaurant?.name}</Text>
                     </View>
                 </View>
 
@@ -255,7 +251,7 @@ const Restaurant = ({ route, navigation }) => {
                                         }}
                                         onPress={() => editOrder("-", item.name, item.menuId, item.price)}
                                     >
-                                        <Text style={{ ...FONTS.body1 }}>-</Text>
+                                        <Text style={{color: COLORS.white, ...FONTS.body1 }}>-</Text>
                                     </TouchableOpacity>
 
                                     <View
@@ -266,7 +262,7 @@ const Restaurant = ({ route, navigation }) => {
                                             justifyContent: 'center'
                                         }}
                                     >
-                                        <Text style={{ ...FONTS.h2 }}>{getOrderQty(item.menuId)}</Text>
+                                        <Text style={{color: COLORS.white, ...FONTS.h2 }}>{getOrderQty(item.menuId)}</Text>
                                     </View>
 
                                     <TouchableOpacity
@@ -280,7 +276,7 @@ const Restaurant = ({ route, navigation }) => {
                                         }}
                                         onPress={() => editOrder("+", item.name, item.menuId, item.price)}
                                     >
-                                        <Text style={{ ...FONTS.body1 }}>+</Text>
+                                        <Text style={{color: COLORS.white, ...FONTS.body1 }}>+</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -294,8 +290,8 @@ const Restaurant = ({ route, navigation }) => {
                                     paddingHorizontal: SIZES.padding * 2
                                 }}
                             >
-                                <Text style={{ marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - Rs. {item.price}</Text>
-                                <Text style={{ ...FONTS.body3 }}>{item.description}</Text>
+                                <Text style={{color: COLORS.black, marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - Rs. {item.price}</Text>
+                                <Text style={{color: COLORS.black, ...FONTS.body3 }}>{item.description}</Text>
                             </View>
 
                             {/* Calories */}
@@ -401,8 +397,8 @@ const Restaurant = ({ route, navigation }) => {
                             borderBottomWidth: 1
                         }}
                     >
-                        <Text style={{ ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
-                        <Text style={{ ...FONTS.h3 }}>Rs. {sumOrder()}</Text>
+                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
+                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>Rs. {sumOrder()}</Text>
                     </View>
 
                     <View
@@ -423,7 +419,7 @@ const Restaurant = ({ route, navigation }) => {
                                     tintColor: COLORS.secondary //darkgrey krdo
                                 }}
                             />
-                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>{profile ? profile.Department || '---' : 'Loading'} Department</Text>
+                            <Text style={{color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>{profile ? profile.Department || '---' : 'Loading'} Department</Text>
                         </View>
 
                         <View style={{ flexDirection: 'row' }}>
@@ -436,7 +432,7 @@ const Restaurant = ({ route, navigation }) => {
                                     tintColor: COLORS.secondary
                                 }}
                             />
-                            <Text style={{ marginLeft: SIZES.padding, ...FONTS.h4 }}>COD</Text>
+                            <Text style={{color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>COD</Text>
                         </View>
                     </View>
 

@@ -379,7 +379,7 @@ const Home = ({ navigation }) => {
 
     const [categories, setCategories] = React.useState(categoryData)
     //yahaan se zero hataao bug will be removed
-    const [selectedCategory, setSelectedCategory] = React.useState(categoryData[0])
+    const [selectedCategory, setSelectedCategory] = React.useState(categoryData)
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
     //setSelectedCategory()
@@ -433,7 +433,7 @@ const Home = ({ navigation }) => {
                             borderRadius: SIZES.radius
                         }}
                     >
-                        <Text style={{ ...FONTS.h3 }}>{currentLocation.streetName}</Text>
+                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>{currentLocation.streetName}</Text>
                     </View>
                 </View>
 
@@ -566,7 +566,7 @@ const Home = ({ navigation }) => {
                 </View>
 
                 {/* Restaurant Info */}
-                <Text style={{ ...FONTS.body2 }}>{item.name}</Text>
+                <Text style={{color: COLORS.black, ...FONTS.body2 }}>{item.name}</Text>
 
                 <View
                     style={{
@@ -584,7 +584,7 @@ const Home = ({ navigation }) => {
                             marginRight: 10
                         }}
                     />
-                    <Text style={{ ...FONTS.body3 }}>{item.rating}</Text>
+                    <Text style={{color: COLORS.black, ...FONTS.body3 }}>{item.rating}</Text>
 
                     {/* Categories */}
                     <View
@@ -600,7 +600,7 @@ const Home = ({ navigation }) => {
                                         style={{ flexDirection: 'row' }}
                                         key={categoryId}
                                     >
-                                        <Text style={{ ...FONTS.body3 }}>{getCategoryNameById(categoryId)}</Text>
+                                        <Text style={{color: COLORS.black, ...FONTS.body3 }}>{getCategoryNameById(categoryId)}</Text>
                                         <Text style={{ ...FONTS.h3, color: COLORS.darkgray }}> . </Text>
                                     </View>
                                 )

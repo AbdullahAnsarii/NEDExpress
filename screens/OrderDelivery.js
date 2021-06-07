@@ -5,7 +5,8 @@ import {
     Text,
     Image,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Alert
 } from "react-native";
 import FormButton from '../components/FormButton';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -27,13 +28,12 @@ const OrderDelivery = ({ route, navigation }) => {
                 .get()
                 .then((documentSnapshot) => {
                     if (documentSnapshot.exists) {
-                        console.log("User data", documentSnapshot.data());
                         setProfile(documentSnapshot.data());
                     }
                 }
                 )
         } catch (e) {
-            console.log(e);
+            Alert.alert(e);
         }
     }
 
@@ -73,7 +73,7 @@ const OrderDelivery = ({ route, navigation }) => {
         return orderItems.map((data) => {
             return (
                 <View style={styles.orderInfoWrapper}>
-                    <Text key={data?.UserID} style={styles.userDetail}>{data?.qty} <Text style={{ fontWeight: "bold", fontSize: 17 }}>X</Text> {data?.name} <Text style={{ fontWeight: "bold", fontSize: 20 }}> : </Text>Rs. {data?.total}</Text>
+                    <Text key={data?.UserID} style={styles.userDetail}>{data?.qty} <Text style={{ fontWeight: "bold", fontSize: 17 }}>X</Text > {data?.name} <Text key={data?.UserID} style={{ fontWeight: "bold", fontSize: 20 }}> : </Text>Rs. {data?.total}</Text>
                 </View>
             )
         })
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         padding: 20,
         paddingTop: 70,
-        paddingBottom: 90
+        paddingBottom: 135
     },
     scrollContainer: {
         marginTop: 0,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: "#fff",
         padding: 5,
-        paddingBottom: 20
+        paddingBottom: 10
     },
     logo: {
         height: 90,
@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     userName: {
+        color: COLORS.black,
         textAlign: "center",
         fontWeight: 'bold',
         marginTop: 10,

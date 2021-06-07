@@ -5,7 +5,8 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
 import { windowHeight, windowWidth } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';
@@ -25,13 +26,12 @@ let ProfileScreen = ({ navigation }) => {
         .get()
         .then((documentSnapshot)=>{
           if(documentSnapshot.exists){
-            console.log("User data",documentSnapshot.data());
             setProfile(documentSnapshot.data());
           }
         }                 
           )
       }catch(e){
-          console.log(e);
+          Alert.alert(e);
       }
 }
   useEffect(()=>{
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 10,
+    color: COLORS.black,
     ...FONTS.h2
   },
   userDetail: {
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     textAlign: "left",
-    color: "black",
+    color: COLORS.black,
     ...FONTS.h3
   },
   userBtnWrapper: {
