@@ -9,10 +9,11 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 import Svg, { Path } from 'react-native-svg';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 import {AuthContext} from '../navigation/AuthProvider';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Home } from "../screens"
 import ProfileScreen from "../screens/ProfileScreen"
-import EditProfileScreen from "../screens/EditProfileScreen"
+import FavouritesScreen from "../screens/FavouritesScreen"
+import PromoScreen from "../screens/PromoScreen"
 
 import { COLORS, icons } from "../constants";
 import { useContext } from 'react';
@@ -130,15 +131,7 @@ const Tabs = () => {
                 component={Home}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.home}
-                            resizeMode="contain"
-                            style={{
-                                width: 45,
-                                height: 45,
-                                tintColor: focused ? COLORS.primary : COLORS.gray
-                            }}
-                        />
+                        <Ionicons name={"home"} size={30} color={focused ? COLORS.primary : COLORS.gray} />
                     ),
                     tabBarButton: (props) => (
                         <TabBarCustomButton
@@ -149,19 +142,11 @@ const Tabs = () => {
             />
 
             <Tab.Screen
-                name="Search"
-                component={Home}
+                name="Promo"
+                component={PromoScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.search}
-                            resizeMode="contain"
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.primary : COLORS.gray
-                            }}
-                        />
+                        <Ionicons name={"gift"} size={30} color={focused ? COLORS.primary : COLORS.gray} />
                     ),
                     tabBarButton: (props) => (
                         <TabBarCustomButton
@@ -173,18 +158,10 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Like"
-                component={Home}
+                component={FavouritesScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.like}
-                            resizeMode="contain"
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.primary : COLORS.gray
-                            }}
-                        />
+                        <Ionicons name={"heart"} size={30} color={focused ? COLORS.primary : COLORS.gray} />
                     ),
                     tabBarButton: (props) => (
                         <TabBarCustomButton
@@ -199,15 +176,7 @@ const Tabs = () => {
                 component={ProfileScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.user}
-                            resizeMode="contain"
-                            style={{
-                                width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.primary : COLORS.gray
-                            }}
-                        />
+                        <Ionicons name={"person"} size={30} color={focused ? COLORS.primary : COLORS.gray} />
                     ),
                     tabBarButton: (props) => (
                         <TabBarCustomButton

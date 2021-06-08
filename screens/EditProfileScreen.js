@@ -12,13 +12,13 @@ import { SIZES, FONTS, COLORS } from '../constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import ImagePicker from 'react-native-image-crop-picker';
 import { AuthContext } from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
-import storage from '@react-native-firebase/storage';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+//import storage from '@react-native-firebase/storage';
 
 const EditProfileScreen = ({ navigation }) => {
   const [image, setImage] = useState('https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/user-default.png');
@@ -131,13 +131,7 @@ const EditProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={{ marginLeft: 10, marginRight: 345, marginTop: 8, marginBottom: -20 }}>
-        <FontAwesome.Button
-          name="arrow-circle-left"
-          size={30}
-          backgroundColor={COLORS.primary}
-          color="#ffff"
-          onPress={() => navigation.goBack()}
-        />
+      <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.goBack()} />
       </View>
       <BottomSheet
         ref={bs}
@@ -255,7 +249,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.h1.fontFamily,
     fontSize: 32,
     marginBottom: 10,
-    color: '#051d5f',
+    color: COLORS.black,
   },
   commandButton: {
     padding: 15,

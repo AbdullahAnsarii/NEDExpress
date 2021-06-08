@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.h1.fontFamily,
     fontSize: 32,
     marginBottom: 10,
-    color: '#051d5f',
+    color: COLORS.black,
   },
   iconStyle: {
     padding: 10,

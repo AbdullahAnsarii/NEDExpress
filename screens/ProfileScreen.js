@@ -8,9 +8,9 @@ import {
   ScrollView,
   Alert
 } from 'react-native';
-import { windowHeight, windowWidth } from "../utils/Dimensions";
+import { windowHeight } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';
-import { icons, COLORS, SIZES, FONTS } from '../constants'
+import { COLORS, SIZES, FONTS } from '../constants'
 import firestore from '@react-native-firebase/firestore';
 
 let ProfileScreen = ({ navigation }) => {
@@ -80,8 +80,8 @@ export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: COLORS.white,
     flex: 1,
-    backgroundColor: '#fff',
     padding: 20,
   },
   userImg: {

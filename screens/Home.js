@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useContext, useEffect} from "react";
 import {
     SafeAreaView,
     View,
@@ -8,10 +8,36 @@ import {
     Image,
     FlatList
 } from "react-native";
-
+import firestore from '@react-native-firebase/firestore';
+import {AuthContext} from '../navigation/AuthProvider';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
 const Home = ({ navigation }) => {
+    const [profile, setProfile] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const { user, logout } = useContext(AuthContext);
+    const ID = user.uid;
+    const fetchUserInfo = async () => {
+        try {
+            await firestore()
+                .collection("users")
+                .doc(ID)
+                .get()
+                .then((documentSnapshot) => {
+                    if (documentSnapshot.exists) {
+                        setProfile(documentSnapshot.data());
+                    }
+                }
+                )
+        } catch (e) {
+            Alert.alert(e);
+        }
+    }
+    useEffect(() => {
+        fetchUserInfo();
+        navigation.addListener("focus", () => setLoading(!loading));
+    }, [navigation, loading])
 
     // Dummy Datas
 
@@ -149,7 +175,7 @@ const Home = ({ navigation }) => {
                     description: "Milk shakes with a variety of flavors",
                     makeTime: 10,
                     price: 60
-                },{
+                }, {
                     menuId: 3,
                     name: "Chicken Biryani",
                     photo: images.biryani,
@@ -243,7 +269,7 @@ const Home = ({ navigation }) => {
                     description: "Milk shakes with a variety of flavors",
                     makeTime: 10,
                     price: 60
-                },{
+                }, {
                     menuId: 4,
                     name: "Chicken Biryani",
                     photo: images.biryani,
@@ -378,19 +404,18 @@ const Home = ({ navigation }) => {
     ]
 
     const [categories, setCategories] = React.useState(categoryData)
-    //yahaan se zero hataao bug will be removed
     const [selectedCategory, setSelectedCategory] = React.useState(categoryData)
     const [restaurants, setRestaurants] = React.useState(restaurantData)
     const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
     //setSelectedCategory()
     function onSelectCategory(category) {
-        
+
         //filter restaurant
         let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
 
         setRestaurants(restaurantList)
         setSelectedCategory(category)
-        
+
     }
 
     function getCategoryNameById(id) {
@@ -404,7 +429,16 @@ const Home = ({ navigation }) => {
 
     function renderHeader() {
         return (
-            <View style={{ flexDirection: 'row', height: 50 }}>
+            <View style={{
+                flexDirection: 'row', height: 50, shadowColor: "#000",
+                shadowOffset: {
+                    width: 0,
+                    height: 3,
+                },
+                shadowOpacity: 0.27,
+                shadowRadius: 4.65,
+                elevation: 6, backgroundColor: COLORS.white
+            }}>
                 <TouchableOpacity
                     style={{
                         width: 50,
@@ -412,14 +446,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Image
-                        source={icons.nearby}
-                        resizeMode="contain"
-                        style={{
-                            width: 30,
-                            height: 30
-                        }}
-                    />
+                    <Ionicons name={"menu-sharp"} size={30} color={COLORS.secondary} style={{ marginLeft: -2 }} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -433,7 +460,7 @@ const Home = ({ navigation }) => {
                             borderRadius: SIZES.radius
                         }}
                     >
-                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>{currentLocation.streetName}</Text>
+                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{currentLocation.streetName}</Text>
                     </View>
                 </View>
 
@@ -444,14 +471,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Image
-                        source={icons.basket}
-                        resizeMode="contain"
-                        style={{
-                            width: 30,
-                            height: 30
-                        }}
-                    />
+                    <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} />
                 </TouchableOpacity>
             </View>
         )
@@ -507,8 +527,8 @@ const Home = ({ navigation }) => {
 
         return (
             <View style={{ padding: SIZES.padding * 2 }}>
-                <Text style={{ ...FONTS.h1 , color: "#051d5f"}}>Main</Text>
-                <Text style={{ ...FONTS.h1 , color: "#051d5f"}}>Categories</Text>
+                <Text style={{ ...FONTS.h1, color: COLORS.black }}>Hello, {profile ? profile.Name || 'User' : 'Loading..'}</Text>
+                <Text style={{ ...FONTS.h4, color: COLORS.secondary, marginBottom: -10 }}>Choose a category</Text>
 
                 <FlatList
                     data={categories}
@@ -561,12 +581,12 @@ const Home = ({ navigation }) => {
                             ...styles.shadow
                         }}
                     >
-                        <Text style={{color: "white", ...FONTS.h4 }}>{item.duration}</Text>
+                        <Text style={{ color: "white", ...FONTS.h4 }}>{item.duration}</Text>
                     </View>
                 </View>
 
                 {/* Restaurant Info */}
-                <Text style={{color: COLORS.black, ...FONTS.body2 }}>{item.name}</Text>
+                <Text style={{ color: COLORS.black, fontWeight: "bold", ...FONTS.body2 }}>{item.name}</Text>
 
                 <View
                     style={{
@@ -575,16 +595,8 @@ const Home = ({ navigation }) => {
                     }}
                 >
                     {/* Rating */}
-                    <Image
-                        source={icons.star}
-                        style={{
-                            height: 20,
-                            width: 20,
-                            tintColor: "#FEBE10",
-                            marginRight: 10
-                        }}
-                    />
-                    <Text style={{color: COLORS.black, ...FONTS.body3 }}>{item.rating}</Text>
+                    <Ionicons name={"star"} size={20} color="#FEBE10" style={{ marginRight: 10 }} />
+                    <Text style={{ color: COLORS.black, ...FONTS.body3 }}>{item.rating}</Text>
 
                     {/* Categories */}
                     <View
@@ -600,7 +612,7 @@ const Home = ({ navigation }) => {
                                         style={{ flexDirection: 'row' }}
                                         key={categoryId}
                                     >
-                                        <Text style={{color: COLORS.black, ...FONTS.body3 }}>{getCategoryNameById(categoryId)}</Text>
+                                        <Text style={{ color: COLORS.black, ...FONTS.body3 }}>{getCategoryNameById(categoryId)}</Text>
                                         <Text style={{ ...FONTS.h3, color: COLORS.darkgray }}> . </Text>
                                     </View>
                                 )
@@ -649,7 +661,7 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.lightGray4
+        backgroundColor: "#fdfdfd"
     },
     shadow: {
         shadowColor: "#000",

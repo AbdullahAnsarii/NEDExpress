@@ -4,9 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import SignupScreen from '../screens/SignupScreen';
 import LoginScreen from '../screens/LoginScreen';
 //import OnboardingScreen from '../screens/OnboardingScreen';
-
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 //import AsyncStorage from '@react-native-community/async-storage';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { COLORS } from '../constants';
@@ -59,19 +57,11 @@ let routeName;
         options={({navigation}) => ({
           title: '',
           headerStyle: {
-            backgroundColor: '#f9fafd',
-            shadowColor: '#f9fafd',
-            elevation: 0,
+            backgroundColor: '#fff',
           },
           headerLeft: () => (
             <View style={{marginLeft: 10}}>
-              <FontAwesome.Button 
-                name="arrow-circle-left"
-                size={30}
-                backgroundColor={COLORS.primary}
-                color="#ffff"
-                onPress={() => navigation.navigate('Login')}
-              />
+             <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.goBack()} />
             </View>
           ),
         })}

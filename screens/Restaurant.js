@@ -10,10 +10,10 @@ import {
     Alert
 } from "react-native";
 import { isIphoneX } from 'react-native-iphone-x-helper'
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 import { AuthContext } from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Restaurant = ({ route, navigation }) => {
     let total = 0;
@@ -138,25 +138,18 @@ const Restaurant = ({ route, navigation }) => {
 
     function renderHeader() {
         return (
-            <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity
-                    style={{
-                        marginLeft: -15,
-                        width: 73,
-                        paddingLeft: SIZES.padding * 2,
-                        justifyContent: 'center'
-                    }}
-                    onPress={() => navigation.goBack()}
-                >
-                    <FontAwesome.Button
-                        name="arrow-circle-left"
-                        size={30}
-                        backgroundColor={COLORS.primary}
-                        color="#ffff"
-                        onPress={() => navigation.goBack()}
-                    />
-                </TouchableOpacity>
+            <View style={{
+                flexDirection: 'row', height: 50, shadowColor: "#000",
+                shadowOffset: {
+                    width: 0,
+                    height: 3,
+                },
+                shadowOpacity: 0.27,
+                shadowRadius: 4.65,
 
+                elevation: 6, backgroundColor: COLORS.white
+            }}>
+                <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 3, marginLeft: 10 }} color={COLORS.secondary} onPress={() => navigation.goBack()} />
                 {/* Restaurant Name Section */}
                 <View
                     style={{
@@ -168,7 +161,7 @@ const Restaurant = ({ route, navigation }) => {
                 >
                     <View
                         style={{
-                            height: 50,
+                            height: 37,
                             alignItems: 'center',
                             justifyContent: 'center',
                             paddingHorizontal: SIZES.padding * 3,
@@ -176,7 +169,7 @@ const Restaurant = ({ route, navigation }) => {
                             backgroundColor: COLORS.lightGray3
                         }}
                     >
-                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>{restaurant?.name}</Text>
+                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{restaurant?.name}</Text>
                     </View>
                 </View>
 
@@ -187,14 +180,7 @@ const Restaurant = ({ route, navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Image
-                        source={icons.list}
-                        resizeMode="contain"
-                        style={{
-                            width: 30,
-                            height: 30
-                        }}
-                    />
+                    <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} />
                 </TouchableOpacity>
             </View>
         )
@@ -218,7 +204,16 @@ const Restaurant = ({ route, navigation }) => {
                             key={`menu-${index}`}
                             style={{ alignItems: 'center' }}
                         >
-                            <View style={{ height: SIZES.height * 0.35 }}>
+                            <View style={{
+                                height: SIZES.height * 0.35, shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 3,
+                                },
+                                shadowOpacity: 0.27,
+                                shadowRadius: 4.65,
+                                elevation: 6, backgroundColor: COLORS.white
+                            }}>
                                 {/* Food Image */}
                                 <Image
                                     source={item.photo}
@@ -251,7 +246,7 @@ const Restaurant = ({ route, navigation }) => {
                                         }}
                                         onPress={() => editOrder("-", item.name, item.menuId, item.price)}
                                     >
-                                        <Text style={{color: COLORS.white, ...FONTS.body1 }}>-</Text>
+                                        <Text style={{ color: COLORS.white, ...FONTS.body1 }}>-</Text>
                                     </TouchableOpacity>
 
                                     <View
@@ -262,7 +257,7 @@ const Restaurant = ({ route, navigation }) => {
                                             justifyContent: 'center'
                                         }}
                                     >
-                                        <Text style={{color: COLORS.white, ...FONTS.h2 }}>{getOrderQty(item.menuId)}</Text>
+                                        <Text style={{ color: COLORS.white, ...FONTS.h2 }}>{getOrderQty(item.menuId)}</Text>
                                     </View>
 
                                     <TouchableOpacity
@@ -276,7 +271,7 @@ const Restaurant = ({ route, navigation }) => {
                                         }}
                                         onPress={() => editOrder("+", item.name, item.menuId, item.price)}
                                     >
-                                        <Text style={{color: COLORS.white, ...FONTS.body1 }}>+</Text>
+                                        <Text style={{ color: COLORS.white, ...FONTS.body1 }}>+</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -290,8 +285,8 @@ const Restaurant = ({ route, navigation }) => {
                                     paddingHorizontal: SIZES.padding * 2
                                 }}
                             >
-                                <Text style={{color: COLORS.black, marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - Rs. {item.price}</Text>
-                                <Text style={{color: COLORS.black, ...FONTS.body3 }}>{item.description}</Text>
+                                <Text style={{ color: COLORS.black, marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - Rs. {item.price}</Text>
+                                <Text style={{ color: COLORS.black, ...FONTS.body3 }}>{item.description}</Text>
                             </View>
 
                             {/* Calories */}
@@ -301,14 +296,7 @@ const Restaurant = ({ route, navigation }) => {
                                     marginTop: 10
                                 }}
                             >
-                                <Image
-                                    source={icons.clock}
-                                    style={{
-                                        width: 20,
-                                        height: 22,
-                                        marginRight: 10
-                                    }}
-                                />
+                                <Ionicons name={"time-outline"} size={23} color={COLORS.black} />
 
                                 <Text style={{
                                     ...FONTS.body3, color: COLORS.darygray
@@ -397,8 +385,8 @@ const Restaurant = ({ route, navigation }) => {
                             borderBottomWidth: 1
                         }}
                     >
-                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
-                        <Text style={{color: COLORS.black, ...FONTS.h3 }}>Rs. {sumOrder()}</Text>
+                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
+                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>Rs. {sumOrder()}</Text>
                     </View>
 
                     <View
@@ -410,29 +398,13 @@ const Restaurant = ({ route, navigation }) => {
                         }}
                     >
                         <View style={{ flexDirection: 'row' }}>
-                            <Image
-                                source={icons.pin}
-                                resizeMode="contain"
-                                style={{
-                                    width: 20,
-                                    height: 20,
-                                    tintColor: COLORS.secondary //darkgrey krdo
-                                }}
-                            />
-                            <Text style={{color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>{profile ? profile.Department || '---' : 'Loading'} Department</Text>
+                            <Ionicons name={"location"} size={25} color={COLORS.secondary} style={{ marginLeft: -10 }} />
+                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>{profile ? profile.Department || '---' : 'Loading'} Department</Text>
                         </View>
 
                         <View style={{ flexDirection: 'row' }}>
-                            <Image
-                                source={icons.delivery_boy}
-                                resizeMode="contain"
-                                style={{
-                                    width: 20,
-                                    height: 20,
-                                    tintColor: COLORS.secondary
-                                }}
-                            />
-                            <Text style={{color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>COD</Text>
+                            <Ionicons name={"bicycle"} size={25} color={COLORS.secondary} />
+                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>COD</Text>
                         </View>
                     </View>
 

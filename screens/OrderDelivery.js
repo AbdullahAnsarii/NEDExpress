@@ -9,7 +9,7 @@ import {
     Alert
 } from "react-native";
 import FormButton from '../components/FormButton';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { AuthContext } from '../navigation/AuthProvider';
 import { COLORS, FONTS, icons, images, SIZES } from "../constants"
 import firestore from '@react-native-firebase/firestore';
@@ -52,19 +52,13 @@ const OrderDelivery = ({ route, navigation }) => {
                 <TouchableOpacity
                     style={{
                         marginTop: -85,
-                        marginLeft: -221,
+                        marginLeft: -215,
                         width: 73,
                         paddingLeft: SIZES.padding * 2,
                         justifyContent: 'center'
                     }}
                 >
-                    <FontAwesome.Button
-                        name="arrow-circle-left"
-                        size={30}
-                        backgroundColor={COLORS.primary}
-                        color="#ffff"
-                        onPress={() => navigation.navigate("Home")}
-                    />
+                   <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.navigate("Home")} />
                 </TouchableOpacity>
             </View>
         )
@@ -86,7 +80,7 @@ const OrderDelivery = ({ route, navigation }) => {
                 style={styles.logo}
             />
             <View>
-                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
+                <Text style={styles.userName}>{profile ? profile.Name|| '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}
                 showsVerticalScrollIndicator={true}
