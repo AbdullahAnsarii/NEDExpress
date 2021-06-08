@@ -1,4 +1,4 @@
-import React,{useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
     SafeAreaView,
     View,
@@ -6,10 +6,11 @@ import {
     StyleSheet,
     TouchableOpacity,
     Image,
-    FlatList
+    FlatList,
+    Alert
 } from "react-native";
 import firestore from '@react-native-firebase/firestore';
-import {AuthContext} from '../navigation/AuthProvider';
+import { AuthContext } from '../navigation/AuthProvider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
 
@@ -546,10 +547,19 @@ const Home = ({ navigation }) => {
         const renderItem = ({ item }) => (
             <TouchableOpacity
                 style={{ marginBottom: SIZES.padding * 2 }}
-                onPress={() => navigation.navigate("Restaurant", {
-                    item,
-                    currentLocation
-                })}
+                onPress={() => {
+                    //isse simple krdo jb contract hojaye baaqi canteen se
+                    if (item?.name === "Staff Canteen") {
+                        navigation.navigate("Restaurant", {
+                            item,
+                            currentLocation
+                        })
+                    }
+                    else {
+                        Alert.alert("NED Express", "This shop is closed for online delivery at the moment.")
+                    }
+
+                }}
             >
                 {/* Image */}
                 <View
@@ -571,7 +581,7 @@ const Home = ({ navigation }) => {
                         style={{
                             position: 'absolute',
                             bottom: 0,
-                            height: 50,
+                            height: 51,
                             width: SIZES.width * 0.3,
                             backgroundColor: COLORS.secondary,
                             borderTopRightRadius: SIZES.radius,

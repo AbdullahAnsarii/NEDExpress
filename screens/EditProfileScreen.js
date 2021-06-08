@@ -74,6 +74,7 @@ const EditProfileScreen = ({ navigation }) => {
         RollNo: profile.RollNo,
         Department: profile.Department,
         ContactNo: profile.ContactNo,
+        Verified: "No"
         //userImg: imgUrl,
       })
       .then(() => {
