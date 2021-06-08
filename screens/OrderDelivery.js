@@ -46,6 +46,8 @@ const OrderDelivery = ({ route, navigation }) => {
         setTotal(total)
         setOrderItems(orderItems)
     }, [])
+    //jugaar mathod
+    setTimeout(()=>fetchUserInfo(),3000)
     function renderHeader() {
         return (
             <View style={{ flexDirection: 'row' }}>
@@ -58,7 +60,7 @@ const OrderDelivery = ({ route, navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                   <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.navigate("Home")} />
+                    <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.navigate("Home")} />
                 </TouchableOpacity>
             </View>
         )
@@ -74,17 +76,18 @@ const OrderDelivery = ({ route, navigation }) => {
     }
     return (
         <View style={styles.container}>
+            
             {renderHeader()}
             <Image
                 source={images.nedexpressicon}
                 style={styles.logo}
             />
             <View>
-                <Text style={styles.userName}>{profile ? profile.Name|| '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
+                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}
                 showsVerticalScrollIndicator={true}
-                >
+            >
                 <View style={styles.totalInfoWrapper}>
                     <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Order Status: {profile ? profile.OrderStatus || '---' : 'Loading..'}</Text></Text>
                 </View>
@@ -93,10 +96,10 @@ const OrderDelivery = ({ route, navigation }) => {
                 </View>
                 {orderedItem()}
             </ScrollView>
-            <FormButton
+            {/* <FormButton
                 buttonTitle="Refresh"
                 onPress={() => fetchUserInfo()}
-            />
+            /> */}
         </View>
     )
 }
