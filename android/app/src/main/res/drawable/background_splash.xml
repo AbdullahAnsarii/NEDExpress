@@ -5,6 +5,7 @@
         android:drawable="@color/white"/>
 
     <item
+        android:layout_marginBottom="400dp"
         android:width="300dp"
         android:height="150dp"
         android:drawable="@mipmap/nedexpressbyaalogo"

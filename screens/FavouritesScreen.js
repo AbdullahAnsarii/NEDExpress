@@ -61,6 +61,7 @@ const FavouritesScreen = () => {
             <Text style={{ padding: SIZES.padding * 2, ...FONTS.h1, color: COLORS.black }}>Favourites</Text>
             <TouchableOpacity
                 style={{
+                    marginLeft: 15,
                     alignSelf: "center",
                     marginTop: 70,
                     justifyContent: 'center'

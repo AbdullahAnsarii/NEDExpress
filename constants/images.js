@@ -16,8 +16,12 @@ const qorma = require("../assets/images/qorma.jpg");
 const mech = require("../assets/images/mech.jpg");
 const printb = require("../assets/images/printerb.jpg");
 const printc = require("../assets/images/printerc.jpg");
+const promo1 = require("../assets/images/promo1.png");
+const promo1g = require("../assets/images/promo1.gif");
 export const nedexpressicon = require("../assets/images/nedexpresslogo.png");
 export default {
+    promo1g,
+    promo1,
     alips,
     nedexpressicon,
     staff,

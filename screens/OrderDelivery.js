@@ -20,7 +20,7 @@ const OrderDelivery = ({ route, navigation }) => {
     const [restaurant, setRestaurant] = useState(null)
     const [total, setTotal] = useState(null)
     const [orderItems, setOrderItems] = useState([]);
-    const fetchUserInfo = async () => {
+    const fetchOrderInfo = async () => {
         try {
             await firestore()
                 .collection("orders")
@@ -38,7 +38,7 @@ const OrderDelivery = ({ route, navigation }) => {
     }
 
     useEffect(() => {
-        fetchUserInfo();
+        fetchOrderInfo();
     }, [loading])
     useEffect(() => {
         let { restaurant, orderItems, total } = route.params;
@@ -47,7 +47,7 @@ const OrderDelivery = ({ route, navigation }) => {
         setOrderItems(orderItems)
     }, [])
     //jugaar mathod
-    setTimeout(()=>fetchUserInfo(),3000)
+    setTimeout(()=>fetchOrderInfo(),3000)
     function renderHeader() {
         return (
             <View style={{ flexDirection: 'row' }}>
@@ -174,4 +174,3 @@ const styles = StyleSheet.create({
         ...FONTS.body3
     },
 })
-

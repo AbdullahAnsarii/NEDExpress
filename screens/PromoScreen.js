@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { COLORS, FONTS, SIZES } from "../constants";
+import { COLORS, FONTS, SIZES, images } from "../constants";
 function renderHeader() {
     return (
         <View style={{
@@ -59,16 +59,18 @@ const PromoScreen = () => {
         }}>
             {renderHeader()}
             <Text style={{ padding: SIZES.padding * 2, ...FONTS.h1, color: COLORS.black }}>Promos</Text>
-            <TouchableOpacity
+            <View style={{
+                marginHorizontal: 40,
+            }}>
+            <Image
+                source={images.promo1g}
+                resizeMode={"contain"}
                 style={{
-                    alignSelf: "center",
-                    marginTop: 70,
-                    justifyContent: 'center'
+                    width: "100%",
+                    height: "80%"
                 }}
-            >
-                <Ionicons name={"alert-circle"} size={250} color={COLORS.secondary} />
-            </TouchableOpacity>
-            <Text style={{ alignSelf: "center", ...FONTS.body4, color: COLORS.gray }}>No data available</Text>
+            />
+            </View>
         </View>
     );
 };
