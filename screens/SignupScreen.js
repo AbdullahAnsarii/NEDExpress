@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 50,
     backgroundColor: "#fff",
-    paddingBottom: 23
+    flex: 1
   },
   text: {
     marginTop: -55,

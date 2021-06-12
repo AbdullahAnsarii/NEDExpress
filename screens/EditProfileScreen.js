@@ -18,6 +18,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import { AuthContext } from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Picker } from '@react-native-picker/picker';
 //import storage from '@react-native-firebase/storage';
 
 const EditProfileScreen = ({ navigation }) => {
@@ -132,7 +133,7 @@ const EditProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={{ marginLeft: 10, marginRight: 345, marginTop: 8, marginBottom: -20 }}>
-      <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.goBack()} />
+        <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.goBack()} />
       </View>
       <BottomSheet
         ref={bs}
@@ -160,7 +161,7 @@ const EditProfileScreen = ({ navigation }) => {
               }}>
               <ImageBackground
                 source={
-                  { uri: profile ? profile.UserImg || image :  image}
+                  { uri: profile ? profile.UserImg || image : image }
                 }
                 style={{ height: 150, width: 150, }}
                 imageStyle={{ borderRadius: 75 }}>
@@ -205,6 +206,7 @@ const EditProfileScreen = ({ navigation }) => {
             iconType="call-outline"
             keyboardType="numeric"
             autoCorrect={false}
+            maxLength={11}
           />
           <FormInput
             labelValue={profile ? profile.RollNo : ''}
@@ -212,16 +214,28 @@ const EditProfileScreen = ({ navigation }) => {
             placeholderText="Roll no. (CS-XXXXX).   "
             iconType="card-outline"
             autoCorrect={false}
+            maxLength={5}
           />
-          <FormInput
-            labelValue={profile ? profile.Department : ''}
-            onChangeText={(txt) => setProfile({ ...profile, Department: txt })}
-            placeholderText="Department"
-            iconType="book-outline"
-            autoCorrect={false}
-          />
-        </Animated.View>
+          <View style={styles.picker}>
+            <View style={styles.iconStyle}>
+              <Ionicons name={"book-outline"} size={25} color="#666" />
+            </View>
+            <Picker
+              selectedValue={profile ? profile.Department : 'Department'}
+              style={{ height: 0, width: 320, color: COLORS.black }}
+              onValueChange={(itemValue) => setProfile({ ...profile, Department: itemValue })}
+              dropdownIconColor={COLORS.primary}
+              mode={"dropdown"}
 
+            >
+              <Picker.name label="Department" value="" style={{ color: COLORS.secondary }} />
+              <Picker.Item label="Computer Systems Engineering" value="CIS" style={{ color: COLORS.black }} />
+              <Picker.Item label="Electrical Engineering" value="EE" style={{ color: COLORS.black }} />
+              <Picker.Item label="Mechanical Engineering" value="ME" style={{ color: COLORS.black }} />
+              <Picker.Item label="Civil Engineering" value="CE" style={{ color: COLORS.black }} />
+            </Picker>
+          </View>
+        </Animated.View>
         <FormButton
           buttonTitle="Submit"
           onPress={() => handleUpdate()}
@@ -236,14 +250,34 @@ export default EditProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-
+    marginBottom: -8
+  },
+  iconStyle: {
+    padding: 1,
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRightColor: '#ccc',
+    borderRightWidth: 1,
+    width: 50,
+  },
+  picker: {
+    marginTop: 5,
+    marginBottom: 10,
+    alignItems: "center",
+    backgroundColor: "#fff",
+    height: 55,
+    borderColor: '#ccc',
+    borderRadius: SIZES.radius,
+    borderWidth: 1,
+    flexDirection: 'row',
   },
   scrollContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    paddingTop: 50
+    paddingTop: 50,
+    paddingBottom: 35,
   },
   text: {
     marginLeft: 100,

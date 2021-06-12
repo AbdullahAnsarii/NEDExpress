@@ -55,7 +55,6 @@ const PromoScreen = () => {
     return (
         <View style={{
             flex: 1,
-            backgroundColor: "#fdfdfd"
         }}>
             {renderHeader()}
             <Text style={{ padding: SIZES.padding * 2, ...FONTS.h1, color: COLORS.black }}>Promos</Text>

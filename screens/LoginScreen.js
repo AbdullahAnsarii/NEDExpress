@@ -90,12 +90,11 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fdfdfd',
     padding: 20,
     paddingTop: 70,
-    paddingBottom: 213
+    flex: 1
   },
   logo: {
     width: 300,
