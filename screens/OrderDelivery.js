@@ -8,10 +8,10 @@ import {
     StyleSheet,
     Alert
 } from "react-native";
-import FormButton from '../components/FormButton';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { AuthContext } from '../navigation/AuthProvider';
-import { COLORS, FONTS, icons, images, SIZES } from "../constants"
+import StepIndicator from 'react-native-step-indicator';
+import { COLORS, FONTS, images, SIZES } from "../constants"
 import firestore from '@react-native-firebase/firestore';
 const OrderDelivery = ({ route, navigation }) => {
     const { user } = useContext(AuthContext);
@@ -20,6 +20,32 @@ const OrderDelivery = ({ route, navigation }) => {
     const [restaurant, setRestaurant] = useState(null)
     const [total, setTotal] = useState(null)
     const [orderItems, setOrderItems] = useState([]);
+    const labels = ["Order \nPlaced", "Order \nApproved", "Order \nShipped", "Order \nCompleted"];
+    const customStyles = {
+        stepIndicatorSize: 25,
+        currentStepIndicatorSize: 30,
+        separatorStrokeWidth: 3,
+        currentStepStrokeWidth: 3,
+        stepStrokeCurrentColor: COLORS.secondary,
+        stepStrokeWidth: 3,
+        stepStrokeFinishedColor: COLORS.primary,
+        stepStrokeUnFinishedColor: '#aaaaaa',
+        separatorFinishedColor: COLORS.primary,
+        separatorUnFinishedColor: '#aaaaaa',
+        stepIndicatorFinishedColor: COLORS.primary,
+        stepIndicatorUnFinishedColor: '#ffffff',
+        stepIndicatorCurrentColor: '#ffffff',
+        stepIndicatorLabelFontSize: 12,
+        currentStepIndicatorLabelFontSize: 13,
+        stepIndicatorLabelCurrentColor: COLORS.secondary,
+        stepIndicatorLabelFinishedColor: '#ffffff',
+        stepIndicatorLabelUnFinishedColor: '#aaaaaa',
+        labelColor: '#999999',
+        labelSize: 10,
+        currentStepLabelColor: COLORS.secondary,
+        labelFontFamily: FONTS.body1.fontFamily
+    }
+    const currentPosition = profile ? profile.OrderStatus || 0 : 0
     const fetchOrderInfo = async () => {
         try {
             await firestore()
@@ -47,7 +73,7 @@ const OrderDelivery = ({ route, navigation }) => {
         setOrderItems(orderItems)
     }, [])
     //jugaar mathod
-    setTimeout(()=>fetchOrderInfo(),3000)
+    setTimeout(() => fetchOrderInfo(), 3000)
     function renderHeader() {
         return (
             <View style={{ flexDirection: 'row' }}>
@@ -75,32 +101,41 @@ const OrderDelivery = ({ route, navigation }) => {
         })
     }
     return (
-        <View style={styles.container}>
-            
-            {renderHeader()}
-            <Image
-                source={images.nedexpressicon}
-                style={styles.logo}
-            />
+        <View style={{
+            flex: 1,
+            backgroundColor: "#fdfdfd",
+            paddingBottom: 20,
+            paddingHorizontal: 10,
+        }}>
+            <View style={styles.container}>
+
+                {renderHeader()}
+                <Image
+                    source={images.nedexpressicon}
+                    style={styles.logo}
+                />
+                <View>
+                    <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
+                </View>
+            </View>
             <View>
-                <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
+                <StepIndicator
+                    stepCount={4}
+                    customStyles={customStyles}
+                    currentPosition={currentPosition}
+                    labels={labels}
+                />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}
                 showsVerticalScrollIndicator={true}
             >
                 <View style={styles.totalInfoWrapper}>
-                    <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Order Status: {profile ? profile.OrderStatus || '---' : 'Loading..'}</Text></Text>
-                </View>
-                <View style={styles.totalInfoWrapper}>
                     <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
                 </View>
                 {orderedItem()}
             </ScrollView>
-            {/* <FormButton
-                buttonTitle="Refresh"
-                onPress={() => fetchUserInfo()}
-            /> */}
         </View>
+
     )
 }
 export default OrderDelivery;
@@ -111,15 +146,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         padding: 20,
         paddingTop: 70,
-        paddingBottom: 135
     },
     scrollContainer: {
-        marginTop: 0,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: "#fff",
         padding: 5,
-        paddingBottom: 10
+        marginBottom: 0
     },
     logo: {
         height: 90,

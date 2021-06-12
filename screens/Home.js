@@ -22,7 +22,7 @@ const Home = ({ navigation }) => {
     const fetchUserInfo = async () => {
         try {
             await firestore()
-                .collection("users")
+                .collection("orders")
                 .doc(ID)
                 .get()
                 .then((documentSnapshot) => {
@@ -447,7 +447,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Ionicons name={"menu-sharp"} size={30} color={COLORS.secondary} style={{ marginLeft: -2 }} />
+                    <Ionicons name={"menu-sharp"}  size={30} color={COLORS.secondary} style={{ marginLeft: -2 }} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -472,7 +472,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} />
+                    <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} onPress={()=>{Alert.alert("NED Express", `Order Status: ${profile.OrderStatus}`)}} />
                 </TouchableOpacity>
             </View>
         )

@@ -57,7 +57,7 @@ const Restaurant = ({ route, navigation }) => {
                 Email: profile.Email,
                 Total: total,
                 OrderTime: firestore.Timestamp.fromDate(new Date()),
-                OrderStatus: "Placed"
+                OrderStatus: 1
 
             })
             .then(() => {
