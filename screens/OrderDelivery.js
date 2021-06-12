@@ -45,7 +45,24 @@ const OrderDelivery = ({ route, navigation }) => {
         currentStepLabelColor: COLORS.secondary,
         labelFontFamily: FONTS.body1.fontFamily
     }
-    const currentPosition = profile ? profile.OrderStatus || 0 : 0
+    let currentPosition;
+    if(profile){
+        if(profile.OrderStatus === "Placed"){
+            currentPosition = 1;
+        }
+        if(profile.OrderStatus === "Approved"){
+            currentPosition = 2;
+        }
+        if(profile.OrderStatus === "Shipped"){
+            currentPosition = 3;
+        }
+        if(profile.OrderStatus === "Completed"){
+            currentPosition = 4;
+        }
+        
+    } else{
+        currentPosition = 0
+    }
     const fetchOrderInfo = async () => {
         try {
             await firestore()
