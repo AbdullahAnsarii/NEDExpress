@@ -14,6 +14,7 @@ import { icons, COLORS, SIZES, FONTS } from '../constants'
 import { AuthContext } from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FormInput from '../components/FormInput';
 
 const Restaurant = ({ route, navigation }) => {
     let total = 0;
@@ -22,6 +23,7 @@ const Restaurant = ({ route, navigation }) => {
     const [currentLocation, setCurrentLocation] = useState(null);
     const [userDepartment, setUserDepartment] = useState(null);
     const [ostatus, setOstatus] = useState(null);
+    const [additionalInfo, SetAdditionalInfo] = useState("")
     const [orderItems, setOrderItems] = React.useState([]);
     const { user } = useContext(AuthContext);
     const [profile, setProfile] = useState(null);
@@ -69,7 +71,8 @@ const Restaurant = ({ route, navigation }) => {
                     Email: profile.Email,
                     Total: total,
                     OrderTime: firestore.Timestamp.fromDate(new Date()),
-                    OrderStatus: "Placed"
+                    OrderStatus: "Placed",
+                    AdditionalInfo: additionalInfo
 
                 }).then(() => {
                     navigation.navigate("OrderDelivery", {
@@ -353,11 +356,13 @@ const Restaurant = ({ route, navigation }) => {
                             extrapolate: "clamp"
                         })
 
+
                         return (
                             <Animated.View
                                 key={`dot-${index}`}
                                 opacity={opacity}
                                 style={{
+                                    marginTop: -110,
                                     borderRadius: SIZES.radius,
                                     marginHorizontal: 6,
                                     width: dotSize,
@@ -365,9 +370,20 @@ const Restaurant = ({ route, navigation }) => {
                                     backgroundColor: dotColor
                                 }}
                             />
+
                         )
+
                     })}
                 </View>
+                <View style={{ marginLeft: 20, marginTop: -50 }}>
+                    <FormInput
+                        placeholder="Additional Info (e.g brand of soft drink)"
+                        labelValue={additionalInfo}
+                        iconType="reader-outline"
+                        autoCorrect={false}
+                        onChangeText={(txt) => SetAdditionalInfo(txt)}
+                        style
+                    /></View>
             </View>
         )
     }
