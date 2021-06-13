@@ -20,6 +20,7 @@ const Restaurant = ({ route, navigation }) => {
     const scrollX = new Animated.Value(0);
     const [restaurant, setRestaurant] = React.useState(null);
     const [currentLocation, setCurrentLocation] = React.useState(null);
+    const [userDepartment, setUserDepartment] = React.useState(null);
     const [orderItems, setOrderItems] = React.useState([]);
     const { user } = useContext(AuthContext);
     const [profile, setProfile] = useState(null);
@@ -76,10 +77,11 @@ const Restaurant = ({ route, navigation }) => {
     }
 
     React.useEffect(() => {
-        let { item, currentLocation } = route.params;
+        let { item, currentLocation, userDepartment } = route.params;
 
-        setRestaurant(item)
-        setCurrentLocation(currentLocation)
+        setRestaurant(item);
+        setCurrentLocation(currentLocation);
+        setUserDepartment(userDepartment);
     })
 
     function editOrder(action, name, menuId, price) {
@@ -399,7 +401,7 @@ const Restaurant = ({ route, navigation }) => {
                     >
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons name={"location"} size={25} color={COLORS.secondary} style={{ marginLeft: -10 }} />
-                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>{profile ? profile.Department || '---' : 'Loading'} Department</Text>
+                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>{userDepartment} Department</Text>
                         </View>
 
                         <View style={{ flexDirection: 'row' }}>

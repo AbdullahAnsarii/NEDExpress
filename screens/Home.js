@@ -13,11 +13,13 @@ import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../navigation/AuthProvider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
-
+//pass from here to everywhere firebase data
 const Home = ({ navigation }) => {
-    const [profile, setProfile] = useState(null);
+    const [name, setName] = useState(null);
     const [loading, setLoading] = useState(true);
-    const { user, logout } = useContext(AuthContext);
+    const [userDepartment, setUserDepartment] = useState(null);
+    const [ostatus, setOstatus] = useState(null);
+    const { user } = useContext(AuthContext);
     const ID = user.uid;
     const fetchUserInfo = async () => {
         try {
@@ -27,7 +29,9 @@ const Home = ({ navigation }) => {
                 .get()
                 .then((documentSnapshot) => {
                     if (documentSnapshot.exists) {
-                        setProfile(documentSnapshot.data());
+                        setName(documentSnapshot.data().Name);
+                        setUserDepartment(documentSnapshot.data().Department);
+                        setOstatus(documentSnapshot.data().OrderStatus);
                     }
                 }
                 )
@@ -472,7 +476,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} onPress={()=>{Alert.alert("NED Express", `Order Status: ${profile.OrderStatus}`)}} />
+                    <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} onPress={()=>{Alert.alert("NED Express", `Order Status: ${ostatus}`)}} />
                 </TouchableOpacity>
             </View>
         )
@@ -528,7 +532,7 @@ const Home = ({ navigation }) => {
 
         return (
             <View style={{ padding: SIZES.padding * 2 }}>
-                <Text style={{ ...FONTS.h1, color: COLORS.black }}>Hello, {profile ? profile.Name || 'User' : 'Loading..'}</Text>
+                <Text style={{ ...FONTS.h1, color: COLORS.black }}>Hello, {name ? name || 'User' : 'Loading..'}</Text>
                 <Text style={{ ...FONTS.h4, color: COLORS.secondary, marginBottom: -10 }}>Choose a category</Text>
 
                 <FlatList
@@ -542,7 +546,6 @@ const Home = ({ navigation }) => {
             </View>
         )
     }
-
     function renderRestaurantList() {
         const renderItem = ({ item }) => (
             <TouchableOpacity
@@ -552,7 +555,9 @@ const Home = ({ navigation }) => {
                     if (item?.name === "Staff Canteen") {
                         navigation.navigate("Restaurant", {
                             item,
-                            currentLocation
+                            currentLocation,
+                            userDepartment,
+                            ostatus
                         })
                     }
                     else {
