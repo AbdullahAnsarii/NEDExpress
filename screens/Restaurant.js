@@ -18,9 +18,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const Restaurant = ({ route, navigation }) => {
     let total = 0;
     const scrollX = new Animated.Value(0);
-    const [restaurant, setRestaurant] = React.useState(null);
-    const [currentLocation, setCurrentLocation] = React.useState(null);
-    const [userDepartment, setUserDepartment] = React.useState(null);
+    const [restaurant, setRestaurant] = useState(null);
+    const [currentLocation, setCurrentLocation] = useState(null);
+    const [userDepartment, setUserDepartment] = useState(null);
+    const [ostatus, setOstatus] = useState(null);
     const [orderItems, setOrderItems] = React.useState([]);
     const { user } = useContext(AuthContext);
     const [profile, setProfile] = useState(null);
@@ -45,43 +46,50 @@ const Restaurant = ({ route, navigation }) => {
         fetchUserInfo();
     }, [])
     const handleUpdate = async () => {
-        await firestore()
-            .collection('orders')
-            .doc(profile.UserID)
-            .set({
-                Order: orderItems,
-                UserID: profile.UserID,
-                Name: profile.Name,
-                RollNo: profile.RollNo,
-                Department: profile.Department,
-                ContactNo: profile.ContactNo,
-                Email: profile.Email,
-                Total: total,
-                OrderTime: firestore.Timestamp.fromDate(new Date()),
-                OrderStatus: "Placed"
+        if (total === 0) {
+            Alert.alert("NED Express", "Your cart is empty")
+        }
+        else if (ostatus === "Approved") {
+            Alert.alert("NED Express", "Your previous order is already Approved, you can place another order after this order is completed.")
+        }
+        else if (ostatus === "Shipped") {
+            Alert.alert("NED Express", "Your previous order is already Shipped, you can place another order after this order is completed.")
+        }
+        else {
+            await firestore()
+                .collection('orders')
+                .doc(profile.UserID)
+                .set({
+                    Order: orderItems,
+                    UserID: profile.UserID,
+                    Name: profile.Name,
+                    RollNo: profile.RollNo,
+                    Department: profile.Department,
+                    ContactNo: profile.ContactNo,
+                    Email: profile.Email,
+                    Total: total,
+                    OrderTime: firestore.Timestamp.fromDate(new Date()),
+                    OrderStatus: "Placed"
 
-            })
-            .then(() => {
-                if (total === 0) {
-                    Alert.alert("NED Express", "Your cart is empty")
-                }
-                else {
+                }).then(() => {
                     navigation.navigate("OrderDelivery", {
                         restaurant: restaurant,
                         currentLocation: currentLocation,
                         orderItems: orderItems,
                         total: total,
                     })
-                }
-            })
+                })
+        }
+
     }
 
     React.useEffect(() => {
-        let { item, currentLocation, userDepartment } = route.params;
+        let { item, currentLocation, userDepartment, ostatus } = route.params;
 
         setRestaurant(item);
         setCurrentLocation(currentLocation);
         setUserDepartment(userDepartment);
+        setOstatus(ostatus)
     })
 
     function editOrder(action, name, menuId, price) {
