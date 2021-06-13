@@ -25,6 +25,9 @@ class UIClass {
             <span class="order">${data.Order.map(item => item.name)}</span>
         </li>
         <li class = "list-group-items">
+            <span class="message">Additional Info: ${data.AdditionalInfo}</span>
+        </li>
+        <li class = "list-group-items">
             <span class="message">Amount Recievable: Rs. ${data.Total}</span>
         </li>
         <li class = "list-group-items">
