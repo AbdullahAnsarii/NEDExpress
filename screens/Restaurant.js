@@ -69,7 +69,7 @@ const Restaurant = ({ route, navigation }) => {
                     Department: profile.Department,
                     ContactNo: profile.ContactNo,
                     Email: profile.Email,
-                    Total: total,
+                    Total: total*0.9,
                     OrderTime: firestore.Timestamp.fromDate(new Date()),
                     OrderStatus: "Placed",
                     AdditionalInfo: additionalInfo
@@ -79,7 +79,7 @@ const Restaurant = ({ route, navigation }) => {
                         restaurant: restaurant,
                         currentLocation: currentLocation,
                         orderItems: orderItems,
-                        total: total,
+                        total: total*0.9,
                     })
                 })
         }
@@ -146,7 +146,7 @@ const Restaurant = ({ route, navigation }) => {
 
     function sumOrder() {
         total = orderItems.reduce((a, b) => a + (b.total || 0), 0)
-        return total
+        return total*0.9
     }
 
     function renderHeader() {
