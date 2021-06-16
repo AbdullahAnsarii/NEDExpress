@@ -156,10 +156,10 @@ const OrderDelivery = ({ route, navigation }) => {
                 showsVerticalScrollIndicator={true}
             >
                 <View style={styles.totalInfoWrapper}>
-                    <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
+                    <Text style={styles.userDetail}><Ionicons name={"wallet"} size={23} color={COLORS.primary}> </Ionicons><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
                 </View>
                 {orderedItem()}
-                {profile ?  profile.OrderStatus === "Completed" ? orderComplete() : (console.log("jeo")): <Text>Loading...</Text>}
+                {profile ? profile.OrderStatus === "Completed" ? orderComplete() : (console.log("jeo")) : <Text>Loading...</Text>}
             </ScrollView>
         </View>
 
@@ -196,11 +196,7 @@ const styles = StyleSheet.create({
         width: 350,
         backgroundColor: COLORS.secondary,
         borderTopRightRadius: SIZES.radius,
-        borderTopLeftRadius: SIZES.radius,
         borderBottomLeftRadius: SIZES.radius,
-        borderBottomRightRadius: SIZES.radius,
-        borderWidth: 2,
-        borderColor: COLORS.primary,
         justifyContent: 'center'
     },
     totalInfoWrapper: {
@@ -213,11 +209,7 @@ const styles = StyleSheet.create({
         width: 350,
         backgroundColor: "#00ffaa",
         borderTopRightRadius: SIZES.radius,
-        borderTopLeftRadius: SIZES.radius,
         borderBottomLeftRadius: SIZES.radius,
-        borderBottomRightRadius: SIZES.radius,
-        borderWidth: 2,
-        borderColor: "black",
         justifyContent: 'center'
     },
     userName: {
