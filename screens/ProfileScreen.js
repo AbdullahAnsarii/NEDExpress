@@ -12,6 +12,8 @@ import { windowHeight } from "../utils/Dimensions";
 import {AuthContext} from '../navigation/AuthProvider';
 import { COLORS, SIZES, FONTS } from '../constants'
 import firestore from '@react-native-firebase/firestore';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 let ProfileScreen = ({ navigation }) => {
   const [profile, setProfile] = useState(null);
@@ -58,19 +60,19 @@ let ProfileScreen = ({ navigation }) => {
             </TouchableOpacity>
         </View>
         <View style={styles.userInfoWrapper}>
-        <Text style={styles.userDetail}>Department: {profile ? profile.Department || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}><Ionicons name={"business"} size={20} color={COLORS.primary}> </Ionicons> {profile ? profile.Department || '---' : 'Loading..'}</Text>
         </View>
         <View style={styles.userInfoWrapper}>
-        <Text style={styles.userDetail}>Roll No: {profile ? profile.RollNo || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}><Ionicons name={"card"} size={23} color={COLORS.primary}> </Ionicons> {profile ? profile.RollNo || '---' : 'Loading..'}</Text>
         </View>
         <View style={styles.userInfoWrapper}>
-        <Text style={styles.userDetail}>Email: {profile ? profile.Email || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}><Ionicons name={"mail"} size={23} color={COLORS.primary}> </Ionicons> {profile ? profile.Email || '---' : 'Loading..'}</Text>
         </View>
         <View style={styles.userInfoWrapper}>
-        <Text style={styles.userDetail}>Contact No: {profile ? profile.ContactNo || '---' : 'Loading..'}</Text>
+        <Text style={styles.userDetail}><Ionicons name={"call"} size={23} color={COLORS.primary}> </Ionicons> {profile ? profile.ContactNo || '---' : 'Loading..'}</Text>
         </View>
         <View style={styles.userInfoWrapper}>
-        <Text style={styles.userDetail}>Verified ID: {profile ? profile.Verified || "No" : 'Loading..'}</Text>
+        <Text style={styles.userDetail}><Ionicons name={"checkmark-circle"} size={22} color={COLORS.primary}> </Ionicons> {profile ? profile.Verified || "No" : 'Loading..'}</Text>
         </View>
         </ScrollView>
         
@@ -97,12 +99,11 @@ const styles = StyleSheet.create({
     ...FONTS.h2
   },
   userDetail: {
-    fontSize: 15,
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 10,
     textAlign: "left",
-    color: COLORS.black,
+    color: COLORS.white,
     ...FONTS.h3
   },
   userBtnWrapper: {
@@ -139,11 +140,7 @@ const styles = StyleSheet.create({
     width: 350,
     backgroundColor: COLORS.secondary,
     borderTopRightRadius: SIZES.radius,
-    borderTopLeftRadius: SIZES.radius,
     borderBottomLeftRadius: SIZES.radius,
-    borderBottomRightRadius: SIZES.radius,
-    borderWidth: 2,
-    borderColor: COLORS.primary,
     justifyContent: 'center'
   },
   userInfoItem: {

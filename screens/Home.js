@@ -588,6 +588,7 @@ const Home = ({ navigation }) => {
                     }}
                 >
                     <Image
+                    //source={{uri : 'https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=47f937b7-408b-447c-821f-14a60c0f8d7d'}}
                         source={item.photo}
                         resizeMode="cover"
                         style={{

@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }) => {
                     UserImg: null,
                     SignInMethod: "Email/Password",
                     UserID: auth().currentUser.uid,
-                    Verified: "No"
+                    Verified: "Not Verified"
 
                   })
                   //ensure we catch any errors at this stage to advise us if something does go wrong
