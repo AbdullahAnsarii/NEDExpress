@@ -24,23 +24,38 @@ const Home = ({ navigation }) => {
     const fetchUserInfo = async () => {
         try {
             await firestore()
-                .collection("orders")
+                .collection("users")
                 .doc(ID)
                 .get()
                 .then((documentSnapshot) => {
                     if (documentSnapshot.exists) {
                         setName(documentSnapshot.data().Name);
-                        setUserDepartment(documentSnapshot.data().Department);
-                        setOstatus(documentSnapshot.data().OrderStatus);
-                    }
+                        setUserDepartment(documentSnapshot.data().Department);                    }
                 }
                 )
         } catch (e) {
             Alert.alert(e);
         }
     }
+        const fetchOrderInfo = async () => {
+            try {
+                await firestore()
+                    .collection("orders")
+                    .doc(ID)
+                    .get()
+                    .then((documentSnapshot) => {
+                        if (documentSnapshot.exists) {
+                            setOstatus(documentSnapshot.data().OrderStatus);
+                        }
+                    }
+                    )
+            } catch (e) {
+                Alert.alert(e);
+            }
+        }
     useEffect(() => {
         fetchUserInfo();
+        fetchOrderInfo();
         navigation.addListener("focus", () => setLoading(!loading));
     }, [navigation, loading])
 
@@ -476,7 +491,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} onPress={()=>{Alert.alert("NED Express", `Order Status: ${ostatus}`)}} />
+                    <Ionicons name={"information-circle"} size={33} color={COLORS.secondary} onPress={()=>{Alert.alert("NED Express", `Order Status: ${ostatus}`)}} />
                 </TouchableOpacity>
             </View>
         )

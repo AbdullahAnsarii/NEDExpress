@@ -9,6 +9,7 @@ import {
     Alert
 } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FormButton from '../components/FormButton';
 import { AuthContext } from '../navigation/AuthProvider';
 import StepIndicator from 'react-native-step-indicator';
 import { COLORS, FONTS, images, SIZES } from "../constants"
@@ -46,21 +47,21 @@ const OrderDelivery = ({ route, navigation }) => {
         labelFontFamily: FONTS.body1.fontFamily
     }
     let currentPosition;
-    if(profile){
-        if(profile.OrderStatus === "Placed"){
+    if (profile) {
+        if (profile.OrderStatus === "Placed") {
             currentPosition = 1;
         }
-        if(profile.OrderStatus === "Approved"){
+        if (profile.OrderStatus === "Approved") {
             currentPosition = 2;
         }
-        if(profile.OrderStatus === "Shipped"){
+        if (profile.OrderStatus === "Shipped") {
             currentPosition = 3;
         }
-        if(profile.OrderStatus === "Completed"){
+        if (profile.OrderStatus === "Completed") {
             currentPosition = 4;
         }
-        
-    } else{
+
+    } else {
         currentPosition = 0
     }
     const fetchOrderInfo = async () => {
@@ -91,6 +92,14 @@ const OrderDelivery = ({ route, navigation }) => {
     }, [])
     //jugaar mathod
     setTimeout(() => fetchOrderInfo(), 3000)
+    function orderComplete() {
+        return (
+            <FormButton
+                buttonTitle="Home"
+                onPress={() => navigation.navigate("Home")}
+            />
+        )
+    }
     function renderHeader() {
         return (
             <View style={{ flexDirection: 'row' }}>
@@ -150,6 +159,7 @@ const OrderDelivery = ({ route, navigation }) => {
                     <Text style={styles.userDetail}><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
                 </View>
                 {orderedItem()}
+                {profile ?  profile.OrderStatus === "Completed" ? orderComplete() : (console.log("jeo")): <Text>Loading...</Text>}
             </ScrollView>
         </View>
 

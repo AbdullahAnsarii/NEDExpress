@@ -46,7 +46,7 @@ function renderHeader() {
                     justifyContent: 'center'
                 }}
             >
-                <Ionicons name={"cart-sharp"} size={30} color={COLORS.secondary} />
+                <Ionicons name={"information-circle"} size={33} color={COLORS.secondary} />
             </TouchableOpacity>
         </View>
     )
