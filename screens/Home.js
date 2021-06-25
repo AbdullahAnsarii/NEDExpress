@@ -94,7 +94,7 @@ const Home = ({ navigation }) => {
             rating: 4.8,
             categories: [1],
             priceRating: affordable,
-            photo: images.staff,
+            url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/staff.jpg?alt=media&token=319966ce-6b17-4ab2-8ed2-acdd50204ec1",
             duration: "30 - 45 min",
             location: {
                 latitude: 1.5347282806345879,
@@ -104,67 +104,179 @@ const Home = ({ navigation }) => {
                 {
                     menuId: 1,
                     name: "Chicken Biryani",
-                    photo: images.biryani,
-                    description: "Biyani served hot with a chicken piece in a box with a spoon",
+                    description: "Biyani served hot with a chicken piece in a box with a spoon.",
                     makeTime: 10,
-                    price: 80
+                    price: 100,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=47f937b7-408b-447c-821f-14a60c0f8d7d"
                 },
                 {
                     menuId: 2,
-                    name: "Club Sandwich",
-                    photo: images.club,
-                    description: "Baked Sandwich served with fries and coleslaw",
+                    name: "Zinger Burger",
+                    description: "Zinger burger with french fries.",
                     makeTime: 20,
-                    price: 110
+                    price: 150,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/zinger.jpg?alt=media&token=6d89c976-2e70-47da-bab4-d3a1143304a9"
                 },
                 {
                     menuId: 3,
-                    name: "Shami Burger",
-                    photo: images.andashami,
-                    description: "Easy to go pocket friendly burger served with fries",
-                    makeTime: 15,
-                    price: 60
+                    name: "Club Sandwich",
+                    description: "Baked Sandwich served with fries and coleslaw.",
+                    makeTime: 20,
+                    price: 150,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/club.jpg?alt=media&token=b27244a8-6055-4ee4-940e-2cca6d13d0a2"
                 },
                 {
                     menuId: 4,
-                    name: "Roll Paratha",
-                    photo: images.rollparatha,
-                    description: "Chicken roll served with options of different sauces",
-                    makeTime: 10,
-                    price: 60
+                    name: "Tikka Sandwich",
+                    photo: images.andashami,
+                    description: "Sandwich with tikka chunks filling.",
+                    makeTime: 20,
+                    price: 130,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/Tikka-Sandwich-with-Fries-and-Coleslaw1.jpg?alt=media&token=0e86aa03-b11c-4bf8-94ba-c59232366b2b"
                 },
                 {
                     menuId: 5,
-                    name: "Fries",
-                    photo: images.fries,
-                    description: "French fries served in a paper plate with ketchup",
-                    makeTime: 10,
-                    price: 30
+                    name: "Anday Wala Burger",
+                    description: "Shami burger with egg and kebab filling served with fries.",
+                    makeTime: 20,
+                    price: 70,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/double_egg_shami_burger.jpg?alt=media&token=815b8a9c-3304-4227-b59c-cf60182e453a"
                 },
                 {
                     menuId: 6,
-                    name: "Samosa",
-                    photo: images.samosa,
-                    description: "Potato based deep fried samosa",
-                    makeTime: 5,
-                    price: 10
+                    name: "Shami Burger",
+                    description: "Pocket friendly shami burger served with fries.",
+                    makeTime: 20,
+                    price: 60,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/shamii.jpg?alt=media&token=bb74c325-c9b7-4543-b102-07f94be871b8"
                 },
                 {
                     menuId: 7,
-                    name: "Tea",
-                    photo: images.tea,
-                    description: "delicious tea served hot",
-                    makeTime: 5,
-                    price: 20
+                    name: "Chicken Roll",
+                    description: "Chicken tikka chunks roll.",
+                    makeTime: 10,
+                    price: 60,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/chickenchutney.jpg?alt=media&token=9bd7e007-a00e-44ed-aa8f-0261d1a60847"
                 },
                 {
                     menuId: 8,
+                    name: "Mayo Roll",
+                    description: "Chicken roll with mayo sauce.",
+                    makeTime: 10,
+                    price: 70,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/mayoo.jpg?alt=media&token=688217ea-1d3c-442d-a7de-585975907f9f"
+                },
+                {
+                    menuId: 9,
+                    name: "Zinger Roll",
+                    description: "Fried chicken wrap.",
+                    makeTime: 12,
+                    price: 130,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/zingerroll.jpg?alt=media&token=db31e461-bc87-48c0-840b-28490ae8e180"
+                },
+                {
+                    menuId: 10,
+                    name: "Fries",
+                    photo: images.fries,
+                    description: "French fries served with masala and ketchup.\nPlease provide exclusion of ketchp in Additional Info. if applicable",
+                    makeTime: 10,
+                    price: 50,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/frenchfries.jpg?alt=media&token=f5c81172-a649-496a-9831-4cd770ccb7e0"
+                },
+                {
+                    menuId: 11,
+                    name: "Spring Roll",
+                    description: "Fried roll with vegetable stuffing.",
+                    makeTime: 7,
+                    price: 20,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/spring.jpg?alt=media&token=90bfb52a-6f12-4832-8385-79d27c7a3eb8"
+                },
+                {
+                    menuId: 12,
+                    name: "Samosa",
+                    description: "Potato based deep fried samosa.",
+                    makeTime: 7,
+                    price: 10,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/samosa.jpg?alt=media&token=2eded20a-d204-47a2-b8e2-7e9813da2ee9"
+                },{
+                    menuId: 13,
+                    name: "Patties",
+                    description: "Baked chicken patty.",
+                    makeTime: 5,
+                    price: 40,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/patties.jpg?alt=media&token=b46f1005-bebe-48c9-8468-7896576abe50"
+                },
+                {
+                    menuId: 14,
+                    name: "Milk Shake",
+                    description: "Mango Shake, Banana Shake, Chocolate Shake, Oreo Shake\n Please provide the flavour in Additional Info.",
+                    makeTime: 10,
+                    price: 70,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/shakes.jpeg?alt=media&token=869e1760-0b61-4f5b-ad02-db64aa6ff8a0"
+                },
+                {
+                    menuId: 15,
+                    name: "Fresh Juice",
+                    description: "Orange Juice, Falsa Juice\n Please provide the flavour in Additional Info.",
+                    makeTime: 10,
+                    price: 60,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/plastic-juice-glass-4-500x500.jpg?alt=media&token=157941c8-c411-4d35-985a-15ca4f9aa10d"
+                },
+                {
+                    menuId: 16,
+                    name: "Tea",
+                    description: "delicious tea served hot.",
+                    makeTime: 5,
+                    price: 30,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/tea.jpg?alt=media&token=57bfa4dd-6e14-49d6-8059-741ecf9ea226"
+                },
+                {
+                    menuId: 17,
                     name: "Soft Drink",
-                    photo: images.pepsi,
-                    description: "Soft drink can served chilled",
-                    makeTime: 1,
-                    price: 50
-                }
+                    description: "Pepsi, Mirinda, Dew, 7up\n Please provide the option in Additional Info.",
+                    makeTime: 2,
+                    price: 40,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/can.jpg?alt=media&token=448a5b8f-e008-4c06-abc2-c98a00ef28e4"
+                },
+                {
+                    menuId: 18,
+                    name: "Mineral Water",
+                    description: "Pure bottled water.",
+                    makeTime: 2,
+                    price: 40,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/mineral.jpg?alt=media&token=62ac89c7-8e22-4766-a9d1-e78e44427cae"
+                },
+                {
+                    menuId: 19,
+                    name: "Slice Juice",
+                    description: "Chilled mango flavoured slice juice.",
+                    makeTime: 2,
+                    price: 30,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/slice.jpg?alt=media&token=ea913542-7c0c-4283-b13d-aa9b2050d2ca"
+                },
+                {
+                    menuId: 20,
+                    name: "Biscuit",
+                    description: "Gluco, Prince, Gala, Zeera Plud \n Please provide the option in Additional Info.",
+                    makeTime: 2,
+                    price: 20,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biscuits.jpg?alt=media&token=741fc3e4-5a55-4166-b8a4-24717ed7a7b2"
+                },
+                {
+                    menuId: 21,
+                    name: "Novita or Chocolatto",
+                    description: "Please provide Novita or Chocolatto in Additional Info.",
+                    makeTime: 2,
+                    price: 10,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/grocerapp-bisconni-novita-chocolate-wafers-5ec38719ef0e4.png?alt=media&token=75777365-3b0a-4e1e-9009-9409de06799e"
+                },{
+                    menuId: 22,
+                    name: "Cocomo",
+                    description: "Cocomo mjhe bhi do.",
+                    makeTime: 2,
+                    price: 5,
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/cocomo.jpg?alt=media&token=1a3143e2-bcfc-43fc-b47a-c34aa18e606a"
+                },
             ]
         },
         {
@@ -173,92 +285,13 @@ const Home = ({ navigation }) => {
             rating: 4.5,
             categories: [1],
             priceRating: expensive,
-            photo: images.enviro,
+            url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/enviroo.jpg?alt=media&token=65abe935-40e0-4d00-acd3-1c73dad5575b",
             duration: "15 - 20 min",
             location: {
                 latitude: 1.556306570595712,
                 longitude: 110.35504616746915,
             },
             menu: [
-                {
-                    menuId: 1,
-                    name: "Gravy",
-                    photo: images.qorma,
-                    description: "Hot qorma served only at 1 pm",
-                    makeTime: 12,
-                    price: 50
-                },
-                {
-                    menuId: 2,
-                    name: "Milk Shake",
-                    photo: images.shakes,
-                    description: "Milk shakes with a variety of flavors",
-                    makeTime: 10,
-                    price: 60
-                }, {
-                    menuId: 3,
-                    name: "Chicken Biryani",
-                    photo: images.biryani,
-                    description: "Biyani served hot with a chicken piece in a box with a spoon",
-                    makeTime: 10,
-                    price: 80
-                },
-                {
-                    menuId: 4,
-                    name: "Club Sandwich",
-                    photo: images.club,
-                    description: "Baked Sandwich served with fries and coleslaw",
-                    makeTime: 20,
-                    price: 110
-                },
-                {
-                    menuId: 5,
-                    name: "Shami Burger",
-                    photo: images.andashami,
-                    description: "Easy to go pocket friendly burger served with fries",
-                    makeTime: 15,
-                    price: 60
-                },
-                {
-                    menuId: 6,
-                    name: "Roll Paratha",
-                    photo: images.rollparatha,
-                    description: "Chicken roll served with options of different sauces",
-                    makeTime: 10,
-                    price: 60
-                },
-                {
-                    menuId: 7,
-                    name: "Fries",
-                    photo: images.fries,
-                    description: "French fries served in a paper plate with ketchup",
-                    makeTime: 10,
-                    price: 30
-                },
-                {
-                    menuId: 8,
-                    name: "Samosa",
-                    photo: images.samosa,
-                    description: "Potato based deep fried samosa",
-                    makeTime: 5,
-                    price: 10
-                },
-                {
-                    menuId: 9,
-                    name: "Tea",
-                    photo: images.tea,
-                    description: "delicious tea served hot",
-                    makeTime: 5,
-                    price: 20
-                },
-                {
-                    menuId: 10,
-                    name: "Soft Drink",
-                    photo: images.pepsi,
-                    description: "Soft drink can served chilled",
-                    makeTime: 1,
-                    price: 50
-                }
             ]
         },
         {
@@ -267,92 +300,13 @@ const Home = ({ navigation }) => {
             rating: 4.9,
             categories: [1],
             priceRating: fairPrice,
-            photo: images.mech,
+            url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/mech.jpg?alt=media&token=35dd45fc-99b4-4724-857c-8751fbb5a471",
             duration: "20 - 25 min",
             location: {
                 latitude: 1.5238753474714375,
                 longitude: 110.34261833833622,
             },
             menu: [
-                {
-                    menuId: 2,
-                    name: "Gravy",
-                    photo: images.qorma,
-                    description: "Hot qorma served only at 1 pm",
-                    makeTime: 12,
-                    price: 50
-                },
-                {
-                    menuId: 3,
-                    name: "Milk Shake",
-                    photo: images.shakes,
-                    description: "Milk shakes with a variety of flavors",
-                    makeTime: 10,
-                    price: 60
-                }, {
-                    menuId: 4,
-                    name: "Chicken Biryani",
-                    photo: images.biryani,
-                    description: "Biyani served hot with a chicken piece in a box with a spoon",
-                    makeTime: 10,
-                    price: 80
-                },
-                {
-                    menuId: 5,
-                    name: "Club Sandwich",
-                    photo: images.club,
-                    description: "Baked Sandwich served with fries and coleslaw",
-                    makeTime: 20,
-                    price: 110
-                },
-                {
-                    menuId: 6,
-                    name: "Shami Burger",
-                    photo: images.andashami,
-                    description: "Easy to go pocket friendly burger served with fries",
-                    makeTime: 15,
-                    price: 60
-                },
-                {
-                    menuId: 7,
-                    name: "Roll Paratha",
-                    photo: images.rollparatha,
-                    description: "Chicken roll served with options of different sauces",
-                    makeTime: 10,
-                    price: 60
-                },
-                {
-                    menuId: 8,
-                    name: "Fries",
-                    photo: images.fries,
-                    description: "French fries served in a paper plate with ketchup",
-                    makeTime: 10,
-                    price: 30
-                },
-                {
-                    menuId: 9,
-                    name: "Samosa",
-                    photo: images.samosa,
-                    description: "Potato based deep fried samosa",
-                    makeTime: 5,
-                    price: 10
-                },
-                {
-                    menuId: 10,
-                    name: "Tea",
-                    photo: images.tea,
-                    description: "delicious tea served hot",
-                    makeTime: 5,
-                    price: 20
-                },
-                {
-                    menuId: 11,
-                    name: "Soft Drink",
-                    photo: images.pepsi,
-                    description: "Soft drink can served chilled",
-                    makeTime: 1,
-                    price: 50
-                }
             ]
         },
         {
@@ -361,22 +315,13 @@ const Home = ({ navigation }) => {
             rating: 4.8,
             categories: [2],
             priceRating: affordable,
-            photo: images.nizami,
+            url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/photocopy.jpg?alt=media&token=d4c0dd20-2a0b-46e1-b052-1635bb2da721",
             duration: "10 - 15 min",
             location: {
                 latitude: 1.5578068150528928,
                 longitude: 110.35482523764315,
             },
-            menu: [
-                {
-                    menuId: 1,
-                    name: "Photocopy",
-                    photo: images.photocopy,
-                    description: "Photocopy of docs, Rs. 3 per page",
-                    makeTime: 20,
-                    price: 3
-                }
-            ]
+            menu: []
         },
         {
 
@@ -385,38 +330,13 @@ const Home = ({ navigation }) => {
             rating: 4.9,
             categories: [2],
             priceRating: affordable,
-            photo: images.alips,
+            url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/printerc.jpg?alt=media&token=23a020c3-f816-41d7-b7ef-992f00ca1aaa",
             duration: "35 - 40 min",
             location: {
                 latitude: 1.5573478487252896,
                 longitude: 110.35568783282145,
             },
-            menu: [
-                {
-                    menuId: 1,
-                    name: "Photocopy",
-                    photo: images.photocopy,
-                    description: "Photocopy of docs Rs. 3 per page",
-                    makeTime: 20,
-                    price: 3
-                },
-                {
-                    menuId: 2,
-                    name: "Printout B&W",
-                    photo: images.printb,
-                    description: "Greyscale printout",
-                    makeTime: 20,
-                    price: 10
-                },
-                {
-                    menuId: 3,
-                    name: "Printout Color",
-                    photo: images.printc,
-                    description: "Color printout",
-                    makeTime: 30,
-                    price: 20
-                }
-            ]
+            menu: []
 
         }
 
@@ -589,7 +509,7 @@ const Home = ({ navigation }) => {
                 >
                     <Image
                     //source={{uri : 'https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=47f937b7-408b-447c-821f-14a60c0f8d7d'}}
-                        source={item.photo}
+                        source={{uri: item.url}}
                         resizeMode="cover"
                         style={{
                             width: "100%",

@@ -62,7 +62,7 @@ const PromoScreen = () => {
                 marginHorizontal: 40,
             }}>
             <Image
-                source={images.promo1g}
+                source={{uri: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/promo1.gif?alt=media&token=05069ea7-a272-438c-9dd7-8d6a3d921c3c"}}
                 resizeMode={"contain"}
                 style={{
                     width: "100%",

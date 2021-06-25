@@ -214,6 +214,7 @@ const EditProfileScreen = ({ navigation }) => {
             placeholderText="Roll no. (CS-XXXXX).   "
             iconType="card-outline"
             autoCorrect={false}
+            keyboardType="numeric"
             maxLength={5}
           />
           <View style={styles.picker}>

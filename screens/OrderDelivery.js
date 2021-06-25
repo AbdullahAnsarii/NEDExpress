@@ -91,7 +91,7 @@ const OrderDelivery = ({ route, navigation }) => {
         setOrderItems(orderItems)
     }, [])
     //jugaar mathod
-    setTimeout(() => fetchOrderInfo(), 3000)
+    setTimeout(() => fetchOrderInfo(), 5000)
     function orderComplete() {
         return (
             <FormButton
@@ -159,8 +159,8 @@ const OrderDelivery = ({ route, navigation }) => {
                     <Text style={styles.userDetail}><Ionicons name={"wallet"} size={23} color={COLORS.primary}> </Ionicons><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
                 </View>
                 {orderedItem()}
-                {profile ? profile.OrderStatus === "Completed" ? orderComplete() : (console.log("jeo")) : <Text>Loading...</Text>}
             </ScrollView>
+            {profile ? profile.OrderStatus === "Completed" ? orderComplete() : <Text></Text> : <Text>Loading...</Text>}
         </View>
 
     )
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         height: 60,
         width: 350,
-        backgroundColor: "#00ffaa",
+        backgroundColor: "#009966",
         borderTopRightRadius: SIZES.radius,
         borderBottomLeftRadius: SIZES.radius,
         justifyContent: 'center'
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     },
     userDetail: {
         textAlign: "left",
-        color: "black",
+        color: COLORS.white,
         ...FONTS.body3
     },
 })
