@@ -64,7 +64,8 @@ export const AuthProvider = ({ children }) => {
                     CreatedAt: firestore.Timestamp.fromDate(new Date()),
                     UserImg: auth().currentUser.photoURL,
                     SignInMethod: "Gmail",
-                    UserID: auth().currentUser.uid
+                    UserID: auth().currentUser.uid,
+                    Verified: "Not Verified"
                   })
                   //ensure we catch any errors at this stage to advise us if something does go wrong
                   .catch(error => {

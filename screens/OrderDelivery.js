@@ -142,6 +142,8 @@ const OrderDelivery = ({ route, navigation }) => {
                 />
                 <View>
                     <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
+                    <Text style={{fontSize:12, textAlign: "center",color: COLORS.darkgray, alignContent: "center"}}><Ionicons name={"call"} size={16} color={COLORS.primary}> </Ionicons>+923012216771</Text>
+                    <Text style={{fontSize:12, textAlign: "center",color: COLORS.darkgray, alignContent: "center"}}><Ionicons name={"mail"} size={16} color={COLORS.primary}> </Ionicons>nedexpress.helpcenter@gmail.com</Text>
                 </View>
             </View>
             <View>
@@ -183,7 +185,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         height: 90,
-        width: 220,
+        width: 240,
         resizeMode: 'cover',
     },
     orderInfoWrapper: {

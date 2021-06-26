@@ -75,7 +75,7 @@ const EditProfileScreen = ({ navigation }) => {
         RollNo: profile.RollNo,
         Department: profile.Department,
         ContactNo: profile.ContactNo,
-        Verified: "No"
+        Verified: "Not Verified"
         //userImg: imgUrl,
       })
       .then(() => {
@@ -241,6 +241,7 @@ const EditProfileScreen = ({ navigation }) => {
           buttonTitle="Submit"
           onPress={() => handleUpdate()}
         />
+        <Text style={{color: COLORS.darkgray, marginTop: 2}}>ℹ don't edit credentials if your ID is verified</Text>
       </ScrollView>
     </View>
   );

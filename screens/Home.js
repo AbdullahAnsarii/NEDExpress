@@ -30,29 +30,30 @@ const Home = ({ navigation }) => {
                 .then((documentSnapshot) => {
                     if (documentSnapshot.exists) {
                         setName(documentSnapshot.data().Name);
-                        setUserDepartment(documentSnapshot.data().Department);                    }
+                        setUserDepartment(documentSnapshot.data().Department);
+                    }
                 }
                 )
         } catch (e) {
             Alert.alert(e);
         }
     }
-        const fetchOrderInfo = async () => {
-            try {
-                await firestore()
-                    .collection("orders")
-                    .doc(ID)
-                    .get()
-                    .then((documentSnapshot) => {
-                        if (documentSnapshot.exists) {
-                            setOstatus(documentSnapshot.data().OrderStatus);
-                        }
+    const fetchOrderInfo = async () => {
+        try {
+            await firestore()
+                .collection("orders")
+                .doc(ID)
+                .get()
+                .then((documentSnapshot) => {
+                    if (documentSnapshot.exists) {
+                        setOstatus(documentSnapshot.data().OrderStatus);
                     }
-                    )
-            } catch (e) {
-                Alert.alert(e);
-            }
+                }
+                )
+        } catch (e) {
+            Alert.alert(e);
         }
+    }
     useEffect(() => {
         fetchUserInfo();
         fetchOrderInfo();
@@ -107,7 +108,7 @@ const Home = ({ navigation }) => {
                     description: "Biyani served hot with a chicken piece in a box with a spoon.",
                     makeTime: 10,
                     price: 100,
-                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=47f937b7-408b-447c-821f-14a60c0f8d7d"
+                    url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=7555aaeb-f173-4e5c-a593-17e26b744cf3"
                 },
                 {
                     menuId: 2,
@@ -198,7 +199,7 @@ const Home = ({ navigation }) => {
                     makeTime: 7,
                     price: 10,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/samosa.jpg?alt=media&token=2eded20a-d204-47a2-b8e2-7e9813da2ee9"
-                },{
+                }, {
                     menuId: 13,
                     name: "Patties",
                     description: "Baked chicken patty.",
@@ -219,7 +220,7 @@ const Home = ({ navigation }) => {
                     name: "Fresh Juice",
                     description: "Orange Juice, Falsa Juice\n Please provide the flavour in Additional Info.",
                     makeTime: 10,
-                    price: 60,
+                    price: 80,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/plastic-juice-glass-4-500x500.jpg?alt=media&token=157941c8-c411-4d35-985a-15ca4f9aa10d"
                 },
                 {
@@ -269,7 +270,7 @@ const Home = ({ navigation }) => {
                     makeTime: 2,
                     price: 10,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/grocerapp-bisconni-novita-chocolate-wafers-5ec38719ef0e4.png?alt=media&token=75777365-3b0a-4e1e-9009-9409de06799e"
-                },{
+                }, {
                     menuId: 22,
                     name: "Cocomo",
                     description: "Cocomo mjhe bhi do.",
@@ -386,7 +387,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Ionicons name={"menu-sharp"}  size={30} color={COLORS.secondary} style={{ marginLeft: -2 }} />
+                    <Ionicons name={"menu-sharp"} size={30} color={COLORS.secondary} style={{ marginLeft: -2 }} />
                 </TouchableOpacity>
 
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -411,7 +412,7 @@ const Home = ({ navigation }) => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Ionicons name={"information-circle"} size={33} color={COLORS.secondary} onPress={()=>{Alert.alert("NED Express", `Order Status: ${ostatus}`)}} />
+                    <Ionicons name={"information-circle"} size={33} color={COLORS.secondary} onPress={() => { Alert.alert("NED Express", `Order Status: ${ostatus}`) }} />
                 </TouchableOpacity>
             </View>
         )
@@ -508,8 +509,7 @@ const Home = ({ navigation }) => {
                     }}
                 >
                     <Image
-                    //source={{uri : 'https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=47f937b7-408b-447c-821f-14a60c0f8d7d'}}
-                        source={{uri: item.url}}
+                        source={{ uri: item.url }}
                         resizeMode="cover"
                         style={{
                             width: "100%",
@@ -612,7 +612,7 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        
+
     },
     shadow: {
         shadowColor: "#000",
