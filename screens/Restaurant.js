@@ -301,20 +301,19 @@ const Restaurant = ({ route, navigation }) => {
                                 }}
                             >
                                 <Text style={{ color: COLORS.black, marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - Rs. {item.price}</Text>
-                                <Text style={{ color: COLORS.black, ...FONTS.body3 }}>{item.description}</Text>
+                                <Text style={{ color: COLORS.black, ...FONTS.body5 }}>{item.description}</Text>
                             </View>
 
-                            {/* Calories */}
+                            {/* Time */}
                             <View
                                 style={{
                                     flexDirection: 'row',
-                                    marginTop: 10
                                 }}
                             >
                                 <Ionicons name={"time-outline"} size={23} color={COLORS.black} />
 
                                 <Text style={{
-                                    ...FONTS.body3, color: COLORS.darygray
+                                    ...FONTS.body4, color: COLORS.darygray
                                 }}>{item.makeTime} minutes</Text>
                             </View>
                         </View>

@@ -21,6 +21,7 @@ orderList.addEventListener("click", function (event, data) {
   if (event.target.dataset.action === "proceed") {
     if (event.target.tagName === 'BUTTON') {
       if(orderroom.room === "Placed"){
+        console.log(event.target.dataset)
         orderroom.changeOrderStatus("Approved", event.target.dataset.objectid);
       }
       else if(orderroom.room === "Approved"){

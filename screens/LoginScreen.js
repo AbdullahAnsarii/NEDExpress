@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 300,
-    height: 130,
+    height: 205,
     resizeMode: 'stretch',
   },
   text: {

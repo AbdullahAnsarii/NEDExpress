@@ -179,7 +179,7 @@ const Home = ({ navigation }) => {
                     menuId: 10,
                     name: "Fries",
                     photo: images.fries,
-                    description: "French fries served with masala and ketchup.\nPlease provide exclusion of ketchp in Additional Info. if applicable",
+                    description: "French fries served with masala and ketchup.\nPlease provide exclusion of ketchup in Additional Info.",
                     makeTime: 10,
                     price: 50,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/frenchfries.jpg?alt=media&token=f5c81172-a649-496a-9831-4cd770ccb7e0"
@@ -210,7 +210,7 @@ const Home = ({ navigation }) => {
                 {
                     menuId: 14,
                     name: "Milk Shake",
-                    description: "Mango Shake, Banana Shake, Chocolate Shake, Oreo Shake\n Please provide the flavour in Additional Info.",
+                    description: "Mango Shake, Banana Shake, Ice Cream Shake, Chocolate Shake, Oreo Shake\nPlease provide the flavour in Additional Info.",
                     makeTime: 10,
                     price: 70,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/shakes.jpeg?alt=media&token=869e1760-0b61-4f5b-ad02-db64aa6ff8a0"
@@ -218,7 +218,7 @@ const Home = ({ navigation }) => {
                 {
                     menuId: 15,
                     name: "Fresh Juice",
-                    description: "Orange Juice, Falsa Juice\n Please provide the flavour in Additional Info.",
+                    description: "Orange Juice, Falsa Juice\nPlease provide the flavour in Additional Info.",
                     makeTime: 10,
                     price: 80,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/plastic-juice-glass-4-500x500.jpg?alt=media&token=157941c8-c411-4d35-985a-15ca4f9aa10d"
@@ -234,7 +234,7 @@ const Home = ({ navigation }) => {
                 {
                     menuId: 17,
                     name: "Soft Drink",
-                    description: "Pepsi, Mirinda, Dew, 7up\n Please provide the option in Additional Info.",
+                    description: "Pepsi, Mirinda, Dew, 7up\nPlease provide the option in Additional Info.",
                     makeTime: 2,
                     price: 40,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/can.jpg?alt=media&token=448a5b8f-e008-4c06-abc2-c98a00ef28e4"
@@ -258,7 +258,7 @@ const Home = ({ navigation }) => {
                 {
                     menuId: 20,
                     name: "Biscuit",
-                    description: "Gluco, Prince, Gala, Zeera Plud \n Please provide the option in Additional Info.",
+                    description: "Gluco, Prince, Gala, Zeera Plus \nPlease provide the option in Additional Info.",
                     makeTime: 2,
                     price: 20,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biscuits.jpg?alt=media&token=741fc3e4-5a55-4166-b8a4-24717ed7a7b2"

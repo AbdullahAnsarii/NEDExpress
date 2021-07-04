@@ -6,8 +6,8 @@
 
     <item
         android:layout_marginBottom="400dp"
-        android:width="105dp"
-        android:height="190dp"
+        android:width="280dp"
+        android:height="195dp"
         android:drawable="@mipmap/nedexpressbyaalogo"
         android:gravity="center" />
 

@@ -137,13 +137,13 @@ const OrderDelivery = ({ route, navigation }) => {
 
                 {renderHeader()}
                 <Image
-                    source={images.nedexpressicon}
+                    source={images.odg}
                     style={styles.logo}
                 />
                 <View>
                     <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
-                    <Text style={{fontSize:12, textAlign: "center",color: COLORS.darkgray, alignContent: "center"}}><Ionicons name={"call"} size={16} color={COLORS.primary}> </Ionicons>+923012216771</Text>
-                    <Text style={{fontSize:12, textAlign: "center",color: COLORS.darkgray, alignContent: "center"}}><Ionicons name={"mail"} size={16} color={COLORS.primary}> </Ionicons>nedexpress.helpcenter@gmail.com</Text>
+                    <Text style={{ fontSize: 12, textAlign: "center", color: COLORS.darkgray, alignContent: "center" }}><Ionicons name={"call"} size={16} color={COLORS.primary}> </Ionicons>+923012216771</Text>
+                    <Text style={{ fontSize: 12, textAlign: "center", color: COLORS.darkgray, alignContent: "center" }}><Ionicons name={"mail"} size={16} color={COLORS.primary}> </Ionicons>nedexpress.helpcenter@gmail.com</Text>
                 </View>
             </View>
             <View>
@@ -155,7 +155,7 @@ const OrderDelivery = ({ route, navigation }) => {
                 />
             </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}
-                showsVerticalScrollIndicator={true}
+                showsVerticalScrollIndicator={true} persistentScrollbar={true}
             >
                 <View style={styles.totalInfoWrapper}>
                     <Text style={styles.userDetail}><Ionicons name={"wallet"} size={23} color={COLORS.primary}> </Ionicons><Text style={{ fontWeight: "bold", fontSize: 17 }}>Total Amount : Rs. {total}</Text></Text>
@@ -184,9 +184,10 @@ const styles = StyleSheet.create({
         marginBottom: 0
     },
     logo: {
-        height: 90,
-        width: 240,
-        resizeMode: 'cover',
+        marginTop: -30,
+        height: 180,
+        width: 200,
+        resizeMode: 'stretch',
     },
     orderInfoWrapper: {
         flex: 1,
@@ -219,8 +220,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: 'bold',
         marginTop: 10,
-        marginBottom: 10,
-        ...FONTS.h2
+        ...FONTS.h5
     },
     userDetail: {
         textAlign: "left",
