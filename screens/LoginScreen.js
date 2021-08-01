@@ -62,7 +62,7 @@ const LoginScreen = ({navigation}) => {
         buttonTitle="Login"
         onPress={() => loginHandle(user.email, user.password)}
       />
-      <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
+      <Text style={{ marginTop: 5 ,marginBottom:5,color: COLORS.darkgray, ...FONTS.body3 }}>OR</Text>
       {Platform.OS === 'android' ? (
         <View>
           <SocialButton
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   text: {
+    fontSize: windowHeight/30 ,
     fontFamily: FONTS.h1.fontFamily,
-    fontSize: 29,
     marginBottom: 10,
     color: COLORS.black,
   },

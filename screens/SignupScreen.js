@@ -269,6 +269,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     height: windowHeight / 15,
+    width: SIZES.width * 0.9,
     borderColor: '#ccc',
     borderRadius: SIZES.radius,
     borderWidth: 1,
@@ -277,15 +278,15 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
+    padding: 25,
     paddingTop: 72,
     backgroundColor: "#fff",
 
   },
   text: {
-    marginTop: -55,
+    marginTop:-60,
+    fontSize: windowHeight/30,
     fontFamily: FONTS.h1.fontFamily,
-    fontSize: 32,
     marginBottom: 10,
     color: COLORS.black,
   },

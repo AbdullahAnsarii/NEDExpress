@@ -402,7 +402,7 @@ const Home = ({ navigation }) => {
                             borderRadius: SIZES.radius
                         }}
                     >
-                        <Text style={{ color: COLORS.black, fontFamily:FONTS.body2.fontFamily, fontSize: windowHeight/40, fontWeight:"bold" }}>{currentLocation.streetName}</Text>
+                    <Text style={{ color: COLORS.black, fontSize: windowHeight/40 ,fontFamily: FONTS.h1.fontFamily, }}>NEDUET</Text>
                     </View>
                 </View>
 

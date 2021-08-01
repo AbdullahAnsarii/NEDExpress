@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { COLORS, FONTS, SIZES } from "../constants";
+import { windowHeight, windowWidth } from "../utils/Dimensions";
+
 function renderHeader() {
     return (
         <View style={{
@@ -35,7 +37,7 @@ function renderHeader() {
                         borderRadius: SIZES.radius
                     }}
                 >
-                    <Text style={{ color: COLORS.black, ...FONTS.h3 }}>NEDUET</Text>
+                    <Text style={{ color: COLORS.black, fontSize: windowHeight/40 ,fontFamily: FONTS.h1.fontFamily, }}>NEDUET</Text>
                 </View>
             </View>
 
@@ -57,7 +59,7 @@ const FavouritesScreen = () => {
             flex: 1,
         }}>
             {renderHeader()}
-            <Text style={{ padding: SIZES.padding * 2, ...FONTS.h1, color: COLORS.black }}>Favourites</Text>
+            <Text style={{ padding: SIZES.padding * 2,fontSize: windowHeight/30 ,fontFamily: FONTS.h1.fontFamily, color: COLORS.black }}>Favourites</Text>
             <TouchableOpacity
                 style={{
                     marginLeft: 15,
