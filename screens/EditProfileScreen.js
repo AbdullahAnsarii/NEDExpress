@@ -190,7 +190,7 @@ const EditProfileScreen = ({ navigation }) => {
             </View>
           </TouchableOpacity>
           <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center', color: COLORS.black }}>
-            {profile ? profile.Name || 'Loading..' : 'Loading..'}
+            {profile ? profile.Name || '' : ''}
           </Text>
 
           <FormInput
