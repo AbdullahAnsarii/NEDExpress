@@ -164,7 +164,10 @@ const EditProfileScreen = ({ navigation }) => {
                 source={
                   { uri: profile ? profile.UserImg || image : image }
                 }
-                style={{ height: 150, width: 150, }}
+                style={{ 
+                  height: windowHeight/6,
+                  width: windowHeight/6,
+                  borderRadius: 75, }}
                 imageStyle={{ borderRadius: 75 }}>
                 <View
                   style={{
@@ -189,7 +192,7 @@ const EditProfileScreen = ({ navigation }) => {
               </ImageBackground>
             </View>
           </TouchableOpacity>
-          <Text style={{ marginVertical: 13, fontSize: 18, fontWeight: 'bold', textAlign: 'center', color: COLORS.black }}>
+          <Text style={{ marginVertical: 13, fontSize: windowHeight/45, fontWeight: 'bold', textAlign: 'center', color: COLORS.black }}>
             {profile ? profile.Name || '' : ''}
           </Text>
 

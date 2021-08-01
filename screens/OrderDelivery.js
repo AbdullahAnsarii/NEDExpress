@@ -14,6 +14,7 @@ import { AuthContext } from '../navigation/AuthProvider';
 import StepIndicator from 'react-native-step-indicator';
 import { COLORS, FONTS, images, SIZES } from "../constants"
 import firestore from '@react-native-firebase/firestore';
+import { windowHeight, windowWidth } from "../utils/Dimensions";
 const OrderDelivery = ({ route, navigation }) => {
     const { user } = useContext(AuthContext);
     const [profile, setProfile] = useState(null);
@@ -42,7 +43,7 @@ const OrderDelivery = ({ route, navigation }) => {
         stepIndicatorLabelFinishedColor: '#ffffff',
         stepIndicatorLabelUnFinishedColor: '#aaaaaa',
         labelColor: '#999999',
-        labelSize: 10,
+        labelSize: windowHeight / 70,
         currentStepLabelColor: COLORS.secondary,
         labelFontFamily: FONTS.body1.fontFamily
     }
@@ -94,10 +95,12 @@ const OrderDelivery = ({ route, navigation }) => {
     setTimeout(() => fetchOrderInfo(), 5000)
     function orderComplete() {
         return (
+            <View style={{alignSelf: "center", marginTop:2}}>
             <FormButton
                 buttonTitle="Home"
                 onPress={() => navigation.navigate("Home")}
             />
+            </View>
         )
     }
     function renderHeader() {
@@ -106,7 +109,7 @@ const OrderDelivery = ({ route, navigation }) => {
                 <TouchableOpacity
                     style={{
                         marginTop: -85,
-                        marginLeft: -215,
+                        marginRight: windowHeight / 2.25,
                         width: 73,
                         paddingLeft: SIZES.padding * 2,
                         justifyContent: 'center'
@@ -141,9 +144,9 @@ const OrderDelivery = ({ route, navigation }) => {
                     style={styles.logo}
                 />
                 <View>
-                    <Text style={styles.userName}>{profile ? profile.Name || '---' : 'Loading..'}, your order has been placed at {restaurant?.name}.</Text>
-                    <Text style={{ fontSize: 12, textAlign: "center", color: COLORS.darkgray, alignContent: "center" }}><Ionicons name={"call"} size={16} color={COLORS.primary}> </Ionicons>+923012216771</Text>
-                    <Text style={{ fontSize: 12, textAlign: "center", color: COLORS.darkgray, alignContent: "center" }}><Ionicons name={"mail"} size={16} color={COLORS.primary}> </Ionicons>nedexpress.helpcenter@gmail.com</Text>
+                    <Text style={styles.userName}>{profile ? profile.Name || '' : ''}, your order has been placed at {restaurant?.name}.</Text>
+                    <Text style={{ fontSize: windowHeight / 70, textAlign: "center", color: COLORS.darkgray, alignContent: "center", fontFamily: FONTS.body1.fontFamily }}><Ionicons name={"call"} size={16} color={COLORS.primary}> </Ionicons>+923012216771</Text>
+                    <Text style={{ fontSize: windowHeight / 70, textAlign: "center", color: COLORS.darkgray, alignContent: "center", fontFamily: FONTS.body1.fontFamily }}><Ionicons name={"mail"} size={16} color={COLORS.primary}> </Ionicons>nedexpress.helpcenter@gmail.com</Text>
                 </View>
             </View>
             <View>
@@ -185,32 +188,26 @@ const styles = StyleSheet.create({
     },
     logo: {
         marginTop: -30,
-        height: 180,
-        width: 200,
+        height: windowHeight / 4.5,
+        width: windowWidth / 2,
         resizeMode: 'stretch',
     },
     orderInfoWrapper: {
-        flex: 1,
-        marginTop: 5,
+        marginTop: 10,
         paddingHorizontal: 10,
-        position: "relative",
-        bottom: 0,
-        height: 60,
-        width: 350,
+        height: windowHeight / 12,
+        width: windowWidth / 1.15,
         backgroundColor: COLORS.secondary,
         borderTopRightRadius: SIZES.radius,
         borderBottomLeftRadius: SIZES.radius,
         justifyContent: 'center'
     },
     totalInfoWrapper: {
-        flex: 1,
-        marginTop: 4,
+        marginTop: 10,
         paddingHorizontal: 10,
-        position: "relative",
-        bottom: 0,
-        height: 60,
-        width: 350,
-        backgroundColor: "#009966",
+        height: windowHeight/12,
+        width: windowWidth/1.15,
+        backgroundColor: "#fda50f",
         borderTopRightRadius: SIZES.radius,
         borderBottomLeftRadius: SIZES.radius,
         justifyContent: 'center'
@@ -225,6 +222,7 @@ const styles = StyleSheet.create({
     userDetail: {
         textAlign: "left",
         color: COLORS.white,
-        ...FONTS.body3
+        fontFamily: FONTS.h4.fontFamily,
+        fontSize: windowHeight/50
     },
 })

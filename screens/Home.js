@@ -13,6 +13,7 @@ import firestore from '@react-native-firebase/firestore';
 import { AuthContext } from '../navigation/AuthProvider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { icons, images, SIZES, COLORS, FONTS } from '../constants'
+import { windowHeight, windowWidth } from "../utils/Dimensions";
 //pass from here to everywhere firebase data
 const Home = ({ navigation }) => {
     const [name, setName] = useState(null);
@@ -105,7 +106,7 @@ const Home = ({ navigation }) => {
                 {
                     menuId: 1,
                     name: "Chicken Biryani",
-                    description: "Biyani served hot with a chicken piece in a box with a spoon.",
+                    description: "Biryani served hot with a chicken piece in a box with a spoon.",
                     makeTime: 10,
                     price: 100,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=7555aaeb-f173-4e5c-a593-17e26b744cf3"
@@ -401,7 +402,7 @@ const Home = ({ navigation }) => {
                             borderRadius: SIZES.radius
                         }}
                     >
-                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{currentLocation.streetName}</Text>
+                        <Text style={{ color: COLORS.black, fontFamily:FONTS.body2.fontFamily, fontSize: windowHeight/40, fontWeight:"bold" }}>{currentLocation.streetName}</Text>
                     </View>
                 </View>
 
@@ -468,8 +469,8 @@ const Home = ({ navigation }) => {
 
         return (
             <View style={{ padding: SIZES.padding * 2 }}>
-                <Text style={{ ...FONTS.h1, color: COLORS.black }}>Hello, {name ? name || 'User' : ""}</Text>
-                <Text style={{ ...FONTS.h4, color: COLORS.secondary, marginBottom: -10 }}>Choose a category</Text>
+                <Text style={{fontSize: windowHeight/30 ,fontFamily: FONTS.h1.fontFamily, color: COLORS.black }}>Hello, {name ? name || 'User' : ""}</Text>
+                <Text style={{fontSize: windowHeight/47 , fontFamily:FONTS.h4.fontFamily, color: COLORS.secondary, marginBottom: -10 }}>Choose a category</Text>
 
                 <FlatList
                     data={categories}
@@ -477,7 +478,7 @@ const Home = ({ navigation }) => {
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={item => `${item.id}`}
                     renderItem={renderItem}
-                    contentContainerStyle={{ paddingVertical: SIZES.padding * 2 }}
+                    contentContainerStyle={{ paddingVertical: SIZES.padding*2}}
                 />
             </View>
         )
@@ -513,7 +514,7 @@ const Home = ({ navigation }) => {
                         resizeMode="cover"
                         style={{
                             width: "100%",
-                            height: 220,
+                            height: windowHeight/4,
                             borderRadius: SIZES.radius
                         }}
                     />
@@ -522,8 +523,8 @@ const Home = ({ navigation }) => {
                         style={{
                             position: 'absolute',
                             bottom: 0,
-                            height: 51,
-                            width: SIZES.width * 0.3,
+                            height: windowHeight/15,
+                            width: windowWidth/3.5,
                             backgroundColor: COLORS.secondary,
                             borderTopRightRadius: SIZES.radius,
                             borderBottomLeftRadius: SIZES.radius,
@@ -532,12 +533,12 @@ const Home = ({ navigation }) => {
                             ...styles.shadow
                         }}
                     >
-                        <Text style={{ color: "white", ...FONTS.h4 }}>{item.duration}</Text>
+                        <Text style={{ color: "white",fontSize: windowHeight/50, fontFamily: FONTS.h4.fontFamily }}>{item.duration}</Text>
                     </View>
                 </View>
 
                 {/* Restaurant Info */}
-                <Text style={{ color: COLORS.black, fontWeight: "bold", ...FONTS.body2 }}>{item.name}</Text>
+                <Text style={{ color: COLORS.black, fontWeight: "bold", fontFamily:FONTS.body2.fontFamily, fontSize: windowHeight/40 }}>{item.name}</Text>
 
                 <View
                     style={{
@@ -547,7 +548,7 @@ const Home = ({ navigation }) => {
                 >
                     {/* Rating */}
                     <Ionicons name={"star"} size={20} color="#FEBE10" style={{ marginRight: 10 }} />
-                    <Text style={{ color: COLORS.black, ...FONTS.body3 }}>{item.rating}</Text>
+                    <Text style={{ color: COLORS.black, fontFamily:FONTS.body2.fontFamily, fontSize: windowHeight/50}}>{item.rating}</Text>
 
                     {/* Categories */}
                     <View
@@ -563,8 +564,8 @@ const Home = ({ navigation }) => {
                                         style={{ flexDirection: 'row' }}
                                         key={categoryId}
                                     >
-                                        <Text style={{ color: COLORS.black, ...FONTS.body3 }}>{getCategoryNameById(categoryId)}</Text>
-                                        <Text style={{ ...FONTS.h3, color: COLORS.darkgray }}> . </Text>
+                                        <Text style={{ color: COLORS.black, fontFamily:FONTS.body2.fontFamily, fontSize: windowHeight/50 }}>{getCategoryNameById(categoryId)}</Text>
+                                        <Text style={{color: COLORS.darkgray, fontFamily:FONTS.body2.fontFamily, fontSize: windowHeight/50 }}> . </Text>
                                     </View>
                                 )
                             })
@@ -576,7 +577,7 @@ const Home = ({ navigation }) => {
                                 <Text
                                     key={priceRating}
                                     style={{
-                                        ...FONTS.body3,
+                                        fontFamily:FONTS.body2.fontFamily, fontSize: windowHeight/50,
                                         color: (priceRating <= item.priceRating) ? COLORS.black : COLORS.darkgray
                                     }}
                                 >$</Text>

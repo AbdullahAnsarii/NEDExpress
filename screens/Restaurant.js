@@ -15,6 +15,9 @@ import { AuthContext } from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FormInput from '../components/FormInput';
+import FormButton from '../components/FormButton';
+
+import { windowHeight, windowWidth } from '../utils/Dimensions';
 
 const Restaurant = ({ route, navigation }) => {
     let total = 0;
@@ -185,7 +188,7 @@ const Restaurant = ({ route, navigation }) => {
                             backgroundColor: COLORS.lightGray3
                         }}
                     >
-                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{restaurant?.name}</Text>
+                        <Text style={{ color: COLORS.black, fontFamily: FONTS.body2.fontFamily, fontSize: windowHeight / 40, fontWeight: "bold" }}>{restaurant?.name}</Text>
                     </View>
                 </View>
 
@@ -221,7 +224,7 @@ const Restaurant = ({ route, navigation }) => {
                             style={{ alignItems: 'center' }}
                         >
                             <View style={{
-                                height: SIZES.height * 0.35, shadowColor: "#000",
+                                height: windowHeight / 3.5, shadowColor: "#000",
                                 shadowOffset: {
                                     width: 0,
                                     height: 3,
@@ -232,7 +235,7 @@ const Restaurant = ({ route, navigation }) => {
                             }}>
                                 {/* Food Image */}
                                 <Image
-                                    source={{ uri: item.url}}
+                                    source={{ uri: item.url }}
                                     resizeMode="cover"
                                     style={{
                                         width: SIZES.width,
@@ -246,7 +249,7 @@ const Restaurant = ({ route, navigation }) => {
                                         position: 'absolute',
                                         bottom: - 20,
                                         width: SIZES.width,
-                                        height: 50,
+                                        height: windowHeight / 15,
                                         justifyContent: 'center',
                                         flexDirection: 'row'
                                     }}
@@ -301,8 +304,8 @@ const Restaurant = ({ route, navigation }) => {
                                     paddingHorizontal: SIZES.padding * 2
                                 }}
                             >
-                                <Text style={{ color: COLORS.black, marginVertical: 10, textAlign: 'center', ...FONTS.h2 }}>{item.name} - Rs. {item.price}</Text>
-                                <Text style={{ color: COLORS.black, ...FONTS.body5 }}>{item.description}</Text>
+                                <Text style={{ color: COLORS.black, marginVertical: 10, textAlign: 'center', fontFamily: FONTS.h2.fontFamily, fontSize: windowHeight / 35 }}>{item.name} - Rs. {item.price}</Text>
+                                <Text style={{ color: COLORS.black, fontFamily: FONTS.body5.fontFamily, fontSize: windowHeight / 65 }}>{item.description}</Text>
                             </View>
 
                             {/* Time */}
@@ -314,7 +317,7 @@ const Restaurant = ({ route, navigation }) => {
                                 <Ionicons name={"time-outline"} size={23} color={COLORS.black} />
 
                                 <Text style={{
-                                    ...FONTS.body4, color: COLORS.darygray
+                                    fontFamily: FONTS.body4.fontFamily, color: COLORS.darygray, fontSize: windowHeight / 55
                                 }}>{item.makeTime} minutes</Text>
                             </View>
                         </View>
@@ -329,7 +332,7 @@ const Restaurant = ({ route, navigation }) => {
         const dotPosition = Animated.divide(scrollX, SIZES.width)
 
         return (
-            <View style={{ height: 30 }}>
+            <View style={{ height: windowHeight/15 }}>
                 <View
                     style={{
                         flexDirection: 'row',
@@ -413,8 +416,8 @@ const Restaurant = ({ route, navigation }) => {
                             borderBottomWidth: 1
                         }}
                     >
-                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>{getBasketItemCount()} items in Cart</Text>
-                        <Text style={{ color: COLORS.black, ...FONTS.h3 }}>Rs. {sumOrder()}</Text>
+                        <Text style={{ color: COLORS.black, fontFamily: FONTS.h3.fontFamily, fontSize: windowHeight / 45 }}>{getBasketItemCount()} items in Cart</Text>
+                        <Text style={{ color: COLORS.black, fontFamily: FONTS.h3.fontFamily, fontSize: windowHeight / 45 }}>Rs. {sumOrder()}</Text>
                     </View>
 
                     <View
@@ -427,35 +430,20 @@ const Restaurant = ({ route, navigation }) => {
                     >
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons name={"location"} size={25} color={COLORS.secondary} style={{ marginLeft: -10 }} />
-                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>{userDepartment} Department</Text>
+                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, fontFamily: FONTS.h3.fontFamily, fontSize: windowHeight / 45 }}>{userDepartment} Department</Text>
                         </View>
 
                         <View style={{ flexDirection: 'row' }}>
                             <Ionicons name={"bicycle"} size={25} color={COLORS.secondary} />
-                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, ...FONTS.h4 }}>COD</Text>
+                            <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, fontFamily: FONTS.h3.fontFamily, fontSize: windowHeight / 45 }}>COD</Text>
                         </View>
                     </View>
-
+                        <View style={{alignSelf: "center"}}> 
                     {/* Order Button */}
-                    <View
-                        style={{
-                            padding: SIZES.padding * 2,
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}
-                    >
-                        <TouchableOpacity
-                            style={{
-                                width: SIZES.width * 0.9,
-                                padding: SIZES.padding,
-                                backgroundColor: COLORS.primary,
-                                alignItems: 'center',
-                                borderRadius: SIZES.radius
-                            }}
-                            onPress={() => handleUpdate()}
-                        >
-                            <Text style={{ color: COLORS.white, ...FONTS.h2 }}>Place Order</Text>
-                        </TouchableOpacity>
+                    <FormButton
+                        buttonTitle="Place Order"
+                        onPress={() => handleUpdate()}
+                    />
                     </View>
                 </View>
 
