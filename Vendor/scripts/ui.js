@@ -11,6 +11,9 @@ class UIClass {
         )
         let html =
             `
+            <li class = "list-group-items">
+            <span class="message">Verified ID: ${data.VerifiedID}</span>
+        </li>
         <li class = "list-group-items">
             <span class="username">${data.Name}</span>
         </li>

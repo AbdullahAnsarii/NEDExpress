@@ -14,6 +14,7 @@ import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {AuthContext} from '../navigation/AuthProvider';
 import { icons, COLORS, SIZES, FONTS, images } from '../constants'
+import { windowHeight, windowWidth } from '../utils/Dimensions';
 
 const LoginScreen = ({navigation}) => {
   const [user, setUser] = useState({
@@ -43,7 +44,7 @@ const LoginScreen = ({navigation}) => {
       <FormInput
         labelValue={user.email}
         onChangeText={(userEmail) => setUser({ ...user, email: userEmail })}
-        placeholderText="Email"
+        placeholderText="Email   "
         iconType="at"
         keyboardType="email-address"
         autoCapitalize="none"
@@ -57,7 +58,6 @@ const LoginScreen = ({navigation}) => {
         iconType="lock-closed-outline"
         secureTextEntry={true}
       />
-
       <FormButton 
         buttonTitle="Login"
         onPress={() => loginHandle(user.email, user.password)}
@@ -68,8 +68,6 @@ const LoginScreen = ({navigation}) => {
           <SocialButton
             buttonTitle="Sign In with Google"
             btnType="google"
-            color="#de4d41"
-            backgroundColor="#f5e7ea"
             onPress={() => googleLogin()}
           />
         </View>
@@ -79,7 +77,7 @@ const LoginScreen = ({navigation}) => {
         style={styles.forgotButton}
         onPress={() => navigation.navigate('Signup')}>
         <Text style={{ marginTop: 5 ,color: COLORS.darkgray, ...FONTS.body3 }}>
-          Don't have an acount? Create here
+          Don't have an acount? <Text style={{color: COLORS.primary ,textDecorationLine: "underline"}}>Create here</Text>
         </Text>
       </TouchableOpacity>
     </ScrollView>
@@ -93,12 +91,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
     padding: 20,
-    paddingTop: 70,
+    paddingTop: windowHeight/12,
     flex: 1
   },
   logo: {
-    width: 300,
-    height: 205,
+    width: windowWidth/1.5,
+    height: windowHeight/4,
     resizeMode: 'stretch',
   },
   text: {

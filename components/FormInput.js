@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginTop: 5,
     marginBottom: 10,
-    width: 370,
+    width: SIZES.width * 0.9,
     height: windowHeight / 15,
     borderColor: '#ccc',
     borderRadius: SIZES.radius,
@@ -40,12 +40,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   iconStyle: {
-    padding: 10,
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     borderRightColor: '#ccc',
     borderRightWidth: 1,
-    width: 50,
+    width: '14%',
   },
 });

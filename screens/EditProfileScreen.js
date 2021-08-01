@@ -19,6 +19,7 @@ import { AuthContext } from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
+import { windowHeight, windowWidth } from '../utils/Dimensions';
 //import storage from '@react-native-firebase/storage';
 
 const EditProfileScreen = ({ navigation }) => {
@@ -132,7 +133,7 @@ const EditProfileScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{ marginLeft: 10, marginRight: 345, marginTop: 8, marginBottom: -20 }}>
+      <View style={{ marginLeft: windowHeight/90, marginRight: windowHeight/2.25, marginTop: 8, marginBottom: -20 }}>
         <Ionicons name={"arrow-back-circle"} size={43} style={{ marginTop: 0, marginLeft: 0 }} color={COLORS.secondary} onPress={() => navigation.goBack()} />
       </View>
       <BottomSheet
@@ -152,9 +153,9 @@ const EditProfileScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => bs.current.snapTo(0)}>
             <View
               style={{
-                marginLeft: 140,
-                height: 150,
-                width: 100,
+                marginLeft: windowWidth/3,
+                height: windowHeight/5,
+                width: windowWidth/4,
                 borderRadius: 15,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -211,7 +212,7 @@ const EditProfileScreen = ({ navigation }) => {
           <FormInput
             labelValue={profile ? profile.RollNo : ''}
             onChangeText={(txt) => setProfile({ ...profile, RollNo: txt })}
-            placeholderText="Roll no. (CS-XXXXX).   "
+            placeholderText="Roll no. (1XXXX).   "
             iconType="card-outline"
             autoCorrect={false}
             keyboardType="numeric"
@@ -223,17 +224,29 @@ const EditProfileScreen = ({ navigation }) => {
             </View>
             <Picker
               selectedValue={profile ? profile.Department : 'Department'}
-              style={{ height: 0, width: 320, color: COLORS.black }}
+              style={{ height: windowHeight/15, width: "86%", color: COLORS.black }}
               onValueChange={(itemValue) => setProfile({ ...profile, Department: itemValue })}
               dropdownIconColor={COLORS.primary}
               mode={"dropdown"}
 
             >
               <Picker.name label="Department" value="" style={{ color: COLORS.secondary }} />
-              <Picker.Item label="Computer Systems Engineering" value="CIS" style={{ color: COLORS.black }} />
-              <Picker.Item label="Electrical Engineering" value="EE" style={{ color: COLORS.black }} />
-              <Picker.Item label="Mechanical Engineering" value="ME" style={{ color: COLORS.black }} />
-              <Picker.Item label="Civil Engineering" value="CE" style={{ color: COLORS.black }} />
+          <Picker.Item label="1) Computer Systems Engineering" value="CIS" style={{ color: COLORS.black }} />
+          <Picker.Item label="2) Electrical Engineering" value="EE" style={{ color: COLORS.black }} />
+          <Picker.Item label="3) Electronic Engineering" value="EL" style={{ color: COLORS.black }} />
+          <Picker.Item label="4) Mechanical Engineering" value="ME" style={{ color: COLORS.black }} />
+          <Picker.Item label="5) Textile Engineering" value="TE" style={{ color: COLORS.black }} />
+          <Picker.Item label="6) Industrial & Manufacturing Engineering" value="IM" style={{ color: COLORS.black }} />
+          <Picker.Item label="7) Civil Engineering" value="CE" style={{ color: COLORS.black }} />
+          <Picker.Item label="8) Software Engineering" value="SE" style={{ color: COLORS.black }} />
+          <Picker.Item label="9) Computer Science and Info. Technology" value="BCIT" style={{ color: COLORS.black }} />
+          <Picker.Item label="10) Chemical Engineering" value="CH" style={{ color: COLORS.black }} />
+          <Picker.Item label="11) Petroleum Engineering" value="PE" style={{ color: COLORS.black }} />
+          <Picker.Item label="12) Urban Engineering" value="UE" style={{ color: COLORS.black }} />
+          <Picker.Item label="13) Polymer & Petrochemical Engineering" value="PP" style={{ color: COLORS.black }} />
+          <Picker.Item label="14) Industrial Chemistry" value="IC" style={{ color: COLORS.black }} />
+          <Picker.Item label="15) Textile Sciences" value="TS" style={{ color: COLORS.black }} />
+
             </Picker>
           </View>
         </Animated.View>
@@ -241,7 +254,7 @@ const EditProfileScreen = ({ navigation }) => {
           buttonTitle="Submit"
           onPress={() => handleUpdate()}
         />
-        <Text style={{color: COLORS.darkgray, marginTop: 2}}>ℹ don't edit credentials if your ID is verified</Text>
+        <Text style={{fontSize:13, color: COLORS.darkgray, fontStyle: "italic"}}>don't edit credentials if your ID is verified</Text>
       </ScrollView>
     </View>
   );
@@ -251,8 +264,8 @@ export default EditProfileScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginBottom: -8
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   iconStyle: {
     padding: 1,
@@ -264,11 +277,11 @@ const styles = StyleSheet.create({
     width: 50,
   },
   picker: {
-    marginTop: 5,
+    marginTop: 0,
     marginBottom: 10,
     alignItems: "center",
     backgroundColor: "#fff",
-    height: 55,
+    height: windowHeight / 15,
     borderColor: '#ccc',
     borderRadius: SIZES.radius,
     borderWidth: 1,
@@ -278,14 +291,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    paddingTop: 50,
-    paddingBottom: 35,
+    paddingTop: 10,
+    paddingBottom: 0,
   },
   text: {
-    marginLeft: 100,
+    alignSelf:"center",
     fontFamily: FONTS.h1.fontFamily,
-    fontSize: 32,
-    marginBottom: 10,
+    fontSize: windowHeight/26,
+    marginBottom: windowHeight/60,
     color: COLORS.black,
   },
   commandButton: {

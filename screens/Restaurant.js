@@ -72,7 +72,8 @@ const Restaurant = ({ route, navigation }) => {
                     Total: total,
                     OrderTime: firestore.Timestamp.fromDate(new Date()),
                     OrderStatus: "Placed",
-                    AdditionalInfo: additionalInfo
+                    AdditionalInfo: additionalInfo,
+                    VerifiedID: profile.Verified
 
                 }).then(() => {
                     navigation.navigate("OrderDelivery", {

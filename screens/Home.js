@@ -140,7 +140,7 @@ const Home = ({ navigation }) => {
                     name: "Anday Wala Burger",
                     description: "Shami burger with egg and kebab filling served with fries.",
                     makeTime: 20,
-                    price: 70,
+                    price: 80,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/double_egg_shami_burger.jpg?alt=media&token=815b8a9c-3304-4227-b59c-cf60182e453a"
                 },
                 {
@@ -468,7 +468,7 @@ const Home = ({ navigation }) => {
 
         return (
             <View style={{ padding: SIZES.padding * 2 }}>
-                <Text style={{ ...FONTS.h1, color: COLORS.black }}>Hello, {name ? name || 'User' : 'Loading..'}</Text>
+                <Text style={{ ...FONTS.h1, color: COLORS.black }}>Hello, {name ? name || 'User' : ""}</Text>
                 <Text style={{ ...FONTS.h4, color: COLORS.secondary, marginBottom: -10 }}>Choose a category</Text>
 
                 <FlatList
