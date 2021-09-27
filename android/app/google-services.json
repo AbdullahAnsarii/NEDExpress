@@ -14,6 +14,51 @@
       },
       "oauth_client": [
         {
+          "client_id": "292778080288-19sk77ocmi78veqjbullg9iaob3uf606.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.awesomeproject",
+            "certificate_hash": "1af77e9fc6956ba24faf6f40d45d130b347675b7"
+          }
+        },
+        {
+          "client_id": "292778080288-61c89v8nm1puk41rdp82hvqbls766qfh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIpyBKgYqgkPxxppjQsRNCMP38ddRZaWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292778080288-61c89v8nm1puk41rdp82hvqbls766qfh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292778080288:android:dd7d9ac6ecfac371b46445",
+        "android_client_info": {
+          "package_name": "com.nedexpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292778080288-ff0962osnpndpn2le5cppaj9bth2eik9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nedexpress",
+            "certificate_hash": "cdea5136d9897fe1ac2f5e1db8182eb8cc58f396"
+          }
+        },
+        {
           "client_id": "292778080288-61c89v8nm1puk41rdp82hvqbls766qfh.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.nedexpress;
 
 import com.facebook.react.ReactActivity;
 

@@ -47,8 +47,9 @@ const Restaurant = ({ route, navigation }) => {
             Alert.alert(e);
         }
     }
+    
     useEffect(() => {
-        fetchUserInfo();
+        fetchUserInfo();   
     }, [])
     const handleUpdate = async () => {
         if (total === 0) {
@@ -314,11 +315,15 @@ const Restaurant = ({ route, navigation }) => {
                                     flexDirection: 'row',
                                 }}
                             >
-                                <Ionicons name={"time-outline"} size={23} color={COLORS.black} />
+                                <Ionicons name={"time-outline"} size={16} color={COLORS.black} />
 
                                 <Text style={{
-                                    fontFamily: FONTS.body4.fontFamily, color: COLORS.darygray, fontSize: windowHeight / 55
+                                    fontFamily: FONTS.body4.fontFamily, color: COLORS.darygray, fontSize: windowHeight / 75
                                 }}>{item.makeTime} minutes</Text>
+                            </View>
+                            {/* Recommendation */}
+                            <View style={styles.recommendationsWrapper}>
+                                <Text style={styles.userDetail}><Ionicons name={"restaurant"} size={23} color={COLORS.primary}> </Ionicons>Recommendation: {item.recommendation}</Text>
                             </View>
                         </View>
                     ))
@@ -332,7 +337,7 @@ const Restaurant = ({ route, navigation }) => {
         const dotPosition = Animated.divide(scrollX, SIZES.width)
 
         return (
-            <View style={{ height: windowHeight/15 }}>
+            <View style={{ height: windowHeight / 15 }}>
                 <View
                     style={{
                         flexDirection: 'row',
@@ -438,12 +443,12 @@ const Restaurant = ({ route, navigation }) => {
                             <Text style={{ color: COLORS.black, marginLeft: SIZES.padding, fontFamily: FONTS.h3.fontFamily, fontSize: windowHeight / 45 }}>COD</Text>
                         </View>
                     </View>
-                        <View style={{alignSelf: "center"}}> 
-                    {/* Order Button */}
-                    <FormButton
-                        buttonTitle="Place Order"
-                        onPress={() => handleUpdate()}
-                    />
+                    <View style={{ alignSelf: "center" }}>
+                        {/* Order Button */}
+                        <FormButton
+                            buttonTitle="Place Order"
+                            onPress={() => handleUpdate()}
+                        />
                     </View>
                 </View>
 
@@ -477,7 +482,23 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: COLORS.lightGray2
-    }
+    },
+    recommendationsWrapper: {
+        marginTop: 10,
+        paddingHorizontal: 10,
+        height: windowHeight/16,
+        width: windowWidth/1.15,
+        backgroundColor: COLORS.secondary,
+        borderTopRightRadius: SIZES.radius,
+        borderBottomLeftRadius: SIZES.radius,
+        justifyContent: 'center'
+    },
+    userDetail: {
+        textAlign: "left",
+        color: COLORS.white,
+        fontFamily: FONTS.h4.fontFamily,
+        fontSize: windowHeight/60
+    },
 })
 
 export default Restaurant;

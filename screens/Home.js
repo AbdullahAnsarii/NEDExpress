@@ -107,6 +107,7 @@ const Home = ({ navigation }) => {
                     menuId: 1,
                     name: "Chicken Biryani",
                     description: "Biryani served hot with a chicken piece in a box with a spoon.",
+                    recommendation: "Club Sandwich",
                     makeTime: 10,
                     price: 100,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biryani.jpg?alt=media&token=7555aaeb-f173-4e5c-a593-17e26b744cf3"
@@ -115,6 +116,7 @@ const Home = ({ navigation }) => {
                     menuId: 2,
                     name: "Zinger Burger",
                     description: "Zinger burger with french fries.",
+                    recommendation: "Anday Wala Burger",
                     makeTime: 20,
                     price: 150,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/zinger.jpg?alt=media&token=6d89c976-2e70-47da-bab4-d3a1143304a9"
@@ -123,6 +125,7 @@ const Home = ({ navigation }) => {
                     menuId: 3,
                     name: "Club Sandwich",
                     description: "Baked Sandwich served with fries and coleslaw.",
+                    recommendation: "Tikka Sandwich",
                     makeTime: 20,
                     price: 150,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/club.jpg?alt=media&token=b27244a8-6055-4ee4-940e-2cca6d13d0a2"
@@ -132,6 +135,7 @@ const Home = ({ navigation }) => {
                     name: "Tikka Sandwich",
                     photo: images.andashami,
                     description: "Sandwich with tikka chunks filling.",
+                    recommendation: "Club Sandwich",
                     makeTime: 20,
                     price: 130,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/Tikka-Sandwich-with-Fries-and-Coleslaw1.jpg?alt=media&token=0e86aa03-b11c-4bf8-94ba-c59232366b2b"
@@ -140,6 +144,7 @@ const Home = ({ navigation }) => {
                     menuId: 5,
                     name: "Anday Wala Burger",
                     description: "Shami burger with egg and kebab filling served with fries.",
+                    recommendation: "Zinger Burger",
                     makeTime: 20,
                     price: 80,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/double_egg_shami_burger.jpg?alt=media&token=815b8a9c-3304-4227-b59c-cf60182e453a"
@@ -148,6 +153,7 @@ const Home = ({ navigation }) => {
                     menuId: 6,
                     name: "Shami Burger",
                     description: "Pocket friendly shami burger served with fries.",
+                    recommendation: "Anday Wala Burger",
                     makeTime: 20,
                     price: 60,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/shamii.jpg?alt=media&token=bb74c325-c9b7-4543-b102-07f94be871b8"
@@ -156,6 +162,7 @@ const Home = ({ navigation }) => {
                     menuId: 7,
                     name: "Chicken Roll",
                     description: "Chicken tikka chunks roll.",
+                    recommendation: "Mayo Roll",
                     makeTime: 10,
                     price: 60,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/chickenchutney.jpg?alt=media&token=9bd7e007-a00e-44ed-aa8f-0261d1a60847"
@@ -164,6 +171,7 @@ const Home = ({ navigation }) => {
                     menuId: 8,
                     name: "Mayo Roll",
                     description: "Chicken roll with mayo sauce.",
+                    recommendation: "Chicken Roll",
                     makeTime: 10,
                     price: 70,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/mayoo.jpg?alt=media&token=688217ea-1d3c-442d-a7de-585975907f9f"
@@ -172,6 +180,7 @@ const Home = ({ navigation }) => {
                     menuId: 9,
                     name: "Zinger Roll",
                     description: "Fried chicken wrap.",
+                    recommendation: "Chicken Roll",
                     makeTime: 12,
                     price: 130,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/zingerroll.jpg?alt=media&token=db31e461-bc87-48c0-840b-28490ae8e180"
@@ -181,6 +190,7 @@ const Home = ({ navigation }) => {
                     name: "Fries",
                     photo: images.fries,
                     description: "French fries served with masala and ketchup.\nPlease provide exclusion of ketchup in Additional Info.",
+                    recommendation: "Samosa",
                     makeTime: 10,
                     price: 50,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/frenchfries.jpg?alt=media&token=f5c81172-a649-496a-9831-4cd770ccb7e0"
@@ -189,6 +199,7 @@ const Home = ({ navigation }) => {
                     menuId: 11,
                     name: "Spring Roll",
                     description: "Fried roll with vegetable stuffing.",
+                    recommendation: "Samosa",
                     makeTime: 7,
                     price: 20,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/spring.jpg?alt=media&token=90bfb52a-6f12-4832-8385-79d27c7a3eb8"
@@ -197,6 +208,7 @@ const Home = ({ navigation }) => {
                     menuId: 12,
                     name: "Samosa",
                     description: "Potato based deep fried samosa.",
+                    recommendation: "Fries",
                     makeTime: 7,
                     price: 10,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/samosa.jpg?alt=media&token=2eded20a-d204-47a2-b8e2-7e9813da2ee9"
@@ -204,6 +216,7 @@ const Home = ({ navigation }) => {
                     menuId: 13,
                     name: "Patties",
                     description: "Baked chicken patty.",
+                    recommendation: "Chicken Roll",
                     makeTime: 5,
                     price: 40,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/patties.jpg?alt=media&token=b46f1005-bebe-48c9-8468-7896576abe50"
@@ -212,6 +225,7 @@ const Home = ({ navigation }) => {
                     menuId: 14,
                     name: "Milk Shake",
                     description: "Mango Shake, Banana Shake, Ice Cream Shake, Chocolate Shake, Oreo Shake\nPlease provide the flavour in Additional Info.",
+                    recommendation: "Tea",
                     makeTime: 10,
                     price: 70,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/shakes.jpeg?alt=media&token=869e1760-0b61-4f5b-ad02-db64aa6ff8a0"
@@ -220,6 +234,7 @@ const Home = ({ navigation }) => {
                     menuId: 15,
                     name: "Fresh Juice",
                     description: "Orange Juice, Falsa Juice\nPlease provide the flavour in Additional Info.",
+                    recommendation: "Slice Juice",
                     makeTime: 10,
                     price: 80,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/plastic-juice-glass-4-500x500.jpg?alt=media&token=157941c8-c411-4d35-985a-15ca4f9aa10d"
@@ -228,6 +243,7 @@ const Home = ({ navigation }) => {
                     menuId: 16,
                     name: "Tea",
                     description: "delicious tea served hot.",
+                    recommendation: "Milk Shake",
                     makeTime: 5,
                     price: 30,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/tea.jpg?alt=media&token=57bfa4dd-6e14-49d6-8059-741ecf9ea226"
@@ -236,6 +252,7 @@ const Home = ({ navigation }) => {
                     menuId: 17,
                     name: "Soft Drink",
                     description: "Pepsi, Mirinda, Dew, 7up\nPlease provide the option in Additional Info.",
+                    recommendation: "Tea",
                     makeTime: 2,
                     price: 40,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/can.jpg?alt=media&token=448a5b8f-e008-4c06-abc2-c98a00ef28e4"
@@ -244,6 +261,7 @@ const Home = ({ navigation }) => {
                     menuId: 18,
                     name: "Mineral Water",
                     description: "Pure bottled water.",
+                    recommendation: "Tea",
                     makeTime: 2,
                     price: 40,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/mineral.jpg?alt=media&token=62ac89c7-8e22-4766-a9d1-e78e44427cae"
@@ -252,6 +270,7 @@ const Home = ({ navigation }) => {
                     menuId: 19,
                     name: "Slice Juice",
                     description: "Chilled mango flavoured slice juice.",
+                    recommendation: "Fresh Juice",
                     makeTime: 2,
                     price: 30,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/slice.jpg?alt=media&token=ea913542-7c0c-4283-b13d-aa9b2050d2ca"
@@ -260,6 +279,7 @@ const Home = ({ navigation }) => {
                     menuId: 20,
                     name: "Biscuit",
                     description: "Gluco, Prince, Gala, Zeera Plus \nPlease provide the option in Additional Info.",
+                    recommendation: "Cocomo",
                     makeTime: 2,
                     price: 20,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/biscuits.jpg?alt=media&token=741fc3e4-5a55-4166-b8a4-24717ed7a7b2"
@@ -268,6 +288,7 @@ const Home = ({ navigation }) => {
                     menuId: 21,
                     name: "Novita or Chocolatto",
                     description: "Please provide Novita or Chocolatto in Additional Info.",
+                    recommendation: "Biscuit",
                     makeTime: 2,
                     price: 10,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/grocerapp-bisconni-novita-chocolate-wafers-5ec38719ef0e4.png?alt=media&token=75777365-3b0a-4e1e-9009-9409de06799e"
@@ -275,6 +296,7 @@ const Home = ({ navigation }) => {
                     menuId: 22,
                     name: "Cocomo",
                     description: "Cocomo mjhe bhi do.",
+                    recommendation: "Biscuit",
                     makeTime: 2,
                     price: 5,
                     url: "https://firebasestorage.googleapis.com/v0/b/deliverysystem-76971.appspot.com/o/cocomo.jpg?alt=media&token=1a3143e2-bcfc-43fc-b47a-c34aa18e606a"
